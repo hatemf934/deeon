@@ -1,16 +1,14 @@
 import 'package:deeon_app/core/height_width_manager.dart';
 import 'package:deeon_app/core/padding_radius_manager.dart';
 import 'package:deeon_app/core/text_manager.dart';
-import 'package:deeon_app/views/password_screen.dart';
-import 'package:deeon_app/views/regester_view.dart';
 import 'package:deeon_app/widgets/custom_elevation_button.dart';
 import 'package:deeon_app/widgets/custom_icon_button.dart';
 import 'package:deeon_app/widgets/custom_text_button.dart';
 import 'package:deeon_app/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
-class ContentHomeScreen extends StatelessWidget {
-  const ContentHomeScreen({super.key});
+class ContentRegesterScreen extends StatelessWidget {
+  const ContentRegesterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,28 +25,31 @@ class ContentHomeScreen extends StatelessWidget {
         children: [
           SizedBox(height: HeightManager.h140),
           TextFieldCustom(
+            text: TextManager.kFullName,
+            suffixIcon: const CustomIconButton(icon: Icons.person),
+          ),
+          TextFieldCustom(
             text: TextManager.kEmail,
             suffixIcon: const CustomIconButton(icon: Icons.email),
           ),
           TextFieldCustom(
             text: TextManager.kPassword,
-            suffixIcon: const CustomIconButton(icon: Icons.lock_clock),
+            suffixIcon: const CustomIconButton(icon: Icons.lock_open),
+          ),
+          TextFieldCustom(
+            text: TextManager.kConfirmPassword,
+            suffixIcon: const CustomIconButton(icon: Icons.lock_open),
           ),
           SizedBox(height: HeightManager.h20),
-          CustomElevatedButton(textbutton: TextManager.kHomeTitle),
+          CustomElevatedButton(
+            textbutton: TextManager.kCreateAccount,
+          ),
           SizedBox(height: HeightManager.h20),
           CustomTextbutton(
             onPressed: () {
-              Navigator.pushNamed(context, PasswordScreen.id);
+              Navigator.pop(context);
             },
-            text: TextManager.kForgetPassword,
-          ),
-          CustomTextbutton(
-            onPressed: () {
-              Navigator.pushNamed(context, RegesterView.id);
-            },
-            fontWeight: FontWeight.bold,
-            text: TextManager.kRegesterNow,
+            text: TextManager.kYouHaveAccount,
           ),
         ],
       ),

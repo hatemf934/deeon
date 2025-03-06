@@ -1,5 +1,6 @@
 import 'package:deeon_app/views/home_view.dart';
 import 'package:deeon_app/views/password_screen.dart';
+import 'package:deeon_app/views/regester_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,6 +18,7 @@ class DeeonApp extends StatelessWidget {
       routes: {
         HomeView.id: (context) => const HomeView(),
         PasswordScreen.id: (context) => const PasswordScreen(),
+        RegesterView.id: (context) => const RegesterView(),
       },
     );
   }
