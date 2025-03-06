@@ -1,15 +1,14 @@
 import 'package:deeon_app/core/height_width_manager.dart';
 import 'package:deeon_app/core/padding_radius_manager.dart';
 import 'package:deeon_app/core/text_manager.dart';
-import 'package:deeon_app/views/password_screen.dart';
 import 'package:deeon_app/widgets/custom_elevation_button.dart';
 import 'package:deeon_app/widgets/custom_icon_button.dart';
 import 'package:deeon_app/widgets/custom_text_button.dart';
 import 'package:deeon_app/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
-class ContentHomeScreen extends StatelessWidget {
-  const ContentHomeScreen({super.key});
+class ContentPasswordScreen extends StatelessWidget {
+  const ContentPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,23 +28,16 @@ class ContentHomeScreen extends StatelessWidget {
             text: TextManager.kEmail,
             suffixIcon: const CustomIconButton(icon: Icons.email),
           ),
-          TextFieldCustom(
-            text: TextManager.kPassword,
-            suffixIcon: const CustomIconButton(icon: Icons.lock_clock),
-          ),
           SizedBox(height: HeightManager.h20),
-          CustomElevatedButton(textbutton: TextManager.kHomeTitle),
+          CustomElevatedButton(
+            textbutton: TextManager.kReturnPassword,
+          ),
           SizedBox(height: HeightManager.h20),
           CustomTextbutton(
             onPressed: () {
-              Navigator.pushNamed(context, PasswordScreen.id);
+              Navigator.pop(context);
             },
-            text: TextManager.kForgetPassword,
-          ),
-          CustomTextbutton(
-            onPressed: () {},
-            fontWeight: FontWeight.bold,
-            text: TextManager.kRegesterNow,
+            text: TextManager.kReturnRegester,
           ),
         ],
       ),

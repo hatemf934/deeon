@@ -2,12 +2,11 @@ import 'package:deeon_app/constant.dart';
 import 'package:deeon_app/core/font_manager.dart';
 import 'package:deeon_app/core/height_width_manager.dart';
 import 'package:deeon_app/core/padding_radius_manager.dart';
-import 'package:deeon_app/core/text_manager.dart';
 import 'package:flutter/material.dart';
 
 class CustomElevatedButton extends StatelessWidget {
-  const CustomElevatedButton({super.key});
-
+  const CustomElevatedButton({super.key, required this.textbutton});
+  final String textbutton;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,7 +32,7 @@ class CustomElevatedButton extends StatelessWidget {
           ),
         ),
         onPressed: () {},
-        child: Text(TextManager.kHomeTitle),
+        child: Text(textbutton),
       ),
     );
   }
