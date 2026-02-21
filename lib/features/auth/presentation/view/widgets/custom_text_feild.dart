@@ -10,15 +10,23 @@ class CustomTextFeild extends StatelessWidget {
     required this.labelText,
     required this.hintText,
     required this.iconData,
+    this.obscureText = false,
+    this.onPressed,
+    required this.validator,
   });
   final String labelText;
   final String hintText;
   final IconData iconData;
+  final bool obscureText;
+  final Function()? onPressed;
+  final String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: PaddingManager.p40),
-      child: TextField(
+      child: TextFormField(
+        validator: validator,
+        obscureText: obscureText,
         style: TextStyle(color: ColorManager.primaryColor),
         cursorColor: ColorManager.primaryColor,
         decoration: InputDecoration(
@@ -26,15 +34,18 @@ class CustomTextFeild extends StatelessWidget {
           hintText: hintText,
           hintStyle: TextStyle(color: ColorManager.hintColor),
           labelStyle: TextStyle(color: ColorManager.primaryColor),
-          suffixIcon: Icon(iconData, color: ColorManager.primaryColor),
-
+          suffixIcon: IconButton(
+            onPressed: onPressed,
+            icon: Icon(iconData, color: ColorManager.primaryColor),
+          ),
+          errorStyle: TextStyle(color: ColorManager.redColor),
           enabledBorder: buildOutlineInputBorder(
             color: ColorManager.enabledColor,
           ),
           focusedBorder: buildOutlineInputBorder(
             color: ColorManager.primaryColor,
           ),
-
+          errorBorder: buildOutlineInputBorder(color: ColorManager.redColor),
           fillColor: ColorManager.transmentColor,
         ),
       ),

@@ -1,6 +1,5 @@
 class TextManger {
   TextManger._();
-  static String loginText = "login";
   static String signInText = 'تسجيل الدخول';
   static String emailText = 'البريد الإلكتروني';
   static String emailExText = 'example@gmail.com';

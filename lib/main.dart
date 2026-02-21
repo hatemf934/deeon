@@ -1,4 +1,5 @@
-import 'package:deeon/features/regester&login/presentation/view/login_view.dart';
+import 'package:deeon/features/auth/presentation/view/login_view.dart';
+import 'package:deeon/features/auth/presentation/view/regester_vew.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +15,10 @@ class Deeon extends StatelessWidget {
       theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
       initialRoute: LoginView.id,
-      routes: {LoginView.id: (context) => const LoginView()},
+      routes: {
+        LoginView.id: (context) => const LoginView(),
+        RegesterVew.id: (context) => const RegesterVew(),
+      },
     );
   }
 }
