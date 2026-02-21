@@ -1,7 +1,7 @@
-import 'package:deeon/core/color_manager.dart';
-import 'package:deeon/core/padding_manager.dart';
-import 'package:deeon/core/radius_manager.dart';
-import 'package:deeon/core/width_manager.dart';
+import 'package:deeon/core/utils/color_manager.dart';
+import 'package:deeon/core/utils/padding_manager.dart';
+import 'package:deeon/core/utils/radius_manager.dart';
+import 'package:deeon/core/utils/width_manager.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFeild extends StatelessWidget {
@@ -13,6 +13,7 @@ class CustomTextFeild extends StatelessWidget {
     this.obscureText = false,
     this.onPressed,
     this.validator,
+    this.controller,
   });
   final String labelText;
   final String hintText;
@@ -20,11 +21,13 @@ class CustomTextFeild extends StatelessWidget {
   final bool obscureText;
   final Function()? onPressed;
   final String? Function(String?)? validator;
+  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: PaddingManager.p40),
       child: TextFormField(
+        controller: controller,
         validator: validator,
         obscureText: obscureText,
         style: TextStyle(color: ColorManager.primaryColor),

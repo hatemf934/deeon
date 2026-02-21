@@ -1,7 +1,7 @@
-import 'package:deeon/core/color_manager.dart';
-import 'package:deeon/core/height_manager.dart';
-import 'package:deeon/core/radius_manager.dart';
-import 'package:deeon/features/auth/presentation/view/regester_vew.dart';
+import 'dart:developer';
+import 'package:deeon/core/utils/color_manager.dart';
+import 'package:deeon/core/utils/height_manager.dart';
+import 'package:deeon/core/utils/radius_manager.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/button_section.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/custom_text_feild_section.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +37,7 @@ class _SectionOfLoginViewState extends State<SectionOfLoginView> {
             ButtonsSection(
               onPressed: () {
                 if (formkey.currentState!.validate()) {
-                  Navigator.pushNamed(context, RegesterVew.id);
+                  log("validate is ture");
                 }
               },
             ),

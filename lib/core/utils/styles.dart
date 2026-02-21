@@ -1,5 +1,5 @@
-import 'package:deeon/core/color_manager.dart';
-import 'package:deeon/core/font_manager.dart';
+import 'package:deeon/core/utils/color_manager.dart';
+import 'package:deeon/core/utils/font_manager.dart';
 import 'package:flutter/material.dart';
 
 class Styles {

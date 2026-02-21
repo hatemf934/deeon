@@ -1,6 +1,6 @@
-import 'package:deeon/core/color_manager.dart';
-import 'package:deeon/core/height_manager.dart';
-import 'package:deeon/core/styles.dart';
+import 'package:deeon/core/utils/color_manager.dart';
+import 'package:deeon/core/utils/height_manager.dart';
+import 'package:deeon/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomElevatedButton extends StatelessWidget {

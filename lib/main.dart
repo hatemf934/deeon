@@ -14,7 +14,7 @@ class Deeon extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      initialRoute: LoginView.id,
+      initialRoute: RegesterVew.id,
       routes: {
         LoginView.id: (context) => const LoginView(),
         RegesterVew.id: (context) => const RegesterVew(),

@@ -1,4 +1,4 @@
-import 'package:deeon/core/styles.dart';
+import 'package:deeon/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextButton extends StatelessWidget {

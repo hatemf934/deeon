@@ -1,6 +1,7 @@
-import 'package:deeon/core/height_manager.dart';
-import 'package:deeon/core/styles.dart';
-import 'package:deeon/core/text_manger.dart';
+import 'package:deeon/core/utils/height_manager.dart';
+import 'package:deeon/core/utils/styles.dart';
+import 'package:deeon/core/utils/text_manger.dart';
+import 'package:deeon/features/auth/presentation/view/regester_vew.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/custom_elveted_button.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/custom_text_button.dart';
 import 'package:flutter/material.dart';
@@ -23,9 +24,10 @@ class ButtonsSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomTextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, RegesterVew.id);
+              },
               textButton: TextManger.regesterNow,
-              fontWeight: FontWeight.bold,
             ),
             Text(
               TextManger.noHaveAccount,
