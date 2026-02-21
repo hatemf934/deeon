@@ -1,9 +1,9 @@
-import 'dart:developer';
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/height_manager.dart';
 import 'package:deeon/core/utils/radius_manager.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/button_section.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/custom_text_feild_section.dart';
+import 'package:deeon/features/home/presentation/view/home_view.dart';
 import 'package:flutter/material.dart';
 
 class SectionOfLoginView extends StatefulWidget {
@@ -37,7 +37,7 @@ class _SectionOfLoginViewState extends State<SectionOfLoginView> {
             ButtonsSection(
               onPressed: () {
                 if (formkey.currentState!.validate()) {
-                  log("validate is ture");
+                  Navigator.pushNamed(context, HomeView.id);
                 }
               },
             ),

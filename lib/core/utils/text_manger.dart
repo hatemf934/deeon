@@ -17,4 +17,7 @@ class TextManger {
   static String haveAccount = "هل لديك حساب؟";
   static String sendResetLink = "ارسال رابط اعاده تعيين كلمه المرور";
   static String backToLogin = "رجوع الي تسجيل الدخول";
+  static String homeScreen = "الصفحه الرئيسية";
+  static String signOut = "تسجيل الخروج";
+  static String darkMode = "تفعيل الوضع المظلم";
 }

@@ -1,3 +1,4 @@
+import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/height_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
 import 'package:deeon/core/utils/text_manger.dart';
@@ -34,7 +35,7 @@ class ButtonsSection extends StatelessWidget {
             ),
             Text(
               TextManger.noHaveAccount,
-              style: Styles.textStyle22.copyWith(fontWeight: FontWeight.bold),
+              style: Styles.textStyle22.copyWith(fontWeight: FontWeight.bold,color: ColorManager.primaryColor),
             ),
           ],
         ),

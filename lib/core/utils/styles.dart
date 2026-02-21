@@ -8,12 +8,21 @@ class Styles {
     fontSize: FontManager.font30,
     fontWeight: FontWeight.bold,
   );
-  static TextStyle textStylewithe22 = TextStyle(
+  static TextStyle textStyle22 = TextStyle(
     color: ColorManager.witheColor,
     fontSize: FontManager.font22,
   );
-  static TextStyle textStyle22 = TextStyle(
-    color: ColorManager.primaryColor,
-    fontSize: FontManager.font22,
+
+  static TextStyle textStyle25 = TextStyle(
+    color: ColorManager.appBarIconColor,
+    fontSize: FontManager.font25,
+  );
+  static TextStyle textStyle15 = TextStyle(
+    color: ColorManager.appBarIconColor,
+    fontSize: FontManager.font15,
+  );
+  static TextStyle textStyle18 = TextStyle(
+    fontWeight: FontWeight.bold,
+    fontSize: FontManager.font18,
   );
 }

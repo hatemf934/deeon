@@ -3,4 +3,5 @@ class RouteManager {
   static String loginRoute = "login";
   static String regesterRoute = "regester";
   static String forgetPasswordRoute = "forget_password";
+  static String homeViewRoute = "homeview";
 }

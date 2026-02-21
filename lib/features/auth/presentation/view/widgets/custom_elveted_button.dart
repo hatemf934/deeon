@@ -25,7 +25,7 @@ class CustomElevatedButton extends StatelessWidget {
       ),
 
       onPressed: onPressed,
-      child: Text(text, style: Styles.textStylewithe22),
+      child: Text(text, style: Styles.textStyle22),
     );
   }
 }
