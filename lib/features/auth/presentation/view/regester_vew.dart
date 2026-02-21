@@ -1,8 +1,8 @@
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/route_manager.dart';
-import 'package:deeon/core/utils/styles.dart';
 import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/section_of_regester_view.dart';
+import 'package:deeon/features/auth/presentation/view/widgets/title_widget_of_auth_views.dart';
 import 'package:flutter/material.dart';
 
 class RegesterVew extends StatelessWidget {
@@ -16,9 +16,11 @@ class RegesterVew extends StatelessWidget {
         backgroundColor: ColorManager.primaryColor,
         body: Column(
           children: [
-            Spacer(),
-            Text(TextManger.createAccount, style: Styles.textStyle30),
-            Spacer(flex: 2),
+            Expanded(
+              child: TitleWidgetOfAuthViews(
+                textTitle: TextManger.createAccount,
+              ),
+            ),
             SectiomOfRegesterView(),
           ],
         ),

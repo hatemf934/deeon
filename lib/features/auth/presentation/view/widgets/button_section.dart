@@ -1,6 +1,7 @@
 import 'package:deeon/core/utils/height_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
 import 'package:deeon/core/utils/text_manger.dart';
+import 'package:deeon/features/auth/presentation/view/forget_password_view.dart';
 import 'package:deeon/features/auth/presentation/view/regester_vew.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/custom_elveted_button.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/custom_text_button.dart';
@@ -16,8 +17,10 @@ class ButtonsSection extends StatelessWidget {
         CustomElevatedButton(onPressed: onPressed, text: TextManger.signInText),
         SizedBox(height: HeightManager.h20),
         CustomTextButton(
-          onPressed: onPressed,
-          textButton: TextManger.forgetPassword,
+          onPressed: () {
+            Navigator.pushNamed(context, ForgetPasswordView.id);
+          },
+          textButton: TextManger.youforgetPassword,
         ),
         SizedBox(height: HeightManager.h20),
         Row(
