@@ -1,7 +1,9 @@
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/route_manager.dart';
+import 'package:deeon/features/home/presentation/view/widgets/body_home_view.dart';
 import 'package:deeon/features/home/presentation/view/widgets/content_draw_options.dart';
 import 'package:deeon/features/home/presentation/view/widgets/custom_app_bar.dart';
+import 'package:deeon/features/home/presentation/view/widgets/custom_floating_action_button.dart';
 import 'package:deeon/features/home/presentation/view/widgets/user_account_section.dart';
 import 'package:flutter/material.dart';
 
@@ -20,6 +22,8 @@ class HomeView extends StatelessWidget {
           child: Column(children: [UserAccountSection(), ContentDrawOptions()]),
         ),
       ),
+      body: BodyHomeView(),
+      floatingActionButton: CustomFloatingActionButton(),
     );
   }
 }

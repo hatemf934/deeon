@@ -20,4 +20,5 @@ class TextManger {
   static String homeScreen = "الصفحه الرئيسية";
   static String signOut = "تسجيل الخروج";
   static String darkMode = "تفعيل الوضع المظلم";
+  static String noFoundDeeon = "لا يوجد ديون حاليا";
 }
