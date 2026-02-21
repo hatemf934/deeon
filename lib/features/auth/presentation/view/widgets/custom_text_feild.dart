@@ -12,7 +12,7 @@ class CustomTextFeild extends StatelessWidget {
     required this.iconData,
     this.obscureText = false,
     this.onPressed,
-    required this.validator,
+    this.validator,
   });
   final String labelText;
   final String hintText;
