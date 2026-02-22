@@ -5,13 +5,24 @@ import 'package:deeon/features/auth/presentation/view/widgets/section_of_forget_
 import 'package:deeon/features/auth/presentation/view/widgets/title_widget_of_auth_views.dart';
 import 'package:flutter/material.dart';
 
-class ForgetPasswordView extends StatelessWidget {
+class ForgetPasswordView extends StatefulWidget {
   const ForgetPasswordView({super.key});
   static String id = RouteManager.forgetPasswordRoute;
+
+  @override
+  State<ForgetPasswordView> createState() => _ForgetPasswordViewState();
+}
+
+class _ForgetPasswordViewState extends State<ForgetPasswordView> {
+  final GlobalKey<SectionOfForgetPasswordState> frogetSectionKey =
+      GlobalKey<SectionOfForgetPasswordState>();
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        frogetSectionKey.currentState?.resetValidation();
+        FocusScope.of(context).unfocus();
+      },
       child: Scaffold(
         backgroundColor: ColorManager.primaryColor,
         body: Column(
@@ -21,7 +32,7 @@ class ForgetPasswordView extends StatelessWidget {
                 textTitle: TextManger.forgetPassword,
               ),
             ),
-            SectionOfForgetPassword(),
+            SectionOfForgetPassword(key: frogetSectionKey),
           ],
         ),
       ),

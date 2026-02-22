@@ -2,18 +2,20 @@ import 'package:deeon/core/helpers/form_validate.dart';
 import 'package:deeon/core/utils/height_manager.dart';
 import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/core/utils/text_validate_manager.dart';
+import 'package:deeon/features/auth/presentation/view/widgets/confirm_password_text_feild.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/custom_text_feild.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFeildSection extends StatefulWidget {
-  const CustomTextFeildSection({super.key});
+  const CustomTextFeildSection({super.key, required this.isSubmitted});
+  final bool isSubmitted;
 
   @override
   State<CustomTextFeildSection> createState() => _CustomTextFeildSectionState();
 }
 
 class _CustomTextFeildSectionState extends State<CustomTextFeildSection> {
-  bool obscureText = true;
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,9 @@ class _CustomTextFeildSectionState extends State<CustomTextFeildSection> {
         CustomTextFeild(
           validator: (value) {
             if (value!.isEmpty) {
-              return TextValidateManager.fieldIsRequired;
+              return widget.isSubmitted
+                  ? TextValidateManager.fieldIsRequired
+                  : null;
             } else if (!emailRegExp.hasMatch(value)) {
               return TextValidateManager.validEmailAddress;
             }
@@ -34,17 +38,12 @@ class _CustomTextFeildSectionState extends State<CustomTextFeildSection> {
           iconData: Icons.email,
         ),
         SizedBox(height: HeightManager.h20),
-        CustomTextFeild(
-          validator: (value) => FormValidate().validatePassword(value),
-          obscureText: obscureText,
-          onPressed: () {
-            setState(() {
-              obscureText = !obscureText;
-            });
-          },
+        ConfirmPasswordTextFeild(
+          controller: passwordController,
+          validator: (value) => FormValidate(
+            isSubmitted: widget.isSubmitted,
+          ).validatePassword(value),
           labelText: TextManger.passWordText,
-          hintText: TextManger.passwordHint,
-          iconData: obscureText ? Icons.visibility_off : Icons.visibility,
         ),
       ],
     );

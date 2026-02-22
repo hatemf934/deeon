@@ -1,6 +1,7 @@
 import 'package:deeon/core/utils/text_validate_manager.dart';
 
 class FormValidate {
+  final bool isSubmitted;
   final RegExp passwordLeastLowerCaseLetter = RegExp(
     TextValidateManager.passwordLeastLowerCaseLetter,
   );
@@ -13,9 +14,12 @@ class FormValidate {
   final RegExp passwordLeastEightNumber = RegExp(
     TextValidateManager.passwordLeastEightNumber,
   );
+
+  FormValidate({required this.isSubmitted});
+
   String? validatePassword(String? value) {
-    if (value == null || value.isEmpty) {
-      return TextValidateManager.fieldIsRequired;
+    if (value == null || value.trim().isEmpty) {
+      return isSubmitted ? TextValidateManager.fieldIsRequired : null;
     }
 
     if (!passwordLeastLowerCaseLetter.hasMatch(value)) {

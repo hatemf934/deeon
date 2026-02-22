@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/height_manager.dart';
 import 'package:deeon/core/utils/radius_manager.dart';
@@ -13,11 +12,21 @@ class SectionOfForgetPassword extends StatefulWidget {
 
   @override
   State<SectionOfForgetPassword> createState() =>
-      _SectionOfForgetPasswordState();
+      SectionOfForgetPasswordState();
 }
 
-class _SectionOfForgetPasswordState extends State<SectionOfForgetPassword> {
+class SectionOfForgetPasswordState extends State<SectionOfForgetPassword> {
   final GlobalKey<FormState> formkey = GlobalKey();
+  bool isSubmitted = false;
+  void resetValidation() {
+    if (isSubmitted) {
+      formkey.currentState?.reset();
+      setState(() {
+        isSubmitted = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final RegExp emailRegExp = RegExp(TextValidateManager.emailRegExp);
@@ -39,7 +48,9 @@ class _SectionOfForgetPasswordState extends State<SectionOfForgetPassword> {
             CustomTextFeild(
               validator: (value) {
                 if (value!.isEmpty) {
-                  return TextValidateManager.fieldIsRequired;
+                  return isSubmitted
+                      ? TextValidateManager.fieldIsRequired
+                      : null;
                 } else if (!emailRegExp.hasMatch(value)) {
                   return TextValidateManager.validEmailAddress;
                 }
@@ -52,9 +63,12 @@ class _SectionOfForgetPasswordState extends State<SectionOfForgetPassword> {
             SizedBox(height: HeightManager.h20),
             ButtonsSectionResetPassword(
               onPressed: () {
-                if (formkey.currentState!.validate()) {
-                  log("validate is ture");
-                }
+                setState(() {
+                  isSubmitted = true;
+                });
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  if (formkey.currentState!.validate()) {}
+                });
               },
             ),
           ],

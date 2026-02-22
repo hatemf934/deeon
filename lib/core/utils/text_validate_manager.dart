@@ -1,7 +1,7 @@
 class TextValidateManager {
   TextValidateManager._();
-  static String emailRegExp =
-      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{3,}$';
+
+  static const String emailRegExp = r'^[a-zA-Z0-9._%+-]+@gmail\.com$';
   static String passwordLeastLowerCaseLetter = r'(?=.*[a-z])';
   static String passwordLeastDigit = r'(?=.*\d)';
   static String passwordLeastOneCharacter = r'(?=.*[@$!%*?&])';

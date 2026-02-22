@@ -5,13 +5,24 @@ import 'package:deeon/features/auth/presentation/view/widgets/section_of_regeste
 import 'package:deeon/features/auth/presentation/view/widgets/title_widget_of_auth_views.dart';
 import 'package:flutter/material.dart';
 
-class RegesterVew extends StatelessWidget {
+class RegesterVew extends StatefulWidget {
   const RegesterVew({super.key});
   static String id = RouteManager.regesterRoute;
+
+  @override
+  State<RegesterVew> createState() => _RegesterVewState();
+}
+
+class _RegesterVewState extends State<RegesterVew> {
+  final GlobalKey<SectiomOfRegesterViewState> regesterSectionKey =
+      GlobalKey<SectiomOfRegesterViewState>();
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        regesterSectionKey.currentState?.resetValidation();
+        FocusScope.of(context).unfocus();
+      },
       child: Scaffold(
         backgroundColor: ColorManager.primaryColor,
         body: Column(
@@ -21,7 +32,7 @@ class RegesterVew extends StatelessWidget {
                 textTitle: TextManger.createAccount,
               ),
             ),
-            SectiomOfRegesterView(),
+            SectiomOfRegesterView(key: regesterSectionKey),
           ],
         ),
       ),

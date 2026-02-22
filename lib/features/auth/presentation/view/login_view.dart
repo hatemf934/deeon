@@ -5,13 +5,25 @@ import 'package:deeon/features/auth/presentation/view/widgets/section_of_login_v
 import 'package:deeon/features/auth/presentation/view/widgets/title_widget_of_auth_views.dart';
 import 'package:flutter/material.dart';
 
-class LoginView extends StatelessWidget {
+class LoginView extends StatefulWidget {
   const LoginView({super.key});
   static String id = RouteManager.loginRoute;
+
+  @override
+  State<LoginView> createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
+  final GlobalKey<SectionOfLoginViewState> loginSectionKey =
+      GlobalKey<SectionOfLoginViewState>();
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        loginSectionKey.currentState?.resetValidation();
+        FocusScope.of(context).unfocus();
+      },
       child: Scaffold(
         backgroundColor: ColorManager.primaryColor,
         body: Column(
@@ -19,7 +31,7 @@ class LoginView extends StatelessWidget {
             Expanded(
               child: TitleWidgetOfAuthViews(textTitle: TextManger.signInText),
             ),
-            SectionOfLoginView(),
+            SectionOfLoginView(key: loginSectionKey),
           ],
         ),
       ),

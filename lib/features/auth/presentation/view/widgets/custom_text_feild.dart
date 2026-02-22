@@ -4,7 +4,7 @@ import 'package:deeon/core/utils/radius_manager.dart';
 import 'package:deeon/core/utils/width_manager.dart';
 import 'package:flutter/material.dart';
 
-class CustomTextFeild extends StatelessWidget {
+class CustomTextFeild extends StatefulWidget {
   const CustomTextFeild({
     super.key,
     required this.labelText,
@@ -22,24 +22,31 @@ class CustomTextFeild extends StatelessWidget {
   final Function()? onPressed;
   final String? Function(String?)? validator;
   final TextEditingController? controller;
+
+  @override
+  State<CustomTextFeild> createState() => _CustomTextFeildState();
+}
+
+class _CustomTextFeildState extends State<CustomTextFeild> {
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: PaddingManager.p40),
       child: TextFormField(
-        controller: controller,
-        validator: validator,
-        obscureText: obscureText,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        controller: widget.controller,
+        validator: widget.validator,
+        obscureText: widget.obscureText,
         style: TextStyle(color: ColorManager.primaryColor),
         cursorColor: ColorManager.primaryColor,
         decoration: InputDecoration(
-          labelText: labelText,
-          hintText: hintText,
+          labelText: widget.labelText,
+          hintText: widget.hintText,
           hintStyle: TextStyle(color: ColorManager.hintColor),
           labelStyle: TextStyle(color: ColorManager.primaryColor),
           suffixIcon: IconButton(
-            onPressed: onPressed,
-            icon: Icon(iconData, color: ColorManager.primaryColor),
+            onPressed: widget.onPressed,
+            icon: Icon(widget.iconData, color: ColorManager.primaryColor),
           ),
           errorStyle: TextStyle(color: ColorManager.redColor),
           enabledBorder: buildOutlineInputBorder(

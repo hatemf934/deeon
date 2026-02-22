@@ -1,8 +1,6 @@
-import 'package:deeon/core/utils/color_manager.dart';
-import 'package:deeon/core/utils/height_manager.dart';
-import 'package:deeon/core/utils/radius_manager.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/button_section.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/custom_text_feild_section.dart';
+import 'package:deeon/features/auth/presentation/view/widgets/section_of_auth.dart';
 import 'package:deeon/features/home/presentation/view/home_view.dart';
 import 'package:flutter/material.dart';
 
@@ -10,38 +8,38 @@ class SectionOfLoginView extends StatefulWidget {
   const SectionOfLoginView({super.key});
 
   @override
-  State<SectionOfLoginView> createState() => _SectionOfLoginViewState();
+  State<SectionOfLoginView> createState() => SectionOfLoginViewState();
 }
 
-class _SectionOfLoginViewState extends State<SectionOfLoginView> {
+class SectionOfLoginViewState extends State<SectionOfLoginView> {
+  bool isSubmitted = false;
   final GlobalKey<FormState> formkey = GlobalKey();
+  void resetValidation() {
+    if (isSubmitted) {
+      formkey.currentState?.reset();
+      setState(() {
+        isSubmitted = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: HeightManager.h700,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: ColorManager.secondryColor,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(RadiusManager.r60),
-          topRight: Radius.circular(RadiusManager.r60),
-        ),
-      ),
-      child: Form(
-        key: formkey,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CustomTextFeildSection(),
-            SizedBox(height: HeightManager.h20),
-            ButtonsSection(
-              onPressed: () {
-                if (formkey.currentState!.validate()) {
-                  Navigator.pushNamed(context, HomeView.id);
-                }
-              },
-            ),
-          ],
+    return Form(
+      key: formkey,
+      child: SectionOfAuth(
+        formFields: CustomTextFeildSection(isSubmitted: isSubmitted),
+        buttonBuilder: ButtonsSection(
+          onPressed: () {
+            setState(() {
+              isSubmitted = true;
+            });
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (formkey.currentState!.validate()) {
+                Navigator.pushNamed(context, HomeView.id);
+              }
+            });
+          },
         ),
       ),
     );
