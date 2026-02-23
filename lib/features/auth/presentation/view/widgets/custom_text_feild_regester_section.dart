@@ -7,8 +7,16 @@ import 'package:deeon/features/auth/presentation/view/widgets/custom_text_feild.
 import 'package:flutter/material.dart';
 
 class CustomTextFeildRegesterSection extends StatefulWidget {
-  const CustomTextFeildRegesterSection({super.key, required this.isSubmitted});
+  const CustomTextFeildRegesterSection({
+    super.key,
+    required this.isSubmitted,
+    required this.onChangedEmail,
+    required this.onChangedName,
+  });
   final bool isSubmitted;
+  final Function(String) onChangedEmail;
+  final Function(String) onChangedName;
+
   @override
   State<CustomTextFeildRegesterSection> createState() =>
       _CustomTextFeildRegesterSectionState();
@@ -30,6 +38,7 @@ class _CustomTextFeildRegesterSectionState
     return Column(
       children: [
         CustomTextFeild(
+          onChanged: widget.onChangedName,
           validator: (value) {
             if (value == null || value.trim().isEmpty) {
               return widget.isSubmitted
@@ -46,6 +55,7 @@ class _CustomTextFeildRegesterSectionState
         ),
         SizedBox(height: HeightManager.h20),
         CustomTextFeild(
+          onChanged: widget.onChangedEmail,
           validator: (value) {
             if (value == null || value.trim().isEmpty) {
               return widget.isSubmitted

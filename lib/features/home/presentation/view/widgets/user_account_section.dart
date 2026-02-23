@@ -6,8 +6,13 @@ import 'package:deeon/core/utils/width_manager.dart';
 import 'package:flutter/material.dart';
 
 class UserAccountSection extends StatelessWidget {
-  const UserAccountSection({super.key});
-
+  const UserAccountSection({
+    super.key,
+    required this.email,
+    required this.name,
+  });
+  final String email;
+  final String name;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -47,15 +52,11 @@ class UserAccountSection extends StatelessWidget {
           ),
           SizedBox(height: HeightManager.h15),
           Text(
-            "حاتم فاحي عادل",
+            name.trim().split(' ').first,
             textAlign: TextAlign.center,
             style: Styles.textStyle22.copyWith(fontWeight: FontWeight.bold),
           ),
-          Text(
-            "hatemf934@gmail.com",
-            textAlign: TextAlign.center,
-            style: Styles.textStyle15,
-          ),
+          Text(email, textAlign: TextAlign.center, style: Styles.textStyle15),
         ],
       ),
     );

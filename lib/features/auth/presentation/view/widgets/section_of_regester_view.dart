@@ -14,6 +14,7 @@ class SectiomOfRegesterView extends StatefulWidget {
 class SectiomOfRegesterViewState extends State<SectiomOfRegesterView> {
   final GlobalKey<FormState> formkey = GlobalKey();
   bool isSubmitted = false;
+  String? email, name;
 
   void resetValidation() {
     if (isSubmitted) {
@@ -29,7 +30,19 @@ class SectiomOfRegesterViewState extends State<SectiomOfRegesterView> {
     return Form(
       key: formkey,
       child: SectionOfAuth(
-        formFields: CustomTextFeildRegesterSection(isSubmitted: isSubmitted),
+        formFields: CustomTextFeildRegesterSection(
+          isSubmitted: isSubmitted,
+          onChangedName: (value) {
+            setState(() {
+              name = value;
+            });
+          },
+          onChangedEmail: (value) {
+            setState(() {
+              email = value;
+            });
+          },
+        ),
         buttonBuilder: ButtonsRegesterSection(
           onPressed: () {
             setState(() {
@@ -37,7 +50,11 @@ class SectiomOfRegesterViewState extends State<SectiomOfRegesterView> {
             });
             WidgetsBinding.instance.addPostFrameCallback((_) {
               if (formkey.currentState!.validate()) {
-                Navigator.pushNamed(context, HomeView.id);
+                Navigator.pushNamed(
+                  context,
+                  HomeView.id,
+                  arguments: {'email': email, 'name': name},
+                );
               }
             });
           },

@@ -12,6 +12,9 @@ class HomeView extends StatelessWidget {
   static String id = RouteManager.homeViewRoute;
   @override
   Widget build(BuildContext context) {
+    Map<String, dynamic> argument =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+
     return Scaffold(
       backgroundColor: ColorManager.primaryColor,
       appBar: CustomAppBar(),
@@ -19,7 +22,15 @@ class HomeView extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.75,
         child: Container(
           color: ColorManager.primaryColor,
-          child: Column(children: [UserAccountSection(), ContentDrawOptions()]),
+          child: Column(
+            children: [
+              UserAccountSection(
+                email: argument["email"],
+                name: argument["name"],
+              ),
+              ContentDrawOptions(),
+            ],
+          ),
         ),
       ),
       body: BodyHomeView(),

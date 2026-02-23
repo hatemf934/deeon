@@ -14,6 +14,7 @@ class CustomTextFeild extends StatefulWidget {
     this.onPressed,
     this.validator,
     this.controller,
+    this.onChanged,
   });
   final String labelText;
   final String hintText;
@@ -22,6 +23,7 @@ class CustomTextFeild extends StatefulWidget {
   final Function()? onPressed;
   final String? Function(String?)? validator;
   final TextEditingController? controller;
+  final Function(String)? onChanged;
 
   @override
   State<CustomTextFeild> createState() => _CustomTextFeildState();
@@ -34,6 +36,7 @@ class _CustomTextFeildState extends State<CustomTextFeild> {
       padding: EdgeInsets.symmetric(horizontal: PaddingManager.p40),
       child: TextFormField(
         autovalidateMode: AutovalidateMode.onUserInteraction,
+        onChanged: widget.onChanged,
         controller: widget.controller,
         validator: widget.validator,
         obscureText: widget.obscureText,
