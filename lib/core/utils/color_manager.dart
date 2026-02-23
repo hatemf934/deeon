@@ -7,6 +7,7 @@ class ColorManager {
   static Color witheColor = Colors.white;
   static Color white70Color = Colors.white70;
   static Color redColor = Colors.red;
+  static Color rubyRedColor = Color(0xFFB71C1C);
   static Color transmentColor = Colors.transparent;
   static Color hintColor = Color(0xff779b97);
   static Color enabledColor = Color(0xff6c6c6c);
