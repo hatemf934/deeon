@@ -23,5 +23,8 @@ class TextManger {
   static String noFoundDeeon = "لا يوجد ديون حاليا";
   static String edit = "تعديل";
   static String delete = "ازالة";
+  static String camera = "الكاميرا";
+  static String galery = "المعرض";
   static String profileTag = "profile_tag";
+  static String modifyText = "تحرير";
 }

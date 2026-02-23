@@ -7,6 +7,7 @@ class ColorManager {
   static Color witheColor = Colors.white;
   static Color white70Color = Colors.white70;
   static Color redColor = Colors.red;
+  static Color greyolor = Colors.grey;
   static Color rubyRedColor = Color(0xFFB71C1C);
   static Color transmentColor = Colors.transparent;
   static Color hintColor = Color(0xff779b97);
@@ -18,4 +19,5 @@ class ColorManager {
   static Color deepTeal = Color(0xFF00695C);
   static Color nightStay = Color(0xffd6d6d6);
   static Color activeColorSwitch = Color(0xff626262);
+  static Color showModelColor = Color(0xff13181c);
 }
