@@ -34,32 +34,40 @@ class _CustomTextFeildState extends State<CustomTextFeild> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: PaddingManager.p40),
-      child: TextFormField(
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        onChanged: widget.onChanged,
-        controller: widget.controller,
-        validator: widget.validator,
-        obscureText: widget.obscureText,
-        style: TextStyle(color: ColorManager.primaryColor),
-        cursorColor: ColorManager.primaryColor,
-        decoration: InputDecoration(
-          labelText: widget.labelText,
-          hintText: widget.hintText,
-          hintStyle: TextStyle(color: ColorManager.hintColor),
-          labelStyle: TextStyle(color: ColorManager.primaryColor),
-          suffixIcon: IconButton(
-            onPressed: widget.onPressed,
-            icon: Icon(widget.iconData, color: ColorManager.primaryColor),
+      child: Theme(
+        data: Theme.of(context).copyWith(
+          textSelectionTheme: TextSelectionThemeData(
+            selectionColor: ColorManager.primaryColor.withOpacity(0.4),
+            selectionHandleColor: ColorManager.primaryColor,
           ),
-          errorStyle: TextStyle(color: ColorManager.redColor),
-          enabledBorder: buildOutlineInputBorder(
-            color: ColorManager.enabledColor,
+        ),
+        child: TextFormField(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          onChanged: widget.onChanged,
+          controller: widget.controller,
+          validator: widget.validator,
+          obscureText: widget.obscureText,
+          style: TextStyle(color: ColorManager.primaryColor),
+          cursorColor: ColorManager.primaryColor,
+          decoration: InputDecoration(
+            labelText: widget.labelText,
+            hintText: widget.hintText,
+            hintStyle: TextStyle(color: ColorManager.hintColor),
+            labelStyle: TextStyle(color: ColorManager.primaryColor),
+            suffixIcon: IconButton(
+              onPressed: widget.onPressed,
+              icon: Icon(widget.iconData, color: ColorManager.primaryColor),
+            ),
+            errorStyle: TextStyle(color: ColorManager.redColor),
+            enabledBorder: buildOutlineInputBorder(
+              color: ColorManager.enabledColor,
+            ),
+            focusedBorder: buildOutlineInputBorder(
+              color: ColorManager.primaryColor,
+            ),
+            errorBorder: buildOutlineInputBorder(color: ColorManager.redColor),
+            fillColor: ColorManager.transmentColor,
           ),
-          focusedBorder: buildOutlineInputBorder(
-            color: ColorManager.primaryColor,
-          ),
-          errorBorder: buildOutlineInputBorder(color: ColorManager.redColor),
-          fillColor: ColorManager.transmentColor,
         ),
       ),
     );

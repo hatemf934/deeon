@@ -21,4 +21,7 @@ class TextManger {
   static String signOut = "تسجيل الخروج";
   static String darkMode = "تفعيل الوضع المظلم";
   static String noFoundDeeon = "لا يوجد ديون حاليا";
+  static String edit = "تعديل";
+  static String delete = "ازالة";
+  static String profileTag = "profile_tag";
 }
