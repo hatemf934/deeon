@@ -2,9 +2,16 @@ import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/features/home/presentation/view/widgets/body_deatils_photo.dart';
 import 'package:dismissible_page/dismissible_page.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class DetailsPhoto extends StatelessWidget {
-  const DetailsPhoto({super.key});
+  const DetailsPhoto({
+    super.key,
+    this.initialImage,
+    required this.onImageChanged,
+  });
+  final XFile? initialImage;
+  final Function(XFile?) onImageChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +28,10 @@ class DetailsPhoto extends StatelessWidget {
             onPressed: () => Navigator.pop(context),
           ),
         ),
-        body: BodyDetailsPhoto(),
+        body: BodyDetailsPhoto(
+          initialImage: initialImage,
+          onImageChanged: onImageChanged,
+        ),
       ),
     );
   }

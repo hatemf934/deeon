@@ -3,8 +3,12 @@ import 'package:deeon/core/utils/radius_manager.dart';
 import 'package:deeon/features/home/presentation/view/widgets/show_dialog_icons.dart';
 import 'package:deeon/features/home/presentation/view/widgets/show_dialog_image_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
-Future<void> showOptionsDialog(BuildContext context) async {
+Future<void> showOptionsDialog(
+  BuildContext context,
+  Function(ImageSource) pickImage,
+) async {
   await showModalBottomSheet(
     context: context,
     backgroundColor: ColorManager.showModelColor,
@@ -21,7 +25,16 @@ Future<void> showOptionsDialog(BuildContext context) async {
             Spacer(flex: 1),
             ShowDialogIcons(),
             Spacer(flex: 2),
-            ShowDialogImagePicker(),
+            ShowDialogImagePicker(
+              onPressedCamera: () {
+                Navigator.pop(context);
+                pickImage(ImageSource.camera);
+              },
+              onPressedGalery: () {
+                Navigator.pop(context);
+                pickImage(ImageSource.gallery);
+              },
+            ),
             Spacer(flex: 3),
           ],
         ),

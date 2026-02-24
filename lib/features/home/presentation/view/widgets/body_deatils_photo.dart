@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:deeon/core/utils/assets_manager.dart';
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/font_manager.dart';
 import 'package:deeon/core/utils/height_manager.dart';
@@ -5,9 +8,33 @@ import 'package:deeon/core/utils/padding_manager.dart';
 import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/features/home/presentation/view/widgets/show_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
-class BodyDetailsPhoto extends StatelessWidget {
-  const BodyDetailsPhoto({super.key});
+class BodyDetailsPhoto extends StatefulWidget {
+  const BodyDetailsPhoto({
+    super.key,
+    this.initialImage,
+    required this.onImageChanged,
+  });
+  final XFile? initialImage;
+  final Function(XFile?) onImageChanged;
+
+  @override
+  State<BodyDetailsPhoto> createState() => _BodyDetailsPhotoState();
+}
+
+class _BodyDetailsPhotoState extends State<BodyDetailsPhoto> {
+  final TransformationController transformationController =
+      TransformationController();
+  TapDownDetails? doubleTapDetails;
+  final ImagePicker _picker = ImagePicker();
+  XFile? selectedImage;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedImage = widget.initialImage;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +44,16 @@ class BodyDetailsPhoto extends StatelessWidget {
           child: Center(
             child: Hero(
               tag: TextManger.profileTag,
-              child: InteractiveViewer(
-                clipBehavior: Clip.none,
-                maxScale: 1.5,
-                child: Image.asset(
-                  "assets/images/blank-profile-picture-973460_1280.jpg",
-                  fit: BoxFit.contain,
+              child: GestureDetector(
+                onDoubleTapDown: (details) => doubleTapDetails = details,
+                onDoubleTap: handleDoubleTap,
+                child: InteractiveViewer(
+                  transformationController: transformationController,
+                  clipBehavior: Clip.none,
+                  maxScale: 2,
+                  child: selectedImage == null
+                      ? Image.asset(AssetsManager.kProfile, fit: BoxFit.contain)
+                      : Image.file(File(selectedImage!.path)),
                 ),
               ),
             ),
@@ -34,7 +65,7 @@ class BodyDetailsPhoto extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               buildActionButton(Icons.edit, () {
-                showOptionsDialog(context);
+                _onEditPressed();
               }, TextManger.edit),
               buildActionButton(
                 Icons.delete_outline,
@@ -69,5 +100,28 @@ class BodyDetailsPhoto extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _onEditPressed() async {
+    await showOptionsDialog(context, (source) async {
+      final pickedImage = await _picker.pickImage(source: source);
+      if (pickedImage != null) {
+        setState(() {
+          selectedImage = pickedImage;
+        });
+        widget.onImageChanged(pickedImage);
+      }
+    });
+  }
+
+  void handleDoubleTap() {
+    if (transformationController.value != Matrix4.identity()) {
+      transformationController.value = Matrix4.identity();
+    } else {
+      final position = doubleTapDetails!.localPosition;
+      transformationController.value = Matrix4.identity()
+        ..translate(-position.dx * 1, -position.dy * 1)
+        ..scale(3.0);
+    }
   }
 }
