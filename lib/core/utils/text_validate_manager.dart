@@ -1,7 +1,6 @@
 class TextValidateManager {
   TextValidateManager._();
-
-  static const String emailRegExp = r'^[a-zA-Z0-9._%+-]+@gmail\.com$';
+  static String emailRegExp = r'^[a-zA-Z0-9._%+-]+@gmail\.com$';
   static String passwordLeastLowerCaseLetter = r'(?=.*[a-z])';
   static String passwordLeastDigit = r'(?=.*\d)';
   static String passwordLeastOneCharacter = r'(?=.*[@$!%*?&])';
@@ -15,13 +14,10 @@ class TextValidateManager {
   static String passwordSpicailCharacter = "يجب إدراج رمز خاص واحد على الأقل";
   static String passwordLeastNumber = "يجب إدراج رقم واحد على الأقل";
   static String passwordLeastAt8Number = "يجب ألا تقل كلمة المرور عن 8 أرقام";
-  static String pleaseSelectGender = "يرجى اختيار الجنس";
   static String pleaseSelectDataOfBrith = "يرجى اختيار تاريخ الميلاد";
-  static String pleaseSelectCountry = "يرجى اختيار الدولة";
-  static String pleaseSelectName = "يرجى إدخال الاسم";
-  static String pleaseSelectPhone = "يرجى إدخال رقم الهاتف";
   static String phoneTooShort = "رقم الهاتف قصير جداً";
   static String invalidPhoneFormat = "يرجى إدخال أرقام فقط";
+  static String requiredPhone = "يرجى إدخال رقم الهاتف";
   static String invalidFullName = "الاسم ثلاثي (3 كلمات)";
   static String passwordsNotMatch = "كلمتا المرور غير متطابقتين";
 }

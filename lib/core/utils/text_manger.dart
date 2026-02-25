@@ -27,4 +27,13 @@ class TextManger {
   static String galery = "المعرض";
   static String profileTag = "profile_tag";
   static String modifyText = "تحرير";
+  static String addNewCustomer = "إضافة زبون جديد";
+  static String customerNameLabel = "اسم الزبون";
+  static String customerNameHint = "أدخل اسم الزبون الثلاثي";
+  static String customerPhoneLabel = "رقم الزبون";
+  static String customerPhoneHint = "01xxxxxxxxx";
+  static String dateAddedLabel = "تاريخ الإضافة";
+  static String dateAddedHint = "اختر التاريخ";
+  static String addCustomer = "اضافه الزبون";
+  static String choseDataAdding = 'اختر تاريخ الإضافة';
 }

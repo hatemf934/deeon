@@ -48,16 +48,16 @@ class SectiomOfRegesterViewState extends State<SectiomOfRegesterView> {
             setState(() {
               isSubmitted = true;
             });
-            Navigator.pushNamed(
-              context,
-              HomeView.id,
-              arguments: {'email': email, 'name': name},
-            );
-            // WidgetsBinding.instance.addPostFrameCallback((_) {
-            //   if (formkey.currentState!.validate()) {
 
-            //   }
-            // });
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (formkey.currentState!.validate()) {
+                Navigator.pushNamed(
+                  context,
+                  HomeView.id,
+                  arguments: {'email': email, 'name': name},
+                );
+              }
+            });
           },
         ),
       ),

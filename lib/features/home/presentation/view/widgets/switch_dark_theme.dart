@@ -36,7 +36,7 @@ class SwtichDarkTheme extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Icon(iconData, color: ColorManager.nightStay),
+              Icon(iconData, color: ColorManager.secondryColor),
               isDarkMode
                   ? Switch(
                       value: true,
@@ -49,7 +49,7 @@ class SwtichDarkTheme extends StatelessWidget {
               Text(
                 text,
                 style: Styles.textStyle18.copyWith(
-                  color: ColorManager.nightStay,
+                  color: ColorManager.secondryColor,
                 ),
               ),
             ],

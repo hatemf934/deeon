@@ -17,7 +17,7 @@ class ColorManager {
   static Color black26 = Colors.black26;
   static Color blackColor = Colors.black;
   static Color deepTeal = Color(0xFF00695C);
-  static Color nightStay = Color(0xffd6d6d6);
   static Color activeColorSwitch = Color(0xff626262);
   static Color showModelColor = Color(0xff13181c);
+  static Color fillColor = Color(0xff94bbb8);
 }

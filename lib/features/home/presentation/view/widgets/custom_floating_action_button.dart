@@ -1,6 +1,7 @@
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/font_manager.dart';
 import 'package:deeon/core/utils/padding_manager.dart';
+import 'package:deeon/features/home/presentation/view/widgets/show_model_button_sheet_customer.dart';
 import 'package:flutter/material.dart';
 
 class CustomFloatingActionButton extends StatelessWidget {
@@ -14,15 +15,14 @@ class CustomFloatingActionButton extends StatelessWidget {
         right: PaddingManager.p8,
       ),
       child: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showModelButtonSheetCustomer(context);
+        },
         backgroundColor: ColorManager.white70Color,
         foregroundColor: ColorManager.primaryColor,
         shape: const CircleBorder(),
         elevation: 8,
-        child: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.add, size: FontManager.font30),
-        ),
+        child: Icon(Icons.add, size: FontManager.font30),
       ),
     );
   }
