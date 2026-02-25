@@ -38,4 +38,6 @@ class TextManger {
   static String choseDataAdding = 'اختر تاريخ الإضافة';
   static String nameCustomer = "اسم الزبون";
   static String phoneNumber = "رقم الهاتف";
+  static String searchCustomer = "ابحث عن زبون";
+  static String noReuslt = "لا توجد نتائج مطابقة";
 }
