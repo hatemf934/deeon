@@ -6,6 +6,7 @@ import 'package:deeon/core/utils/font_manager.dart';
 import 'package:deeon/core/utils/height_manager.dart';
 import 'package:deeon/core/utils/padding_manager.dart';
 import 'package:deeon/core/utils/text_manger.dart';
+import 'package:deeon/features/home/data/repo/methodsrepo/methods_repo_implement.dart';
 import 'package:deeon/features/home/presentation/view/widgets/show_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -46,7 +47,10 @@ class _BodyDetailsPhotoState extends State<BodyDetailsPhoto> {
               tag: TextManger.profileTag,
               child: GestureDetector(
                 onDoubleTapDown: (details) => doubleTapDetails = details,
-                onDoubleTap: handleDoubleTap,
+                onDoubleTap: () => MethodsRepoImplement().handleDoubleTap(
+                  transformationController,
+                  doubleTapDetails,
+                ),
                 child: InteractiveViewer(
                   transformationController: transformationController,
                   clipBehavior: Clip.none,
@@ -112,16 +116,5 @@ class _BodyDetailsPhotoState extends State<BodyDetailsPhoto> {
         widget.onImageChanged(pickedImage);
       }
     });
-  }
-
-  void handleDoubleTap() {
-    if (transformationController.value != Matrix4.identity()) {
-      transformationController.value = Matrix4.identity();
-    } else {
-      final position = doubleTapDetails!.localPosition;
-      transformationController.value = Matrix4.identity()
-        ..translate(-position.dx * 1, -position.dy * 1)
-        ..scale(3.0);
-    }
   }
 }

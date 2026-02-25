@@ -29,31 +29,26 @@ void showModelButtonSheetCustomer(BuildContext context) async {
               horizontal: PaddingManager.p16,
               vertical: PaddingManager.p8,
             ),
-            child: GestureDetector(
-              onTap: () {
-                FocusScope.of(context).unfocus();
-              },
-              child: Column(
-                children: [
-                  Text(
-                    TextManger.addNewCustomer,
-                    style: Styles.textStyle30.copyWith(
-                      color: ColorManager.primaryColor,
-                    ),
+            child: Column(
+              children: [
+                Text(
+                  TextManger.addNewCustomer,
+                  style: Styles.textStyle30.copyWith(
+                    color: ColorManager.primaryColor,
                   ),
-                  SizedBox(height: HeightManager.h20),
-                  ListTextFeildCustomer(),
-                  SizedBox(height: HeightManager.h20),
-                  CustomElevatedButton(
-                    text: TextManger.addCustomer,
-                    onPressed: () {
-                      if (formkey.currentState!.validate()) {
-                        Navigator.pop(context);
-                      }
-                    },
-                  ),
-                ],
-              ),
+                ),
+                SizedBox(height: HeightManager.h20),
+                ListTextFeildCustomer(),
+                SizedBox(height: HeightManager.h20),
+                CustomElevatedButton(
+                  text: TextManger.addCustomer,
+                  onPressed: () {
+                    if (formkey.currentState!.validate()) {
+                      Navigator.pop(context);
+                    }
+                  },
+                ),
+              ],
             ),
           ),
         ),
