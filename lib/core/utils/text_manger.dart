@@ -36,4 +36,6 @@ class TextManger {
   static String dateAddedHint = "اختر التاريخ";
   static String addCustomer = "اضافه الزبون";
   static String choseDataAdding = 'اختر تاريخ الإضافة';
+  static String nameCustomer = "اسم الزبون";
+  static String phoneNumber = "رقم الهاتف";
 }
