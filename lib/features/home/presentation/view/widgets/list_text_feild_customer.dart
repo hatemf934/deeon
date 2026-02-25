@@ -7,8 +7,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ListTextFeildCustomer extends StatelessWidget {
-  const ListTextFeildCustomer({super.key});
-
+  const ListTextFeildCustomer({
+    super.key,
+    required this.onChangedName,
+    required this.onChangedPhone,
+    required this.onChangedDate,
+  });
+  final Function(String) onChangedName;
+  final Function(String) onChangedPhone;
+  final Function(String) onChangedDate;
   @override
   Widget build(BuildContext context) {
     final RegExp nameRegExp = RegExp(TextValidateManager.fullNameRegExp);
@@ -16,6 +23,7 @@ class ListTextFeildCustomer extends StatelessWidget {
     return Column(
       children: [
         TextFeildCustomer(
+          onChanged: onChangedName,
           validator: (value) {
             if (value == null || value.trim().isEmpty) {
               return TextValidateManager.fieldIsRequired;
@@ -29,6 +37,7 @@ class ListTextFeildCustomer extends StatelessWidget {
         ),
         SizedBox(height: HeightManager.h15),
         TextFeildCustomer(
+          onChanged: onChangedPhone,
           validator: (value) {
             if (value == null || value.isEmpty) {
               return TextValidateManager.requiredPhone;
@@ -47,7 +56,7 @@ class ListTextFeildCustomer extends StatelessWidget {
           keyboardType: TextInputType.phone,
         ),
         SizedBox(height: HeightManager.h15),
-        CalenderTextFeild(),
+        CalenderTextFeild(onChangedDate: onChangedDate),
       ],
     );
   }

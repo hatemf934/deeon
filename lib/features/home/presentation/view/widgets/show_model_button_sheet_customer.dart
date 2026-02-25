@@ -5,10 +5,15 @@ import 'package:deeon/core/utils/radius_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
 import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/custom_elveted_button.dart';
+import 'package:deeon/features/home/data/model/customer_model.dart';
 import 'package:deeon/features/home/presentation/view/widgets/list_text_feild_customer.dart';
 import 'package:flutter/material.dart';
 
-void showModelButtonSheetCustomer(BuildContext context) async {
+void showModelButtonSheetCustomer(
+  BuildContext context,
+  Function(CustomerModel) onAddCustomer,
+) async {
+  String? name, phone, date;
   final GlobalKey<FormState> formkey = GlobalKey();
   showModalBottomSheet(
     context: context,
@@ -38,12 +43,22 @@ void showModelButtonSheetCustomer(BuildContext context) async {
                   ),
                 ),
                 SizedBox(height: HeightManager.h20),
-                ListTextFeildCustomer(),
+                ListTextFeildCustomer(
+                  onChangedName: (value) => name = value,
+                  onChangedPhone: (value) => phone = value,
+                  onChangedDate: (value) => date = value,
+                ),
                 SizedBox(height: HeightManager.h20),
                 CustomElevatedButton(
                   text: TextManger.addCustomer,
                   onPressed: () {
                     if (formkey.currentState!.validate()) {
+                      final customer = CustomerModel(
+                        nameCustomer: name!,
+                        phoneNumber: phone!,
+                        date: date!,
+                      );
+                      onAddCustomer(customer);
                       Navigator.pop(context);
                     }
                   },

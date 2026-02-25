@@ -1,11 +1,12 @@
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
 import 'package:deeon/core/utils/text_manger.dart';
+import 'package:deeon/features/home/data/model/customer_model.dart';
 import 'package:flutter/material.dart';
 
 class ColumnCustomerDetails extends StatelessWidget {
-  const ColumnCustomerDetails({super.key});
-
+  const ColumnCustomerDetails({super.key, required this.customerModel});
+  final CustomerModel customerModel;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -13,17 +14,17 @@ class ColumnCustomerDetails extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Text(
-          "${TextManger.nameCustomer} : حاتم فتحي عادل",
+          "${TextManger.nameCustomer} : ${customerModel.nameCustomer}",
           style: Styles.textStyle18.copyWith(color: ColorManager.blackColor),
         ),
 
         Text(
-          "${TextManger.phoneNumber} : 345324565",
+          "${TextManger.phoneNumber} : ${customerModel.phoneNumber}",
 
           style: Styles.textStyle18.copyWith(color: ColorManager.blackColor),
         ),
         Text(
-          "${TextManger.dateAddedLabel} : 16/3/2004",
+          "${TextManger.dateAddedLabel} :  ${customerModel.date}",
           style: Styles.textStyle18.copyWith(color: ColorManager.blackColor),
         ),
       ],
