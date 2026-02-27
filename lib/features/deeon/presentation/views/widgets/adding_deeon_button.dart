@@ -2,6 +2,7 @@ import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/radius_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
 import 'package:deeon/core/utils/text_manger.dart';
+import 'package:deeon/features/deeon/presentation/views/widgets/show_model_button_sheet_deeon.dart';
 import 'package:flutter/material.dart';
 
 class AddingDeeonButton extends StatelessWidget {
@@ -10,7 +11,9 @@ class AddingDeeonButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        showModelButtonSheetDeeon(context);
+      },
       child: Container(
         width: MediaQuery.of(context).size.width * 0.28,
         height: MediaQuery.of(context).size.height * 0.050,

@@ -51,4 +51,5 @@ class TextManger {
   static String remove = "حذف";
   static String watchDeeon = "مشاهده الديون المدفوعه";
   static String addDeeon = "اضافه دين";
+  static String addNewDeeon = "اضافه دين جديد";
 }
