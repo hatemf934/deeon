@@ -5,8 +5,6 @@ sealed class SearchState {}
 
 final class SearchInitial extends SearchState {}
 
-final class SearchCnacel extends SearchState {}
-
 final class SearchShow extends SearchState {}
 
 final class SearchNoResult extends SearchState {}

@@ -14,16 +14,21 @@ class ColumnCustomerDetails extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Text(
+          textDirection: TextDirection.rtl,
+          overflow: TextOverflow.ellipsis,
           "${TextManger.nameCustomer} : ${customerModel.nameCustomer}",
           style: Styles.textStyle18.copyWith(color: ColorManager.blackColor),
         ),
 
         Text(
+          textDirection: TextDirection.rtl,
+          overflow: TextOverflow.ellipsis,
           "${TextManger.phoneNumber} : ${customerModel.phoneNumber}",
-
           style: Styles.textStyle18.copyWith(color: ColorManager.blackColor),
         ),
         Text(
+          textDirection: TextDirection.rtl,
+          overflow: TextOverflow.ellipsis,
           "${TextManger.dateAddedLabel} :  ${customerModel.date}",
           style: Styles.textStyle18.copyWith(color: ColorManager.blackColor),
         ),

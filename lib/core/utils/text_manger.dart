@@ -40,4 +40,15 @@ class TextManger {
   static String phoneNumber = "رقم الهاتف";
   static String searchCustomer = "ابحث عن زبون";
   static String noReuslt = "لا توجد نتائج مطابقة";
+  static String detailsCustomer = "تفاصيل الزبون";
+  static String deeeons = "الديون";
+  static String itemName = "اسم القطعة";
+  static String itemPrice = "سعر القطعة";
+  static String quantity = "الكمية";
+  static String totalAmount = "المجموع الكلي";
+  static String discount = "خصم";
+  static String payment = "تسدسد";
+  static String remove = "حذف";
+  static String watchDeeon = "مشاهده الديون المدفوعه";
+  static String addDeeon = "اضافه دين";
 }

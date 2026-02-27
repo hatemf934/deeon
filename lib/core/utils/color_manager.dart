@@ -20,4 +20,6 @@ class ColorManager {
   static Color activeColorSwitch = Color(0xff626262);
   static Color showModelColor = Color(0xff13181c);
   static Color fillColor = Color(0xff94bbb8);
+  static Color discount = Color(0xffd58003);
+  static Color payment = Color(0xff409343);
 }
