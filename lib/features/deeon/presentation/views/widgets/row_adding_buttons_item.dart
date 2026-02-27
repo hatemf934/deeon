@@ -5,19 +5,27 @@ import 'package:deeon/features/home/presentation/view/widgets/text_feild_custome
 import 'package:flutter/material.dart';
 
 class RowAddingButtonsItems extends StatelessWidget {
-  const RowAddingButtonsItems({super.key});
+  const RowAddingButtonsItems({
+    super.key,
 
+    required this.count,
+    required this.onNameChanged,
+    required this.onCountChanged,
+  });
+  final int count;
+  final Function(String) onNameChanged;
+  final Function(int) onCountChanged;
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        AddingItems(),
+        AddingItems(countItem: count, onChanged: onCountChanged),
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.060,
           width: MediaQuery.of(context).size.width * 0.60,
           child: TextFeildCustomer(
-            onChanged: (v) {},
+            onChanged: onNameChanged,
             validator: (value) {
               if (value == null || value.trim().isEmpty) {
                 return TextValidateManager.fieldIsRequired;

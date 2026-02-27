@@ -20,4 +20,5 @@ class TextValidateManager {
   static String requiredPhone = "يرجى إدخال رقم الهاتف";
   static String invalidFullName = "الاسم ثلاثي (3 كلمات)";
   static String passwordsNotMatch = "كلمتا المرور غير متطابقتين";
+  static String pleaseEnterNumber = "يرجى إدخال رقم صحيح فقط";
 }

@@ -3,17 +3,30 @@ import 'package:deeon/core/utils/height_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
 import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/core/utils/width_manager.dart';
+import 'package:deeon/features/deeon/data/model/deeon_model.dart';
 import 'package:deeon/features/deeon/presentation/views/widgets/buttons_deeon_view.dart';
 import 'package:deeon/features/deeon/presentation/views/widgets/details_customer.dart';
 import 'package:deeon/features/deeon/presentation/views/widgets/list_of_deeon.dart';
 import 'package:deeon/features/home/data/model/customer_model.dart';
 import 'package:flutter/material.dart';
 
-class BodyOfDeeonView extends StatelessWidget {
+class BodyOfDeeonView extends StatefulWidget {
   const BodyOfDeeonView({super.key});
 
   @override
+  State<BodyOfDeeonView> createState() => _BodyOfDeeonViewState();
+}
+
+class _BodyOfDeeonViewState extends State<BodyOfDeeonView> {
+  List<DeeonModel> deeonModel = [];
+  @override
   Widget build(BuildContext context) {
+    void addDeeon(DeeonModel deeon) {
+      setState(() {
+        deeonModel.add(deeon);
+      });
+    }
+
     CustomerModel customerModel =
         ModalRoute.of(context)!.settings.arguments as CustomerModel;
     return Column(
@@ -31,7 +44,7 @@ class BodyOfDeeonView extends StatelessWidget {
           style: Styles.textStyle30.copyWith(color: ColorManager.secondryColor),
         ),
         SizedBox(height: MediaQuery.of(context).size.height * 0.010),
-        Expanded(child: ListOfDeeon()),
+        Expanded(child: ListOfDeeon(deeonModel: deeonModel)),
         Divider(
           endIndent: HeightManager.h20,
           height: WidthManager.w40,
@@ -39,7 +52,7 @@ class BodyOfDeeonView extends StatelessWidget {
           thickness: 3,
           color: ColorManager.secondryColor,
         ),
-        ButtonsDeeonView(),
+        ButtonsDeeonView(onAddDeeon: addDeeon),
         SizedBox(height: MediaQuery.of(context).size.height * 0.010),
       ],
     );

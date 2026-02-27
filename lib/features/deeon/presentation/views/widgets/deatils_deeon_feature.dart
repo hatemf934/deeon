@@ -1,13 +1,14 @@
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/padding_manager.dart';
 import 'package:deeon/core/utils/radius_manager.dart';
+import 'package:deeon/features/deeon/data/model/deeon_model.dart';
 import 'package:deeon/features/deeon/presentation/views/widgets/icons_details_feature.dart';
 import 'package:deeon/features/deeon/presentation/views/widgets/text_deeon_feature.dart';
 import 'package:flutter/material.dart';
 
 class DetailsDeeonFeature extends StatelessWidget {
-  const DetailsDeeonFeature({super.key});
-
+  const DetailsDeeonFeature({super.key, required this.deeonModel});
+  final DeeonModel deeonModel;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +25,7 @@ class DetailsDeeonFeature extends StatelessWidget {
         children: [
           IconsDetailsDeeon(),
           SizedBox(width: MediaQuery.of(context).size.width * 0.060),
-          TextDeeonFeature(),
+          TextDeeonFeature(deeonModel: deeonModel),
         ],
       ),
     );

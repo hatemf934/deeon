@@ -5,8 +5,13 @@ import 'package:deeon/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 class AddingItems extends StatelessWidget {
-  const AddingItems({super.key});
-
+  const AddingItems({
+    super.key,
+    required this.countItem,
+    required this.onChanged,
+  });
+  final int countItem;
+  final Function(int) onChanged;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,7 +25,7 @@ class AddingItems extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           IconButton(
-            onPressed: () {},
+            onPressed: () => onChanged(countItem + 1),
             icon: Icon(
               Icons.add,
               color: ColorManager.witheColor,
@@ -28,13 +33,13 @@ class AddingItems extends StatelessWidget {
             ),
           ),
           Text(
-            "1",
+            countItem.toString(),
             style: Styles.textStyle25.copyWith(
               color: ColorManager.primaryColor,
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () => (countItem > 1) ? onChanged(countItem - 1) : null,
             icon: Icon(
               Icons.remove,
               color: ColorManager.witheColor,

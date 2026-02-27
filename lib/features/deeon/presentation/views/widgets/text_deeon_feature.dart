@@ -1,11 +1,12 @@
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
 import 'package:deeon/core/utils/text_manger.dart';
+import 'package:deeon/features/deeon/data/model/deeon_model.dart';
 import 'package:flutter/material.dart';
 
 class TextDeeonFeature extends StatelessWidget {
-  const TextDeeonFeature({super.key});
-
+  const TextDeeonFeature({super.key, required this.deeonModel});
+  final DeeonModel deeonModel;
   @override
   Widget build(BuildContext context) {
     return Flexible(
@@ -18,35 +19,35 @@ class TextDeeonFeature extends StatelessWidget {
           Text(
             textDirection: TextDirection.rtl,
             overflow: TextOverflow.ellipsis,
-            "${TextManger.itemName} : dddddddddddddddddddddddddddd",
+            "${TextManger.itemName} : ${deeonModel.nameItem}",
             style: Styles.textStyle18.copyWith(color: ColorManager.blackColor),
           ),
 
           Text(
             textDirection: TextDirection.rtl,
             overflow: TextOverflow.ellipsis,
-            "${TextManger.itemPrice} : 6000",
+            "${TextManger.itemPrice} : ${deeonModel.priceItem}",
             style: Styles.textStyle18.copyWith(color: ColorManager.blackColor),
           ),
 
           Text(
             textDirection: TextDirection.rtl,
             overflow: TextOverflow.ellipsis,
-            "${TextManger.quantity} : 5",
+            "${TextManger.quantity} : ${deeonModel.countItem}",
             style: Styles.textStyle18.copyWith(color: ColorManager.blackColor),
           ),
 
           Text(
             textDirection: TextDirection.rtl,
             overflow: TextOverflow.ellipsis,
-            "${TextManger.dateAddedLabel} : 02-03-2025",
+            "${TextManger.dateAddedLabel} : ${deeonModel.dateDeeon}",
             style: Styles.textStyle18.copyWith(color: ColorManager.blackColor),
           ),
 
           Text(
             textDirection: TextDirection.rtl,
             overflow: TextOverflow.ellipsis,
-            "${TextManger.totalAmount} : 30000",
+            "${TextManger.totalAmount} : ${deeonModel.countItem * deeonModel.priceItem}",
             style: Styles.textStyle18.copyWith(
               color: ColorManager.primaryColor,
               fontWeight: FontWeight.bold,
