@@ -5,4 +5,5 @@ class RouteManager {
   static String forgetPasswordRoute = "forget_password";
   static String homeViewRoute = "homeview";
   static String deeonViewRoute = "deeonview";
+  static String paidDeeonViewRoute = "paidview";
 }

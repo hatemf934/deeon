@@ -1,3 +1,4 @@
+import 'package:deeon/features/PaidDeeon/presentation/views/paid_deeon_view.dart';
 import 'package:deeon/features/auth/presentation/view/forget_password_view.dart';
 import 'package:deeon/features/auth/presentation/view/login_view.dart';
 import 'package:deeon/features/auth/presentation/view/regester_vew.dart';
@@ -24,6 +25,7 @@ class Deeon extends StatelessWidget {
         RegesterVew.id: (context) => const RegesterVew(),
         HomeView.id: (context) => const HomeView(),
         DeeonView.id: (context) => const DeeonView(),
+        PaidDeeonView.id: (context) => const PaidDeeonView(),
       },
     );
   }

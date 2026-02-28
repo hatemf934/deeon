@@ -21,6 +21,11 @@ class Styles {
     color: ColorManager.appBarIconColor,
     fontSize: FontManager.font15,
   );
+  static TextStyle textStyle16 = TextStyle(
+    color: ColorManager.secondryColor,
+    fontSize: FontManager.font16,
+    fontWeight: FontWeight.bold,
+  );
   static TextStyle textStyle18 = TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: FontManager.font18,
