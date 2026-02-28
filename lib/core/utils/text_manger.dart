@@ -54,4 +54,6 @@ class TextManger {
   static String addNewDeeon = "اضافه دين جديد";
   static String paidDeeon = "الديون المدفوعه";
   static String scussesPaidDeeon = "تم تسديد الدين الكامل بنجاح!";
+  static String total = "المجموع";
+  static String price = "المبلغ";
 }

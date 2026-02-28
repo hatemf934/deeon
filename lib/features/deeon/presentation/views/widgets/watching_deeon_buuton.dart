@@ -2,18 +2,15 @@ import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/radius_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
 import 'package:deeon/core/utils/text_manger.dart';
-import 'package:deeon/features/PaidDeeon/presentation/views/paid_deeon_view.dart';
 import 'package:flutter/material.dart';
 
 class WatchingDeoonButton extends StatelessWidget {
-  const WatchingDeoonButton({super.key});
-
+  const WatchingDeoonButton({super.key, required this.onTap});
+  final Function() onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, PaidDeeonView.id);
-      },
+      onTap: onTap,
       child: Container(
         width: MediaQuery.of(context).size.width * 0.43,
         height: MediaQuery.of(context).size.height * 0.050,

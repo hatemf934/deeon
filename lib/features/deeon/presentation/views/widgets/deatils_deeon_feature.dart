@@ -1,6 +1,7 @@
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/padding_manager.dart';
 import 'package:deeon/core/utils/radius_manager.dart';
+import 'package:deeon/features/PaidDeeon/presentation/views/paid_deeon_view.dart';
 import 'package:deeon/features/deeon/data/model/deeon_model.dart';
 import 'package:deeon/features/deeon/presentation/views/widgets/icons_details_feature.dart';
 import 'package:deeon/features/deeon/presentation/views/widgets/text_deeon_feature.dart';
@@ -23,7 +24,15 @@ class DetailsDeeonFeature extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          IconsDetailsDeeon(),
+          IconsDetailsDeeon(
+            onTapPayment: () {
+              Navigator.pushNamed(
+                context,
+                PaidDeeonView.id,
+                arguments: [deeonModel],
+              );
+            },
+          ),
           SizedBox(width: MediaQuery.of(context).size.width * 0.060),
           TextDeeonFeature(deeonModel: deeonModel),
         ],

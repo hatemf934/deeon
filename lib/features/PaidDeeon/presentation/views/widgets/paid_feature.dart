@@ -3,11 +3,12 @@ import 'package:deeon/core/utils/padding_manager.dart';
 import 'package:deeon/core/utils/radius_manager.dart';
 import 'package:deeon/features/PaidDeeon/presentation/views/widgets/row_of_done_item_paid.dart';
 import 'package:deeon/features/PaidDeeon/presentation/views/widgets/row_paid_details.dart';
+import 'package:deeon/features/deeon/data/model/deeon_model.dart';
 import 'package:flutter/material.dart';
 
 class PaidFeature extends StatelessWidget {
-  const PaidFeature({super.key});
-
+  const PaidFeature({super.key, required this.deeonModel});
+  final DeeonModel deeonModel;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,7 +28,10 @@ class PaidFeature extends StatelessWidget {
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [RowOfPaidDetails(), RowOfDoneItemPaid()],
+        children: [
+          RowOfPaidDetails(deeonModel: deeonModel),
+          RowOfDoneItemPaid(),
+        ],
       ),
     );
   }

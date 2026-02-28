@@ -5,8 +5,13 @@ import 'package:deeon/features/deeon/presentation/views/widgets/watching_deeon_b
 import 'package:flutter/material.dart';
 
 class ButtonsDeeonView extends StatelessWidget {
-  const ButtonsDeeonView({super.key, required this.onAddDeeon});
+  const ButtonsDeeonView({
+    super.key,
+    required this.onAddDeeon,
+    required this.ontap,
+  });
   final Function(DeeonModel) onAddDeeon;
+  final Function() ontap;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,7 +19,7 @@ class ButtonsDeeonView extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          WatchingDeoonButton(),
+          WatchingDeoonButton(onTap: ontap),
           AddingDeeonButton(onAddDeeon: onAddDeeon),
         ],
       ),

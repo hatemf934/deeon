@@ -4,8 +4,8 @@ import 'package:deeon/features/deeon/presentation/views/widgets/custom_text_butt
 import 'package:flutter/material.dart';
 
 class IconsDetailsDeeon extends StatelessWidget {
-  const IconsDetailsDeeon({super.key});
-
+  const IconsDetailsDeeon({super.key, required this.onTapPayment});
+  final void Function() onTapPayment;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,7 +18,7 @@ class IconsDetailsDeeon extends StatelessWidget {
           color: ColorManager.discount,
         ),
         CustomTextButtonDeeon(
-          onTap: () {},
+          onTap: onTapPayment,
           title: TextManger.payment,
           iconData: Icons.payment,
           color: ColorManager.payment,

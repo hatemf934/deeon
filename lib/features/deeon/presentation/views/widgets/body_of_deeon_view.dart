@@ -3,6 +3,7 @@ import 'package:deeon/core/utils/height_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
 import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/core/utils/width_manager.dart';
+import 'package:deeon/features/PaidDeeon/presentation/views/paid_deeon_view.dart';
 import 'package:deeon/features/deeon/data/model/deeon_model.dart';
 import 'package:deeon/features/deeon/presentation/views/widgets/buttons_deeon_view.dart';
 import 'package:deeon/features/deeon/presentation/views/widgets/details_customer.dart';
@@ -52,7 +53,16 @@ class _BodyOfDeeonViewState extends State<BodyOfDeeonView> {
           thickness: 3,
           color: ColorManager.secondryColor,
         ),
-        ButtonsDeeonView(onAddDeeon: addDeeon),
+        ButtonsDeeonView(
+          ontap: () {
+            Navigator.pushNamed(
+              context,
+              PaidDeeonView.id,
+              arguments: deeonModel,
+            );
+          },
+          onAddDeeon: addDeeon,
+        ),
         SizedBox(height: MediaQuery.of(context).size.height * 0.010),
       ],
     );
