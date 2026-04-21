@@ -14,9 +14,11 @@ void showModelButtonSheetCustomer(
   Function(CustomerModel) onAddCustomer,
 ) async {
   String? name, phone, date;
+
   final GlobalKey<FormState> formkey = GlobalKey();
   showModalBottomSheet(
     context: context,
+    isScrollControlled: true,
     backgroundColor: ColorManager.secondryColor,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(

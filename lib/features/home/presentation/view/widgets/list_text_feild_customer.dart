@@ -16,6 +16,7 @@ class ListTextFeildCustomer extends StatelessWidget {
   final Function(String) onChangedName;
   final Function(String) onChangedPhone;
   final Function(String) onChangedDate;
+
   @override
   Widget build(BuildContext context) {
     final RegExp nameRegExp = RegExp(TextValidateManager.fullNameRegExp);
