@@ -4,9 +4,13 @@ import 'package:deeon/features/auth/presentation/view/login_view.dart';
 import 'package:deeon/features/auth/presentation/view/regester_vew.dart';
 import 'package:deeon/features/deeon/presentation/views/deeon_view.dart';
 import 'package:deeon/features/home/presentation/view/home_view.dart';
+import 'package:deeon/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const Deeon());
 }
 

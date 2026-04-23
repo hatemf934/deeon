@@ -12,10 +12,12 @@ class CustomTextFeildRegesterSection extends StatefulWidget {
     required this.isSubmitted,
     required this.onChangedEmail,
     required this.onChangedName,
+    required this.passwordController,
   });
   final bool isSubmitted;
   final Function(String) onChangedEmail;
   final Function(String) onChangedName;
+  final TextEditingController passwordController;
 
   @override
   State<CustomTextFeildRegesterSection> createState() =>
@@ -24,14 +26,8 @@ class CustomTextFeildRegesterSection extends StatefulWidget {
 
 class _CustomTextFeildRegesterSectionState
     extends State<CustomTextFeildRegesterSection> {
-  final TextEditingController passwordController = TextEditingController();
   final RegExp emailRegExp = RegExp(TextValidateManager.emailRegExp);
   final RegExp nameRegExp = RegExp(TextValidateManager.fullNameRegExp);
-  @override
-  void dispose() {
-    passwordController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +68,7 @@ class _CustomTextFeildRegesterSectionState
         ),
         SizedBox(height: HeightManager.h20),
         ConfirmPasswordTextFeild(
-          controller: passwordController,
+          controller: widget.passwordController,
           validator: (value) => FormValidate(
             isSubmitted: widget.isSubmitted,
           ).validatePassword(value),
@@ -85,7 +81,7 @@ class _CustomTextFeildRegesterSectionState
               return widget.isSubmitted
                   ? TextValidateManager.fieldIsRequired
                   : null;
-            } else if (value != passwordController.text) {
+            } else if (value != widget.passwordController.text) {
               return TextValidateManager.passwordsNotMatch;
             }
             return null;
