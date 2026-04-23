@@ -29,7 +29,7 @@ class _CustomTextFeildSectionState extends State<CustomTextFeildSection> {
                   ? TextValidateManager.fieldIsRequired
                   : null;
             } else if (!emailRegExp.hasMatch(value)) {
-              return TextValidateManager.validEmailAddress;
+              return TextValidateManager.invalidEmailOrPassword;
             }
             return null;
           },
@@ -40,9 +40,7 @@ class _CustomTextFeildSectionState extends State<CustomTextFeildSection> {
         SizedBox(height: HeightManager.h20),
         ConfirmPasswordTextFeild(
           controller: passwordController,
-          validator: (value) => FormValidate(
-            isSubmitted: widget.isSubmitted,
-          ).validatePassword(value),
+          validator: (value) => FormValidate().validatePassword(value),
           labelText: TextManger.passWordText,
         ),
       ],

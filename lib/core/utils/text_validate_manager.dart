@@ -9,7 +9,8 @@ class TextValidateManager {
   static const String fullNameRegExp =
       r'^([a-zA-Z\u0600-\u06FF]{2,}\s){2,}[a-zA-Z\u0600-\u06FF]{2,}$';
   static String fieldIsRequired = "هذا الحقل مطلوب";
-  static String validEmailAddress = "أدخل بريد إلكتروني صحيح";
+  static String invalidEmailOrPassword =
+      "البريد الإلكتروني أو كلمة المرور غير صحيحة";
   static String passwordFromAtoZ = "يجب إدراج حرف صغير [a-z] على الأقل";
   static String passwordSpicailCharacter = "يجب إدراج رمز خاص واحد على الأقل";
   static String passwordLeastNumber = "يجب إدراج رقم واحد على الأقل";

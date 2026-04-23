@@ -18,6 +18,8 @@ class RegesterVew extends StatefulWidget {
 }
 
 class _RegesterVewState extends State<RegesterVew> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
   final GlobalKey<SectiomOfRegesterViewState> regesterSectionKey =
       GlobalKey<SectiomOfRegesterViewState>();
   @override
@@ -37,6 +39,10 @@ class _RegesterVewState extends State<RegesterVew> {
                 Navigator.pushReplacementNamed(
                   context,
                   RouteManager.homeViewRoute,
+                  arguments: {
+                    'email': emailController.text,
+                    'name': nameController.text,
+                  },
                 );
               } else if (state is SignupFailure) {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -60,7 +66,11 @@ class _RegesterVewState extends State<RegesterVew> {
                         textTitle: TextManger.createAccount,
                       ),
                     ),
-                    SectiomOfRegesterView(key: regesterSectionKey),
+                    SectiomOfRegesterView(
+                      emailController: emailController,
+                      nameController: nameController,
+                      key: regesterSectionKey,
+                    ),
                   ],
                 ),
               );

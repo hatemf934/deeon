@@ -52,7 +52,7 @@ class SectionOfForgetPasswordState extends State<SectionOfForgetPassword> {
                       ? TextValidateManager.fieldIsRequired
                       : null;
                 } else if (!emailRegExp.hasMatch(value)) {
-                  return TextValidateManager.validEmailAddress;
+                  return TextValidateManager.invalidEmailOrPassword;
                 }
                 return null;
               },
