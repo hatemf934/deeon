@@ -40,8 +40,8 @@ class _RegesterVewState extends State<RegesterVew> {
                   context,
                   RouteManager.homeViewRoute,
                   arguments: {
-                    'email': emailController.text,
-                    'name': nameController.text,
+                    'email': state.userEntity.email,
+                    'name': state.userEntity.name,
                   },
                 );
               } else if (state is SignupFailure) {

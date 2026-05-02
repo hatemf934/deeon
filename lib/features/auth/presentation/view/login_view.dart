@@ -38,10 +38,10 @@ class _LoginViewState extends State<LoginView> {
                 Navigator.pushReplacementNamed(
                   context,
                   RouteManager.homeViewRoute,
-                  // arguments: {
-                  //   'email': emailController.text,
-                  //   'name': nameController.text,
-                  // },
+                  arguments: {
+                    'email': state.userEntity.email,
+                    'name': state.userEntity.name,
+                  },
                 );
               } else if (state is SignInFailure) {
                 ScaffoldMessenger.of(context).showSnackBar(

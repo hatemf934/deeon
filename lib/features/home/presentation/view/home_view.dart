@@ -29,8 +29,8 @@ class _HomeViewState extends State<HomeView> {
       });
     }
 
-    // Map<String, dynamic> argument =
-    //     ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    Map<String, dynamic> argument =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
 
     return BlocProvider(
       create: (context) => SearchCubit(customers),
@@ -46,12 +46,8 @@ class _HomeViewState extends State<HomeView> {
                 child: Column(
                   children: [
                     UserAccountSection(
-                      email:
-                          "argument["
-                          "]",
-                      name:
-                          "argument["
-                          "] ",
+                      email: argument["email"],
+                      name: argument["name"],
                     ),
                     ContentDrawOptions(),
                   ],

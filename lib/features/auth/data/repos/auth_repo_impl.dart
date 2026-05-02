@@ -28,7 +28,7 @@ class AuthRepoImpl extends AuthRepo {
         name: fullName,
       );
       await addUserData(user: userEntity);
-      return Right(UserModel.fromFirebaseUser(user));
+      return Right(userEntity);
     } on FirebaseAuthException catch (e) {
       log("ERROR IN SIGN UP WITH EMAIL AND PASSWORD: ${e.message}");
       return Left(AuthFailure.fromFirebaseAuthException(e));
@@ -50,7 +50,8 @@ class AuthRepoImpl extends AuthRepo {
         email: email,
         password: password,
       );
-      return Right(UserModel.fromFirebaseUser(user));
+      var userData = await getUserData(documentId: user.uid);
+      return Right(userData);
     } on FirebaseAuthException catch (e) {
       log("ERROR IN SIGN UP WITH EMAIL AND PASSWORD: ${e.message}");
       return Left(AuthFailure.fromFirebaseAuthException(e));
@@ -69,5 +70,14 @@ class AuthRepoImpl extends AuthRepo {
       data: UserModel.fromEntity(user).toMap(),
       documentId: user.id,
     );
+  }
+
+  @override
+  Future<UserEntity> getUserData({required String documentId}) async {
+    var data = await fireStoreServices.getData(
+      path: "users",
+      documentId: documentId,
+    );
+    return UserModel.fromMap(data);
   }
 }
