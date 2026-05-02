@@ -38,13 +38,14 @@ void showModelButtonSheetCustomer(
             ),
             child: Column(
               children: [
+                SizedBox(height: HeightManager.h20),
                 Text(
                   TextManger.addNewCustomer,
                   style: Styles.textStyle30.copyWith(
                     color: ColorManager.primaryColor,
                   ),
                 ),
-                SizedBox(height: HeightManager.h20),
+                SizedBox(height: HeightManager.h60),
                 ListTextFeildCustomer(
                   onChangedName: (value) => name = value,
                   onChangedPhone: (value) => phone = value,

@@ -16,9 +16,8 @@ class CustomFloatingActionButton extends StatelessWidget {
         right: PaddingManager.p8,
       ),
       child: FloatingActionButton(
-        onPressed: () {
-          showModelButtonSheetCustomer(context, onAddCustomer);
-        },
+        onPressed: () => showModelButtonSheetCustomer(context, onAddCustomer),
+
         backgroundColor: ColorManager.white70Color,
         foregroundColor: ColorManager.primaryColor,
         shape: const CircleBorder(),

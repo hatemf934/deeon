@@ -1,12 +1,11 @@
 import 'dart:io';
-
+import 'package:deeon/core/helpers/handle_double_tap.dart';
 import 'package:deeon/core/utils/assets_manager.dart';
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/font_manager.dart';
 import 'package:deeon/core/utils/height_manager.dart';
 import 'package:deeon/core/utils/padding_manager.dart';
 import 'package:deeon/core/utils/text_manger.dart';
-import 'package:deeon/features/home/data/repo/methodsrepo/methods_repo_implement.dart';
 import 'package:deeon/features/home/presentation/view/widgets/show_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -47,10 +46,8 @@ class _BodyDetailsPhotoState extends State<BodyDetailsPhoto> {
               tag: TextManger.profileTag,
               child: GestureDetector(
                 onDoubleTapDown: (details) => doubleTapDetails = details,
-                onDoubleTap: () => MethodsRepoImplement().handleDoubleTap(
-                  transformationController,
-                  doubleTapDetails,
-                ),
+                onDoubleTap: () =>
+                    handleDoubleTap(transformationController, doubleTapDetails),
                 child: InteractiveViewer(
                   transformationController: transformationController,
                   clipBehavior: Clip.none,
