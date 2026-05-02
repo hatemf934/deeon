@@ -12,7 +12,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+  const HomeView({super.key, required this.email, required this.name});
+  final String email;
+  final String name;
+
   static String id = RouteManager.homeViewRoute;
 
   @override
@@ -29,9 +32,6 @@ class _HomeViewState extends State<HomeView> {
       });
     }
 
-    Map<String, dynamic> argument =
-        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-
     return BlocProvider(
       create: (context) => SearchCubit(customers),
       child: Stack(
@@ -45,10 +45,7 @@ class _HomeViewState extends State<HomeView> {
                 color: ColorManager.primaryColor,
                 child: Column(
                   children: [
-                    UserAccountSection(
-                      email: argument["email"],
-                      name: argument["name"],
-                    ),
+                    UserAccountSection(email: widget.email, name: widget.name),
                     ContentDrawOptions(),
                   ],
                 ),

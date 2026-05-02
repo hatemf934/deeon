@@ -20,4 +20,8 @@ class AuthFireBaseServices {
     );
     return credential.user!;
   }
+
+  Future deleteUser() async {
+    await FirebaseAuth.instance.currentUser!.delete();
+  }
 }

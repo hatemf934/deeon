@@ -11,6 +11,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 class AuthRepoImpl extends AuthRepo {
   final AuthFireBaseServices authFireBaseServices = AuthFireBaseServices();
   final FireStoreServices fireStoreServices = FireStoreServices();
+  User? user;
   @override
   Future<Either<Failure, UserEntity>> signUpWithEmailAndPassword({
     required String email,
@@ -18,12 +19,12 @@ class AuthRepoImpl extends AuthRepo {
     required String fullName,
   }) async {
     try {
-      var user = await authFireBaseServices.signUpWithEmailAndPassword(
+      user = await authFireBaseServices.signUpWithEmailAndPassword(
         email: email,
         password: password,
       );
       UserEntity userEntity = UserEntity(
-        id: user.uid,
+        id: user!.uid,
         email: email,
         name: fullName,
       );
@@ -33,6 +34,9 @@ class AuthRepoImpl extends AuthRepo {
       log("ERROR IN SIGN UP WITH EMAIL AND PASSWORD: ${e.message}");
       return Left(AuthFailure.fromFirebaseAuthException(e));
     } catch (e) {
+      if (user != null) {
+        await authFireBaseServices.deleteUser();
+      }
       log("ERROR IN SIGN UP WITH EMAIL AND PASSWORD: $e");
       return Left(
         AuthFailure(message: "An unexpected error occurred. Please try again."),

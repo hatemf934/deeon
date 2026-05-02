@@ -1,3 +1,4 @@
+import 'package:deeon/core/helpers/custom_awesome_dialog.dart';
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/route_manager.dart';
 import 'package:deeon/core/utils/text_manger.dart';
@@ -45,11 +46,9 @@ class _RegesterVewState extends State<RegesterVew> {
                   },
                 );
               } else if (state is SignupFailure) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(state.errmessage),
-                    backgroundColor: Colors.red,
-                  ),
+                CustomAswesomeDialog().AwesomeDialogError(
+                  context: context,
+                  description: state.errmessage,
                 );
               }
             },

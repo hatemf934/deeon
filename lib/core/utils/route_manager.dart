@@ -1,9 +1,9 @@
 class RouteManager {
   RouteManager._();
-  static String loginRoute = "login";
-  static String regesterRoute = "regester";
-  static String forgetPasswordRoute = "forget_password";
-  static String homeViewRoute = "homeview";
-  static String deeonViewRoute = "deeonview";
-  static String paidDeeonViewRoute = "paidview";
+  static const String loginRoute = "login";
+  static const String regesterRoute = "regester";
+  static const String forgetPasswordRoute = "forget_password";
+  static const String homeViewRoute = "homeview";
+  static const String deeonViewRoute = "deeonview";
+  static const String paidDeeonViewRoute = "paidview";
 }
