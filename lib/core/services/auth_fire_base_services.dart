@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-class FireBaseServices {
+class AuthFireBaseServices {
   Future<User> signUpWithEmailAndPassword({
     required String email,
     required String password,

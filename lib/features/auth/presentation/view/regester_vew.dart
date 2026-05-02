@@ -2,7 +2,7 @@ import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/route_manager.dart';
 import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/features/auth/data/repos/auth_repo_impl.dart';
-import 'package:deeon/features/auth/presentation/view/bloc/signup_cubit/signup_cubit.dart';
+import 'package:deeon/features/auth/presentation/bloc/signup_cubit/signup_cubit.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/section_of_regester_view.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/title_widget_of_auth_views.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,4 @@
-import 'package:deeon/features/auth/presentation/view/bloc/signup_cubit/signup_cubit.dart';
+import 'package:deeon/features/auth/presentation/bloc/signup_cubit/signup_cubit.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/buttons_regester_section.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/custom_text_feild_regester_section.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/section_of_auth.dart';
