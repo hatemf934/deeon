@@ -1,45 +1,42 @@
 import 'package:deeon/core/helpers/form_validate.dart';
 import 'package:deeon/core/utils/height_manager.dart';
 import 'package:deeon/core/utils/text_manger.dart';
-import 'package:deeon/core/utils/text_validate_manager.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/confirm_password_text_feild.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/custom_text_feild.dart';
 import 'package:flutter/material.dart';
 
-class CustomTextFeildSection extends StatefulWidget {
-  const CustomTextFeildSection({super.key, required this.isSubmitted});
+class CustomTextFeildSectionLogin extends StatefulWidget {
+  const CustomTextFeildSectionLogin({
+    super.key,
+    required this.isSubmitted,
+    required this.passwordController,
+    required this.emailController,
+  });
   final bool isSubmitted;
+  final TextEditingController passwordController;
+  final TextEditingController emailController;
 
   @override
-  State<CustomTextFeildSection> createState() => _CustomTextFeildSectionState();
+  State<CustomTextFeildSectionLogin> createState() =>
+      _CustomTextFeildSectionLoginState();
 }
 
-class _CustomTextFeildSectionState extends State<CustomTextFeildSection> {
-  final TextEditingController passwordController = TextEditingController();
-
+class _CustomTextFeildSectionLoginState
+    extends State<CustomTextFeildSectionLogin> {
   @override
   Widget build(BuildContext context) {
-    final RegExp emailRegExp = RegExp(TextValidateManager.emailRegExp);
     return Column(
       children: [
         CustomTextFeild(
-          validator: (value) {
-            if (value!.isEmpty) {
-              return widget.isSubmitted
-                  ? TextValidateManager.fieldIsRequired
-                  : null;
-            } else if (!emailRegExp.hasMatch(value)) {
-              return TextValidateManager.invalidEmailOrPassword;
-            }
-            return null;
-          },
+          controller: widget.emailController,
+          validator: (value) => FormValidate().validateEmail(value),
           labelText: TextManger.emailText,
           hintText: TextManger.emailExText,
           iconData: Icons.email,
         ),
         SizedBox(height: HeightManager.h20),
         ConfirmPasswordTextFeild(
-          controller: passwordController,
+          controller: widget.passwordController,
           validator: (value) => FormValidate().validatePassword(value),
           labelText: TextManger.passWordText,
         ),

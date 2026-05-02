@@ -1,8 +1,9 @@
+import 'package:deeon/features/auth/presentation/bloc/signin_cubit/signin_cubit.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/button_section.dart';
-import 'package:deeon/features/auth/presentation/view/widgets/custom_text_feild_section.dart';
+import 'package:deeon/features/auth/presentation/view/widgets/custom_text_feild_login_section.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/section_of_auth.dart';
-import 'package:deeon/features/home/presentation/view/home_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SectionOfLoginView extends StatefulWidget {
   const SectionOfLoginView({super.key});
@@ -12,6 +13,8 @@ class SectionOfLoginView extends StatefulWidget {
 }
 
 class SectionOfLoginViewState extends State<SectionOfLoginView> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   bool isSubmitted = false;
   final GlobalKey<FormState> formkey = GlobalKey();
   void resetValidation() {
@@ -28,17 +31,23 @@ class SectionOfLoginViewState extends State<SectionOfLoginView> {
     return Form(
       key: formkey,
       child: SectionOfAuth(
-        formFields: CustomTextFeildSection(isSubmitted: isSubmitted),
+        formFields: CustomTextFeildSectionLogin(
+          isSubmitted: isSubmitted,
+          passwordController: passwordController,
+          emailController: emailController,
+        ),
         buttonBuilder: ButtonsSection(
           onPressed: () {
             setState(() {
               isSubmitted = true;
             });
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              if (formkey.currentState!.validate()) {
-                Navigator.pushNamed(context, HomeView.id);
-              }
-            });
+            if (formkey.currentState!.validate()) {
+              formkey.currentState!.save();
+              BlocProvider.of<SigninCubit>(context).loginUser(
+                email: emailController.text,
+                password: passwordController.text,
+              );
+            }
           },
         ),
       ),

@@ -1,9 +1,13 @@
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/route_manager.dart';
 import 'package:deeon/core/utils/text_manger.dart';
+import 'package:deeon/features/auth/data/repos/auth_repo_impl.dart';
+import 'package:deeon/features/auth/presentation/bloc/signin_cubit/signin_cubit.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/section_of_login_view.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/title_widget_of_auth_views.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -19,20 +23,54 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        loginSectionKey.currentState?.resetValidation();
-        FocusScope.of(context).unfocus();
-      },
-      child: Scaffold(
-        backgroundColor: ColorManager.primaryColor,
-        body: Column(
-          children: [
-            Expanded(
-              child: TitleWidgetOfAuthViews(textTitle: TextManger.signInText),
-            ),
-            SectionOfLoginView(key: loginSectionKey),
-          ],
+    return BlocProvider(
+      create: (context) => SigninCubit(AuthRepoImpl()),
+      child: GestureDetector(
+        onTap: () {
+          loginSectionKey.currentState?.resetValidation();
+          FocusScope.of(context).unfocus();
+        },
+        child: Scaffold(
+          backgroundColor: ColorManager.primaryColor,
+          body: BlocConsumer<SigninCubit, SigninState>(
+            listener: (context, state) {
+              if (state is SignInSucsses) {
+                Navigator.pushReplacementNamed(
+                  context,
+                  RouteManager.homeViewRoute,
+                  // arguments: {
+                  //   'email': emailController.text,
+                  //   'name': nameController.text,
+                  // },
+                );
+              } else if (state is SignInFailure) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(state.errmessage),
+                    backgroundColor: Colors.red,
+                  ),
+                );
+              }
+            },
+            builder: (context, state) {
+              return ModalProgressHUD(
+                inAsyncCall: state is SignInLoading,
+                progressIndicator: CircularProgressIndicator(
+                  color: ColorManager.primaryColor,
+                ),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: TitleWidgetOfAuthViews(
+                        textTitle: TextManger.signInText,
+                      ),
+                    ),
+                    SectionOfLoginView(key: loginSectionKey),
+                  ],
+                ),
+              );
+            },
+          ),
         ),
       ),
     );
