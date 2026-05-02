@@ -23,7 +23,7 @@ class ColumnCustomerDetails extends StatelessWidget {
         Text(
           textDirection: TextDirection.rtl,
           overflow: TextOverflow.ellipsis,
-          "${TextManger.phoneNumber} : ${customerModel.phoneNumber}",
+          "${TextManger.phoneNumber} : ${customerModel.phone}",
           style: Styles.textStyle18.copyWith(color: ColorManager.blackColor),
         ),
         Text(

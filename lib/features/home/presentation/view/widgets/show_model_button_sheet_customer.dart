@@ -58,7 +58,7 @@ void showModelButtonSheetCustomer(
                     if (formkey.currentState!.validate()) {
                       final customer = CustomerModel(
                         nameCustomer: name!,
-                        phoneNumber: phone!,
+                        phone: phone!,
                         date: date!,
                       );
                       onAddCustomer(customer);
