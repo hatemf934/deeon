@@ -14,9 +14,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key, required this.email, required this.name});
+  static String id = RouteManager.homeViewRoute;
   final String email;
   final String name;
-  static String id = RouteManager.homeViewRoute;
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -32,7 +32,12 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (context) => SearchCubit())],
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              SearchCubit(BlocProvider.of<CustomerCubit>(context).customers),
+        ),
+      ],
       child: Stack(
         children: [
           Scaffold(
@@ -51,7 +56,6 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
             body: BodyHomeView(),
-
             floatingActionButton: BlocListener<CustomerCubit, CustomerState>(
               listener: (context, state) {
                 if (state is CustomerAddingSuccess) {
@@ -69,7 +73,9 @@ class _HomeViewState extends State<HomeView> {
           ),
           BlocBuilder<SearchCubit, SearchState>(
             builder: (context, state) {
-              if (state is SearchShow || state is SearchCustomer) {
+              if (state is SearchShow ||
+                  state is SearchCustomer ||
+                  state is SearchNoResult) {
                 return HomeViewSearch();
               }
               return const SizedBox.shrink();

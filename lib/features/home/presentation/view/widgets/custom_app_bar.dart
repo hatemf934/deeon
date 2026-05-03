@@ -10,7 +10,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,9 +21,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         backgroundColor: ColorManager.primaryColor,
         actions: [
           IconButton(
-            onPressed: () {
-              BlocProvider.of<SearchCubit>(context).showSearch();
-            },
+            onPressed: () => BlocProvider.of<SearchCubit>(context).showSearch(),
             icon: Icon(Icons.search, size: FontManager.font30),
           ),
         ],
