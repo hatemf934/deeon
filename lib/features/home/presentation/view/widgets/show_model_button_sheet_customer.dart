@@ -6,13 +6,12 @@ import 'package:deeon/core/utils/styles.dart';
 import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/custom_elveted_button.dart';
 import 'package:deeon/features/home/data/model/customer_model.dart';
+import 'package:deeon/features/home/presentation/manager/customer_cubit/customer_cubit.dart';
 import 'package:deeon/features/home/presentation/view/widgets/list_text_feild_customer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-void showModelButtonSheetCustomer(
-  BuildContext context,
-  Function(CustomerModel) onAddCustomer,
-) async {
+void showModelButtonSheetCustomer(BuildContext context) async {
   String? name, phone, date;
 
   final GlobalKey<FormState> formkey = GlobalKey();
@@ -25,48 +24,50 @@ void showModelButtonSheetCustomer(
         top: Radius.circular(RadiusManager.r20),
       ),
     ),
-    builder: (BuildContext context) {
-      return Form(
-        key: formkey,
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.5,
-          width: double.infinity,
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: PaddingManager.p16,
-              vertical: PaddingManager.p8,
-            ),
-            child: Column(
-              children: [
-                SizedBox(height: HeightManager.h20),
-                Text(
-                  TextManger.addNewCustomer,
-                  style: Styles.textStyle30.copyWith(
-                    color: ColorManager.primaryColor,
+    builder: (BuildContext ctx) {
+      return BlocProvider.value(
+        value: ctx.read<CustomerCubit>(),
+        child: Form(
+          key: formkey,
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height * 0.5,
+            width: double.infinity,
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: PaddingManager.p16,
+                vertical: PaddingManager.p8,
+              ),
+              child: Column(
+                children: [
+                  SizedBox(height: HeightManager.h20),
+                  Text(
+                    TextManger.addNewCustomer,
+                    style: Styles.textStyle30.copyWith(
+                      color: ColorManager.primaryColor,
+                    ),
                   ),
-                ),
-                SizedBox(height: HeightManager.h60),
-                ListTextFeildCustomer(
-                  onChangedName: (value) => name = value,
-                  onChangedPhone: (value) => phone = value,
-                  onChangedDate: (value) => date = value,
-                ),
-                SizedBox(height: HeightManager.h20),
-                CustomElevatedButton(
-                  text: TextManger.addCustomer,
-                  onPressed: () {
-                    if (formkey.currentState!.validate()) {
-                      final customer = CustomerModel(
-                        nameCustomer: name!,
-                        phone: phone!,
-                        date: date!,
-                      );
-                      onAddCustomer(customer);
-                      Navigator.pop(context);
-                    }
-                  },
-                ),
-              ],
+                  SizedBox(height: HeightManager.h60),
+                  ListTextFeildCustomer(
+                    onChangedName: (value) => name = value,
+                    onChangedPhone: (value) => phone = value,
+                    onChangedDate: (value) => date = value,
+                  ),
+                  SizedBox(height: HeightManager.h20),
+                  CustomElevatedButton(
+                    text: TextManger.addCustomer,
+                    onPressed: () {
+                      if (formkey.currentState!.validate()) {
+                        final customer = CustomerModel(
+                          nameCustomer: name!,
+                          phone: phone!,
+                          date: date!,
+                        );
+                        ctx.read<CustomerCubit>().addCustomer(customer);
+                      }
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),

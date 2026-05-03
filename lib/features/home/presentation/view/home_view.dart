@@ -1,6 +1,7 @@
+import 'package:deeon/core/helpers/custom_awesome_dialog.dart';
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/route_manager.dart';
-import 'package:deeon/features/home/data/model/customer_model.dart';
+import 'package:deeon/features/home/presentation/manager/customer_cubit/customer_cubit.dart';
 import 'package:deeon/features/home/presentation/manager/search/search_cubit.dart';
 import 'package:deeon/features/home/presentation/view/widgets/body_home_view.dart';
 import 'package:deeon/features/home/presentation/view/widgets/content_draw_options.dart';
@@ -15,7 +16,6 @@ class HomeView extends StatefulWidget {
   const HomeView({super.key, required this.email, required this.name});
   final String email;
   final String name;
-
   static String id = RouteManager.homeViewRoute;
 
   @override
@@ -23,17 +23,16 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  List<CustomerModel> customers = [];
+  @override
+  void initState() {
+    BlocProvider.of<CustomerCubit>(context).displayCustomer();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    void addCustomer(CustomerModel customer) {
-      setState(() {
-        customers.add(customer);
-      });
-    }
-
-    return BlocProvider(
-      create: (context) => SearchCubit(customers),
+    return MultiBlocProvider(
+      providers: [BlocProvider(create: (context) => SearchCubit())],
       child: Stack(
         children: [
           Scaffold(
@@ -51,17 +50,27 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ),
             ),
-            body: BodyHomeView(customerModel: customers),
-            floatingActionButton: CustomFloatingActionButton(
-              onAddCustomer: (newCustomer) {
-                addCustomer(newCustomer);
+            body: BodyHomeView(),
+
+            floatingActionButton: BlocListener<CustomerCubit, CustomerState>(
+              listener: (context, state) {
+                if (state is CustomerAddingSuccess) {
+                  Navigator.pop(context);
+                }
+                if (state is CustomerFailure) {
+                  CustomAswesomeDialog().AwesomeDialogError(
+                    context: context,
+                    description: state.error,
+                  );
+                }
               },
+              child: CustomFloatingActionButton(),
             ),
           ),
           BlocBuilder<SearchCubit, SearchState>(
             builder: (context, state) {
               if (state is SearchShow || state is SearchCustomer) {
-                return HomeViewSearch(customers: customers);
+                return HomeViewSearch();
               }
               return const SizedBox.shrink();
             },

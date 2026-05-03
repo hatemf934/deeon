@@ -1,7 +1,6 @@
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
 import 'package:deeon/core/utils/text_manger.dart';
-import 'package:deeon/features/home/data/model/customer_model.dart';
 import 'package:deeon/features/home/presentation/manager/search/search_cubit.dart';
 import 'package:deeon/features/home/presentation/view/widgets/body_home_view.dart';
 import 'package:deeon/features/home/presentation/view/widgets/search_app_customer.dart';
@@ -9,9 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeViewSearch extends StatelessWidget {
-  const HomeViewSearch({super.key, required this.customers});
-
-  final List<CustomerModel> customers;
+  const HomeViewSearch({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +29,9 @@ class HomeViewSearch extends StatelessWidget {
             );
           }
           if (state is SearchCustomer) {
-            return BodyHomeView(customerModel: state.customerModel);
+            return BodyHomeView();
           }
-          return BodyHomeView(customerModel: customers);
+          return BodyHomeView();
         },
       ),
     );

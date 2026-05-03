@@ -5,8 +5,8 @@ import 'package:meta/meta.dart';
 part 'search_state.dart';
 
 class SearchCubit extends Cubit<SearchState> {
-  SearchCubit(this.customerModel) : super(SearchInitial());
-  List<CustomerModel> customerModel;
+  SearchCubit() : super(SearchInitial());
+  List<CustomerModel> customerModel = [];
   void showSearch() => emit(SearchShow());
 
   void cancelSearch() => emit(SearchInitial());
