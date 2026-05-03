@@ -15,6 +15,7 @@ class FormValidate {
   final RegExp passwordLeastEightNumber = RegExp(
     TextValidateManager.passwordLeastEightNumber,
   );
+  final RegExp phoneRegExp = RegExp(TextValidateManager.phoneFormat);
 
   String? validateEmail(String? value) {
     if (value == null || value.trim().isEmpty) {
@@ -70,6 +71,24 @@ class FormValidate {
 
     if (value != originalPassword) {
       return TextValidateManager.passwordsNotMatch;
+    }
+
+    return null;
+  }
+
+  String? validatePhone(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return TextValidateManager.requiredPhone;
+    }
+
+    final trimmedValue = value.trim();
+
+    if (!phoneRegExp.hasMatch(trimmedValue)) {
+      return TextValidateManager.invalidPhoneFormat;
+    }
+
+    if (trimmedValue.length < 11) {
+      return TextValidateManager.phoneTooShort;
     }
 
     return null;

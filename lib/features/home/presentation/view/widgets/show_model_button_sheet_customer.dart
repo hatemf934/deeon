@@ -11,8 +11,15 @@ import 'package:deeon/features/home/presentation/view/widgets/list_text_feild_cu
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void showModelButtonSheetCustomer(BuildContext context) async {
-  String? name, phone, date;
+void showModelButtonSheetCustomer(
+  BuildContext context, {
+  CustomerModel? customer,
+}) async {
+  final nameController = TextEditingController(
+    text: customer?.nameCustomer ?? '',
+  );
+  final phoneController = TextEditingController(text: customer?.phone ?? '');
+  final dateController = TextEditingController(text: customer?.date ?? '');
 
   final GlobalKey<FormState> formkey = GlobalKey();
   showModalBottomSheet(
@@ -41,29 +48,41 @@ void showModelButtonSheetCustomer(BuildContext context) async {
                 children: [
                   SizedBox(height: HeightManager.h20),
                   Text(
-                    TextManger.addNewCustomer,
+                    customer == null
+                        ? TextManger.addNewCustomer
+                        : TextManger.updateCustomer,
                     style: Styles.textStyle30.copyWith(
                       color: ColorManager.primaryColor,
                     ),
                   ),
                   SizedBox(height: HeightManager.h60),
                   ListTextFeildCustomer(
-                    onChangedName: (value) => name = value,
-                    onChangedPhone: (value) => phone = value,
-                    onChangedDate: (value) => date = value,
+                    nameController: nameController,
+                    phoneController: phoneController,
+                    dateController: dateController,
                   ),
                   SizedBox(height: HeightManager.h20),
                   CustomElevatedButton(
-                    text: TextManger.addCustomer,
+                    text: customer == null
+                        ? TextManger.addCustomer
+                        : TextManger.editCustomer,
                     onPressed: () {
                       if (formkey.currentState!.validate()) {
-                        final customer = CustomerModel(
-                          nameCustomer: name!,
-                          phone: phone!,
-                          date: date!,
+                        final newCustomer = CustomerModel(
+                          nameCustomer: nameController.text,
+                          phone: phoneController.text,
+                          date: dateController.text,
                         );
-                        ctx.read<CustomerCubit>().addCustomer(customer);
+                        if (customer == null) {
+                          ctx.read<CustomerCubit>().addCustomer(newCustomer);
+                        } else {
+                          ctx.read<CustomerCubit>().editCustomer(
+                            oldCustomer: customer,
+                            newCustomer: newCustomer,
+                          );
+                        }
                       }
+                      Navigator.pop(context);
                     },
                   ),
                 ],

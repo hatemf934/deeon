@@ -67,7 +67,7 @@ class _BodyOfShowButtonSheetDeeonState
               hintText: TextManger.itemPrice,
             ),
             Spacer(),
-            CalenderTextFeild(onChangedDate: (value) => date = value),
+            CalenderTextFeild(),
             Spacer(),
             CustomElevatedButton(
               text: TextManger.addDeeon,

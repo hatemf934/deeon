@@ -10,30 +10,22 @@ class CustomerCubit extends Cubit<CustomerState> {
   CustomerCubit() : super(CustomerInitial());
   List<CustomerModel> customers = [];
   Future<void> addCustomer(CustomerModel customer) async {
-    try {
-      await CustomerRepoImpl(
-        hiveServices: HiveServices(),
-      ).addCustomer(customerModel: customer);
-      emit(CustomerAddingSuccess());
-      displayCustomer();
-    } catch (e) {
-      emit(CustomerFailure(e.toString()));
-    }
+    await CustomerRepoImpl(
+      hiveServices: HiveServices(),
+    ).addCustomer(customerModel: customer);
+    emit(CustomerAddingSuccess());
+    displayCustomer();
   }
 
   Future<void> deleteCustomer(int index) async {
-    try {
-      customers = await CustomerRepoImpl(
-        hiveServices: HiveServices(),
-      ).deleteCustomer(index: index);
-      if (customers.isEmpty) {
-        emit(CustomerEmpty());
-      } else {
-        emit(CustomerGettingSuccess(customers: customers));
-        displayCustomer();
-      }
-    } catch (e) {
-      emit(CustomerFailure(e.toString()));
+    customers = await CustomerRepoImpl(
+      hiveServices: HiveServices(),
+    ).deleteCustomer(index: index);
+    if (customers.isEmpty) {
+      emit(CustomerEmpty());
+    } else {
+      emit(CustomerGettingSuccess(customers: customers));
+      displayCustomer();
     }
   }
 
@@ -46,5 +38,16 @@ class CustomerCubit extends Cubit<CustomerState> {
     } else {
       emit(CustomerGettingSuccess(customers: customers));
     }
+  }
+
+  Future<void> editCustomer({
+    required CustomerModel oldCustomer,
+    required CustomerModel newCustomer,
+  }) async {
+    await oldCustomer.delete(); // HiveObjectMixin
+    await CustomerRepoImpl(
+      hiveServices: HiveServices(),
+    ).addCustomer(customerModel: newCustomer);
+    displayCustomer();
   }
 }

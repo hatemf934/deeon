@@ -4,6 +4,7 @@ import 'package:deeon/features/deeon/presentation/views/deeon_view.dart';
 import 'package:deeon/features/home/data/model/customer_model.dart';
 import 'package:deeon/features/home/presentation/view/widgets/column_customer_details.dart';
 import 'package:deeon/features/home/presentation/view/widgets/column_customer_icons.dart';
+import 'package:deeon/features/home/presentation/view/widgets/show_model_button_sheet_customer.dart';
 import 'package:flutter/material.dart';
 
 class CustomerFeature extends StatelessWidget {
@@ -30,7 +31,13 @@ class CustomerFeature extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            ColumnCustomerIcons(index: index),
+            ColumnCustomerIcons(
+              onPressedEdit: () => showModelButtonSheetCustomer(
+                context,
+                customer: customerModel,
+              ),
+              index: index,
+            ),
             ColumnCustomerDetails(customerModel: customerModel),
           ],
         ),

@@ -25,7 +25,6 @@ class RowAddingButtonsItems extends StatelessWidget {
           height: MediaQuery.of(context).size.height * 0.060,
           width: MediaQuery.of(context).size.width * 0.60,
           child: TextFeildCustomer(
-            onChanged: onNameChanged,
             validator: (value) {
               if (value == null || value.trim().isEmpty) {
                 return TextValidateManager.fieldIsRequired;

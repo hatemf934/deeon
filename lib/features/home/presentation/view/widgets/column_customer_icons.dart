@@ -5,8 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ColumnCustomerIcons extends StatelessWidget {
-  const ColumnCustomerIcons({super.key, required this.index});
+  const ColumnCustomerIcons({
+    super.key,
+    required this.index,
+    required this.onPressedEdit,
+  });
   final int index;
+  final VoidCallback onPressedEdit;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,7 +28,7 @@ class ColumnCustomerIcons extends StatelessWidget {
               iconData: Icons.delete,
             ),
             CustomIconButtonCustomer(
-              onpressed: () {},
+              onpressed: onPressedEdit,
               color: ColorManager.primaryColor,
               iconData: Icons.edit,
             ),

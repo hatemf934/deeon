@@ -15,7 +15,6 @@ class TextFeildCustomer extends StatelessWidget {
     this.readOnly = false,
     this.controller,
     this.onTap,
-    required this.onChanged,
   });
   final String labelText;
   final String hintText;
@@ -24,7 +23,6 @@ class TextFeildCustomer extends StatelessWidget {
   final TextInputType? keyboardType;
   final bool readOnly;
   final TextEditingController? controller;
-  final Function(String) onChanged;
   final Function()? onTap;
 
   @override
@@ -38,7 +36,6 @@ class TextFeildCustomer extends StatelessWidget {
       ),
       child: TextFormField(
         onTap: onTap,
-        onChanged: onChanged,
         controller: controller,
         readOnly: readOnly,
         style: TextStyle(color: ColorManager.blackColor),

@@ -9,14 +9,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CalenderTextFeild extends StatefulWidget {
-  const CalenderTextFeild({super.key, required this.onChangedDate});
-  final Function(String) onChangedDate;
+  const CalenderTextFeild({super.key, this.dataController});
+  final TextEditingController? dataController;
   @override
   State<CalenderTextFeild> createState() => _CalenderTextFeildState();
 }
 
 class _CalenderTextFeildState extends State<CalenderTextFeild> {
-  final TextEditingController dataController = TextEditingController();
   void openDatePicker(BuildContext context) {
     BottomPicker.date(
       headerBuilder: (context) {
@@ -46,10 +45,8 @@ class _CalenderTextFeildState extends State<CalenderTextFeild> {
             "${selectedDate.day}/${selectedDate.month}/${selectedDate.year}";
 
         setState(() {
-          dataController.text = formattedDate;
+          widget.dataController!.text = formattedDate;
         });
-
-        widget.onChangedDate(formattedDate);
       },
 
       bottomPickerTheme: BottomPickerTheme.temptingAzure,
@@ -61,8 +58,7 @@ class _CalenderTextFeildState extends State<CalenderTextFeild> {
   @override
   Widget build(BuildContext context) {
     return TextFeildCustomer(
-      onChanged: widget.onChangedDate,
-      controller: dataController,
+      controller: widget.dataController,
       validator: (value) {
         if (value == null || value.trim().isEmpty) {
           return TextValidateManager.fieldIsRequired;
