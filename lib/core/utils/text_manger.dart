@@ -56,4 +56,5 @@ class TextManger {
   static String scussesPaidDeeon = "تم تسديد الدين الكامل بنجاح!";
   static String total = "المجموع";
   static String price = "المبلغ";
+  static String noCustomers = "لا يوجد زبائن حاليا";
 }

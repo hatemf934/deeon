@@ -34,8 +34,7 @@ class _HomeViewState extends State<HomeView> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>
-              SearchCubit(BlocProvider.of<CustomerCubit>(context).customers),
+          create: (context) => SearchCubit(context.read<CustomerCubit>()),
         ),
       ],
       child: Stack(

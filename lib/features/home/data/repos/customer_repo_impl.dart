@@ -16,4 +16,12 @@ class CustomerRepoImpl extends CustomerRepo {
     var customers = hiveServices.getAllData<CustomerModel>(boxName: "customer");
     return customers;
   }
+
+  @override
+  Future<List<CustomerModel>> deleteCustomer({required int index}) async {
+    return await hiveServices.deleteData<CustomerModel>(
+      boxName: "customer",
+      index: index,
+    );
+  }
 }

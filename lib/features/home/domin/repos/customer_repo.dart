@@ -4,4 +4,5 @@ abstract class CustomerRepo {
   Future<void> addCustomer({required CustomerModel customerModel});
 
   List<CustomerModel> getAllCustomers();
+  Future<List<CustomerModel>> deleteCustomer({required int index});
 }

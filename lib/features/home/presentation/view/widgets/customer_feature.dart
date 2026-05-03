@@ -7,8 +7,13 @@ import 'package:deeon/features/home/presentation/view/widgets/column_customer_ic
 import 'package:flutter/material.dart';
 
 class CustomerFeature extends StatelessWidget {
-  const CustomerFeature({super.key, required this.customerModel});
+  const CustomerFeature({
+    super.key,
+    required this.customerModel,
+    required this.index,
+  });
   final CustomerModel customerModel;
+  final int index;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -25,7 +30,7 @@ class CustomerFeature extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            ColumnCustomerIcons(),
+            ColumnCustomerIcons(index: index),
             ColumnCustomerDetails(customerModel: customerModel),
           ],
         ),

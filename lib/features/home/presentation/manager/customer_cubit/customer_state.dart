@@ -5,8 +5,6 @@ sealed class CustomerState {}
 
 final class CustomerInitial extends CustomerState {}
 
-class CustomerLoading extends CustomerState {}
-
 class CustomerAddingSuccess extends CustomerState {}
 
 class CustomerGettingSuccess extends CustomerState {

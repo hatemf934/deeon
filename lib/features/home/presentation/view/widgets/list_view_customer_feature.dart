@@ -11,7 +11,10 @@ class ListViewCustomerFeature extends StatelessWidget {
     return ListView.separated(
       itemBuilder: (context, index) {
         return Center(
-          child: CustomerFeature(customerModel: customerModel[index]),
+          child: CustomerFeature(
+            index: index,
+            customerModel: customerModel[index],
+          ),
         );
       },
       separatorBuilder: (context, index) {

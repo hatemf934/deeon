@@ -13,4 +13,14 @@ class HiveServices extends LocalDatabaseServices {
     final getData = Hive.box<T>(boxName);
     return getData.values.toList();
   }
+
+  @override
+  Future<List<T>> deleteData<T>({
+    required String boxName,
+    required int index,
+  }) async {
+    var box = Hive.box<T>(boxName);
+    await box.deleteAt(index);
+    return box.values.toList();
+  }
 }
