@@ -4,8 +4,8 @@ import 'package:deeon/core/utils/radius_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
-class SwtichDarkTheme extends StatelessWidget {
-  const SwtichDarkTheme({
+class CustomSwitch extends StatelessWidget {
+  const CustomSwitch({
     super.key,
     required this.color,
     required this.iconData,

@@ -1,8 +1,9 @@
 import 'package:deeon/constant.dart';
 import 'package:deeon/core/helpers/on_generate_route.dart';
-import 'package:deeon/features/auth/presentation/view/regester_vew.dart';
+import 'package:deeon/features/auth/presentation/view/login_view.dart';
 import 'package:deeon/features/home/data/model/customer_model.dart';
 import 'package:deeon/features/home/presentation/manager/customer_cubit/customer_cubit.dart';
+import 'package:deeon/features/home/presentation/view/home_view.dart';
 import 'package:deeon/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -32,7 +33,9 @@ class Deeon extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData.dark(),
         debugShowCheckedModeBanner: false,
-        initialRoute: RegesterVew.id,
+        initialRoute: FirebaseAuth.instance.currentUser == null
+            ? LoginView.id
+            : HomeView.id,
         onGenerateRoute: onGenerateRoute,
       ),
     );

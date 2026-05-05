@@ -18,10 +18,7 @@ Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
         builder: (context) => const ForgetPasswordView(),
       );
     case RouteManager.homeViewRoute:
-      final args = routeSettings.arguments as Map<String, dynamic>;
-      return MaterialPageRoute(
-        builder: (_) => HomeView(email: args['email'], name: args['name']),
-      );
+      return MaterialPageRoute(builder: (context) => HomeView());
     case RouteManager.deeonViewRoute:
       return MaterialPageRoute(builder: (context) => const DeeonView());
     case RouteManager.paidDeeonViewRoute:
