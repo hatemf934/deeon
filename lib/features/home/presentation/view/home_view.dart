@@ -57,9 +57,6 @@ class _HomeViewState extends State<HomeView> {
             body: BodyHomeView(),
             floatingActionButton: BlocListener<CustomerCubit, CustomerState>(
               listener: (context, state) {
-                if (state is CustomerAddingSuccess) {
-                  Navigator.pop(context);
-                }
                 if (state is CustomerFailure) {
                   CustomAswesomeDialog().AwesomeDialogError(
                     context: context,
