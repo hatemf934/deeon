@@ -12,8 +12,8 @@ import 'package:deeon/features/home/data/model/customer_model.dart';
 import 'package:flutter/material.dart';
 
 class BodyOfDeeonView extends StatefulWidget {
-  const BodyOfDeeonView({super.key});
-
+  const BodyOfDeeonView({super.key, required this.customerModel});
+  final CustomerModel customerModel;
   @override
   State<BodyOfDeeonView> createState() => _BodyOfDeeonViewState();
 }
@@ -28,11 +28,9 @@ class _BodyOfDeeonViewState extends State<BodyOfDeeonView> {
       });
     }
 
-    CustomerModel customerModel =
-        ModalRoute.of(context)!.settings.arguments as CustomerModel;
     return Column(
       children: [
-        DetailsCustomer(customerModel: customerModel),
+        DetailsCustomer(customerModel: widget.customerModel),
         Divider(
           endIndent: HeightManager.h20,
           height: WidthManager.w40,

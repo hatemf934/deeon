@@ -4,6 +4,7 @@ import 'package:deeon/features/auth/presentation/view/forget_password_view.dart'
 import 'package:deeon/features/auth/presentation/view/login_view.dart';
 import 'package:deeon/features/auth/presentation/view/regester_vew.dart';
 import 'package:deeon/features/deeon/presentation/views/deeon_view.dart';
+import 'package:deeon/features/home/data/model/customer_model.dart';
 import 'package:deeon/features/home/presentation/view/home_view.dart';
 import 'package:flutter/material.dart';
 
@@ -18,9 +19,12 @@ Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
         builder: (context) => const ForgetPasswordView(),
       );
     case RouteManager.homeViewRoute:
-      return MaterialPageRoute(builder: (context) => HomeView());
+      return MaterialPageRoute(builder: (context) => const HomeView());
     case RouteManager.deeonViewRoute:
-      return MaterialPageRoute(builder: (context) => const DeeonView());
+      final customerModel = routeSettings.arguments as CustomerModel;
+      return MaterialPageRoute(
+        builder: (context) => DeeonView(customerModel: customerModel),
+      );
     case RouteManager.paidDeeonViewRoute:
       return MaterialPageRoute(builder: (context) => const PaidDeeonView());
     default:

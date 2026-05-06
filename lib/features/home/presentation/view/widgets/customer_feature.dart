@@ -18,9 +18,9 @@ class CustomerFeature extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, DeeonView.id, arguments: customerModel);
-      },
+      onTap: () =>
+          Navigator.pushNamed(context, DeeonView.id, arguments: customerModel),
+
       child: Container(
         height: MediaQuery.of(context).size.height * 0.20,
         width: MediaQuery.of(context).size.width * 0.90,
