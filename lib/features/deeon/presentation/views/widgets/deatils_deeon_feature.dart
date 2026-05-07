@@ -8,8 +8,13 @@ import 'package:deeon/features/deeon/presentation/views/widgets/text_deeon_featu
 import 'package:flutter/material.dart';
 
 class DetailsDeeonFeature extends StatelessWidget {
-  const DetailsDeeonFeature({super.key, required this.deeonModel});
+  const DetailsDeeonFeature({
+    super.key,
+    required this.deeonModel,
+    required this.index,
+  });
   final DeeonModel deeonModel;
+  final int index;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,6 +30,7 @@ class DetailsDeeonFeature extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           IconsDetailsDeeon(
+            index: index,
             onTapPayment: () {
               Navigator.pushNamed(
                 context,

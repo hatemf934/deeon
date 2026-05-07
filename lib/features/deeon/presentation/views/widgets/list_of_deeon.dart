@@ -12,7 +12,10 @@ class ListOfDeeon extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: PaddingManager.p16),
       child: ListView.separated(
         itemBuilder: (context, index) {
-          return DetailsDeeonFeature(deeonModel: deeonModel[index]);
+          return DetailsDeeonFeature(
+            index: index,
+            deeonModel: deeonModel[index],
+          );
         },
         separatorBuilder: (context, index) {
           return SizedBox(height: MediaQuery.of(context).size.height * 0.020);

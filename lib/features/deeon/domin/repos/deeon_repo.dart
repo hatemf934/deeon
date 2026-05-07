@@ -7,4 +7,8 @@ abstract class DeeonRepo {
   });
 
   List<DeeonModel> getAllDeeons({required String customerId});
+  Future<List<DeeonModel>> deleteDeeon({
+    required int index,
+    required String customerId,
+  });
 }

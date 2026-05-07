@@ -27,4 +27,16 @@ class DeeonCubit extends Cubit<DeeonState> {
       emit(DeeonGettingSuccess(deeon: deeonModel));
     }
   }
+
+  Future<void> deletedDeeonDate(int index) async {
+    deeonModel = await DeeonRepoImpl(
+      hiveServices: HiveServices(),
+    ).deleteDeeon(index: index, customerId: customerId);
+    if (deeonModel.isEmpty) {
+      emit(DeeonInitial());
+    } else {
+      emit(DeeonGettingSuccess(deeon: deeonModel));
+      displayDeeonDate();
+    }
+  }
 }

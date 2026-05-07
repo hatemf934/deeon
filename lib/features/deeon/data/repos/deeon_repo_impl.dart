@@ -25,4 +25,15 @@ class DeeonRepoImpl extends DeeonRepo {
     );
     return deeonDate;
   }
+
+  @override
+  Future<List<DeeonModel>> deleteDeeon({
+    required int index,
+    required String customerId,
+  }) async {
+    return await hiveServices.deleteData(
+      boxName: "$deeonBox$customerId",
+      index: index,
+    );
+  }
 }
