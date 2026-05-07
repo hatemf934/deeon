@@ -34,12 +34,8 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => SearchCubit(context.read<CustomerCubit>()),
-        ),
-      ],
+    return BlocProvider(
+      create: (context) => SearchCubit(context.read<CustomerCubit>()),
       child: Stack(
         children: [
           Scaffold(

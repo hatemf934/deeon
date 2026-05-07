@@ -9,12 +9,12 @@ class RowAddingButtonsItems extends StatelessWidget {
     super.key,
 
     required this.count,
-    required this.onNameChanged,
     required this.onCountChanged,
+    required this.nameItemController,
   });
   final int count;
-  final Function(String) onNameChanged;
   final Function(int) onCountChanged;
+  final TextEditingController nameItemController;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -25,6 +25,7 @@ class RowAddingButtonsItems extends StatelessWidget {
           height: MediaQuery.of(context).size.height * 0.060,
           width: MediaQuery.of(context).size.width * 0.60,
           child: TextFeildCustomer(
+            controller: nameItemController,
             validator: (value) {
               if (value == null || value.trim().isEmpty) {
                 return TextValidateManager.fieldIsRequired;

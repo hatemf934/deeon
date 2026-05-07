@@ -1,6 +1,8 @@
 import 'package:deeon/constant.dart';
 import 'package:deeon/core/helpers/on_generate_route.dart';
 import 'package:deeon/features/auth/presentation/view/login_view.dart';
+import 'package:deeon/features/deeon/data/model/deeon_model.dart';
+import 'package:deeon/features/deeon/presentation/bloc/deeon/deeon_cubit.dart';
 import 'package:deeon/features/home/data/model/customer_model.dart';
 import 'package:deeon/features/home/presentation/manager/customer_cubit/customer_cubit.dart';
 import 'package:deeon/features/home/presentation/view/home_view.dart';
@@ -16,10 +18,12 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Hive.initFlutter();
   Hive.registerAdapter(CustomerModelAdapter());
+  Hive.registerAdapter(DeeonModelAdapter());
   final user = FirebaseAuth.instance.currentUser;
   if (user != null) {
     await Hive.openBox<CustomerModel>("$customerBox${user.uid}");
   }
+  await Hive.openBox<DeeonModel>(deeonBox);
   runApp(const Deeon());
 }
 
@@ -28,8 +32,11 @@ class Deeon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CustomerCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => CustomerCubit()),
+        BlocProvider(create: (context) => DeeonCubit()),
+      ],
       child: MaterialApp(
         theme: ThemeData.dark(),
         debugShowCheckedModeBanner: false,

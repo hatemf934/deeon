@@ -1,13 +1,9 @@
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/radius_manager.dart';
-import 'package:deeon/features/deeon/data/model/deeon_model.dart';
 import 'package:deeon/features/deeon/presentation/views/widgets/body_of_show_button_sheet_deeon.dart';
 import 'package:flutter/material.dart';
 
-void showModelButtonSheetDeeon(
-  BuildContext context,
-  Function(DeeonModel) onAddDeeon,
-) async {
+void showModelButtonSheetDeeon(BuildContext context) async {
   showModalBottomSheet(
     context: context,
     backgroundColor: ColorManager.secondryColor,
@@ -20,7 +16,7 @@ void showModelButtonSheetDeeon(
       return SizedBox(
         height: MediaQuery.of(context).size.height * 0.45,
         width: double.infinity,
-        child: BodyOfShowButtonSheetDeeon(onAddDeeon: onAddDeeon),
+        child: BodyOfShowButtonSheetDeeon(),
       );
     },
   );

@@ -1,19 +1,19 @@
+import 'package:deeon/core/helpers/form_validate.dart';
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/padding_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
 import 'package:deeon/core/utils/text_manger.dart';
-import 'package:deeon/core/utils/text_validate_manager.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/custom_elveted_button.dart';
 import 'package:deeon/features/deeon/data/model/deeon_model.dart';
+import 'package:deeon/features/deeon/presentation/bloc/deeon/deeon_cubit.dart';
 import 'package:deeon/features/deeon/presentation/views/widgets/row_adding_buttons_item.dart';
 import 'package:deeon/features/home/presentation/view/widgets/calender_text_feild.dart';
 import 'package:deeon/features/home/presentation/view/widgets/text_feild_customer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BodyOfShowButtonSheetDeeon extends StatefulWidget {
-  const BodyOfShowButtonSheetDeeon({super.key, required this.onAddDeeon});
-  final Function(DeeonModel) onAddDeeon;
-
+  const BodyOfShowButtonSheetDeeon({super.key});
   @override
   State<BodyOfShowButtonSheetDeeon> createState() =>
       _BodyOfShowButtonSheetDeeonState();
@@ -21,8 +21,8 @@ class BodyOfShowButtonSheetDeeon extends StatefulWidget {
 
 class _BodyOfShowButtonSheetDeeonState
     extends State<BodyOfShowButtonSheetDeeon> {
-  String name = "";
-  String date = "";
+  final TextEditingController dataController = TextEditingController();
+  final TextEditingController nameItemController = TextEditingController();
   double price = 0.0;
   int count = 1;
   final GlobalKey<FormState> formkey = GlobalKey();
@@ -45,7 +45,7 @@ class _BodyOfShowButtonSheetDeeonState
             ),
             Spacer(),
             RowAddingButtonsItems(
-              onNameChanged: (value) => name = value,
+              nameItemController: nameItemController,
               onCountChanged: (value) => setState(() {
                 count = value;
               }),
@@ -54,32 +54,26 @@ class _BodyOfShowButtonSheetDeeonState
             Spacer(),
             TextFeildItem(
               onChanged: (value) => price = value,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return TextValidateManager.fieldIsRequired;
-                }
-                if (double.tryParse(value) == null) {
-                  return TextValidateManager.pleaseEnterNumber;
-                }
-                return null;
-              },
+              validator: (value) => FormValidate().validateEnterNumber(value),
               labelText: TextManger.itemPrice,
               hintText: TextManger.itemPrice,
             ),
             Spacer(),
-            CalenderTextFeild(),
+            CalenderTextFeild(dataController: dataController),
             Spacer(),
             CustomElevatedButton(
               text: TextManger.addDeeon,
               onPressed: () {
                 if (formkey.currentState!.validate()) {
                   final deeon = DeeonModel(
-                    nameItem: name,
+                    nameItem: nameItemController.text,
                     priceItem: price,
                     countItem: count,
-                    dateDeeon: date,
+                    dateDeeon: dataController.text,
                   );
-                  widget.onAddDeeon(deeon);
+                  BlocProvider.of<DeeonCubit>(
+                    context,
+                  ).addDeeonDate(deeonModel: deeon);
                   Navigator.pop(context);
                 }
               },

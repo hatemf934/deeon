@@ -93,4 +93,16 @@ class FormValidate {
 
     return null;
   }
+
+  String? validateEnterNumber(String? value) {
+    {
+      if (value == null || value.isEmpty) {
+        return TextValidateManager.fieldIsRequired;
+      }
+      if (double.tryParse(value) == null) {
+        return TextValidateManager.pleaseEnterNumber;
+      }
+      return null;
+    }
+  }
 }
