@@ -25,6 +25,9 @@ class CustomerFeature extends StatelessWidget {
         if (!Hive.isBoxOpen("$deeonBox${customerModel.id}")) {
           await Hive.openBox<DeeonModel>("$deeonBox${customerModel.id}");
         }
+        if (!Hive.isBoxOpen("$paidDeeonBox${customerModel.id}")) {
+          await Hive.openBox<DeeonModel>("$paidDeeonBox${customerModel.id}");
+        }
         Navigator.pushNamed(context, DeeonView.id, arguments: customerModel);
       },
 

@@ -19,4 +19,18 @@ class DeeonModel with HiveObjectMixin {
     required this.countItem,
     required this.dateDeeon,
   });
+
+  DeeonModel copyWith({
+    String? nameItem,
+    double? priceItem,
+    int? countItem,
+    String? dateDeeon,
+  }) {
+    return DeeonModel(
+      nameItem: nameItem ?? this.nameItem,
+      priceItem: priceItem ?? this.priceItem,
+      countItem: countItem ?? this.countItem,
+      dateDeeon: dateDeeon ?? this.dateDeeon,
+    );
+  }
 }

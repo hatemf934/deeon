@@ -53,7 +53,14 @@ class _BodyOfDeeonViewState extends State<BodyOfDeeonView> {
           color: ColorManager.secondryColor,
         ),
         ButtonsDeeonView(
-          ontap: () => Navigator.pushNamed(context, PaidDeeonView.id),
+          ontap: () {
+            final customerId = BlocProvider.of<DeeonCubit>(context).customerId;
+            Navigator.pushNamed(
+              context,
+              PaidDeeonView.id,
+              arguments: customerId,
+            );
+          },
         ),
         SizedBox(height: MediaQuery.of(context).size.height * 0.010),
       ],

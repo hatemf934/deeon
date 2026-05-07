@@ -1,5 +1,6 @@
 import 'package:deeon/constant.dart';
 import 'package:deeon/core/helpers/on_generate_route.dart';
+import 'package:deeon/features/PaidDeeon/presentation/bloc/paidDeeon/paid_deeon_cubit.dart';
 import 'package:deeon/features/auth/presentation/view/login_view.dart';
 import 'package:deeon/features/deeon/data/model/deeon_model.dart';
 import 'package:deeon/features/deeon/presentation/bloc/deeon/deeon_cubit.dart';
@@ -35,6 +36,7 @@ class Deeon extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => CustomerCubit()),
         BlocProvider(create: (context) => DeeonCubit()),
+        BlocProvider(create: (context) => PaidDeeonCubit()),
       ],
       child: MaterialApp(
         theme: ThemeData.dark(),

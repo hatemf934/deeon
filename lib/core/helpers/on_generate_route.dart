@@ -22,12 +22,14 @@ Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(builder: (context) => const HomeView());
     case RouteManager.deeonViewRoute:
       final customerModel = routeSettings.arguments as CustomerModel;
-
       return MaterialPageRoute(
         builder: (context) => DeeonView(customerModel: customerModel),
       );
     case RouteManager.paidDeeonViewRoute:
-      return MaterialPageRoute(builder: (context) => const PaidDeeonView());
+      final customerId = routeSettings.arguments as String;
+      return MaterialPageRoute(
+        builder: (context) => PaidDeeonView(customerId: customerId),
+      );
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }
