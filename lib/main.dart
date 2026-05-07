@@ -23,7 +23,6 @@ void main() async {
   if (user != null) {
     await Hive.openBox<CustomerModel>("$customerBox${user.uid}");
   }
-  await Hive.openBox<DeeonModel>(deeonBox);
   runApp(const Deeon());
 }
 

@@ -21,6 +21,7 @@ class DeeonView extends StatefulWidget {
 class _DeeonViewState extends State<DeeonView> {
   @override
   void initState() {
+    BlocProvider.of<DeeonCubit>(context).customerId = widget.customerModel.id;
     BlocProvider.of<DeeonCubit>(context).displayDeeonDate();
     super.initState();
   }

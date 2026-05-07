@@ -22,6 +22,7 @@ Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(builder: (context) => const HomeView());
     case RouteManager.deeonViewRoute:
       final customerModel = routeSettings.arguments as CustomerModel;
+
       return MaterialPageRoute(
         builder: (context) => DeeonView(customerModel: customerModel),
       );

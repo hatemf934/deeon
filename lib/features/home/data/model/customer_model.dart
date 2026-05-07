@@ -14,9 +14,19 @@ class CustomerModel extends CustomerEntity with HiveObjectMixin {
   @HiveField(2)
   final String date;
 
+  @HiveField(3)
+  final String id;
+
   CustomerModel({
     required this.nameCustomer,
     required this.phone,
     required this.date,
-  }) : super(name: nameCustomer, phone: phone, date: date);
+    String? id,
+  }) : id = id ?? DateTime.now().millisecondsSinceEpoch.toString(),
+       super(
+         name: nameCustomer,
+         phone: phone,
+         date: date,
+         id: id ?? DateTime.now().millisecondsSinceEpoch.toString(),
+       );
 }

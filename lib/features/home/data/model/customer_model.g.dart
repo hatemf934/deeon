@@ -20,19 +20,22 @@ class CustomerModelAdapter extends TypeAdapter<CustomerModel> {
       nameCustomer: fields[0] as String,
       phone: fields[1] as String,
       date: fields[2] as String,
+      id: fields[3] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, CustomerModel obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.nameCustomer)
       ..writeByte(1)
       ..write(obj.phone)
       ..writeByte(2)
-      ..write(obj.date);
+      ..write(obj.date)
+      ..writeByte(3)
+      ..write(obj.id);
   }
 
   @override

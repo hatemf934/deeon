@@ -9,15 +9,18 @@ part 'deeon_state.dart';
 class DeeonCubit extends Cubit<DeeonState> {
   DeeonCubit() : super(DeeonInitial());
   List<DeeonModel> deeonModel = [];
+  String customerId = "";
   Future<void> addDeeonDate({required DeeonModel deeonModel}) async {
     await DeeonRepoImpl(
       hiveServices: HiveServices(),
-    ).addDeeons(deeonModel: deeonModel);
+    ).addDeeons(customerId: customerId, deeonModel: deeonModel);
     displayDeeonDate();
   }
 
   void displayDeeonDate() {
-    deeonModel = DeeonRepoImpl(hiveServices: HiveServices()).getAllDeeons();
+    deeonModel = DeeonRepoImpl(
+      hiveServices: HiveServices(),
+    ).getAllDeeons(customerId: customerId);
     if (deeonModel.isEmpty) {
       emit(DeeonInitial());
     } else {

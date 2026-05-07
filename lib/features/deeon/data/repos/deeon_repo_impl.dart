@@ -8,13 +8,21 @@ class DeeonRepoImpl extends DeeonRepo {
 
   DeeonRepoImpl({required this.hiveServices});
   @override
-  Future<void> addDeeons({required DeeonModel deeonModel}) async {
-    await hiveServices.addData(boxName: deeonBox, data: deeonModel);
+  Future<void> addDeeons({
+    required DeeonModel deeonModel,
+    required String customerId,
+  }) async {
+    await hiveServices.addData(
+      boxName: "$deeonBox$customerId",
+      data: deeonModel,
+    );
   }
 
   @override
-  List<DeeonModel> getAllDeeons() {
-    var deeonDate = hiveServices.getAllData<DeeonModel>(boxName: deeonBox);
+  List<DeeonModel> getAllDeeons({required String customerId}) {
+    var deeonDate = hiveServices.getAllData<DeeonModel>(
+      boxName: "$deeonBox$customerId",
+    );
     return deeonDate;
   }
 }
