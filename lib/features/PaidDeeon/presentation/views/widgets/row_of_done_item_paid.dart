@@ -10,6 +10,7 @@ class RowOfDoneItemPaid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
@@ -18,10 +19,10 @@ class RowOfDoneItemPaid extends StatelessWidget {
           color: ColorManager.primaryColor,
           size: FontManager.font30,
         ),
-        SizedBox(width: MediaQuery.of(context).size.height * 0.020),
+        SizedBox(width: size.height * 0.020),
         Container(
-          height: MediaQuery.of(context).size.height * 0.050,
-          width: MediaQuery.of(context).size.height * 0.24,
+          height: size.height * 0.050,
+          width: size.height * 0.24,
           decoration: BoxDecoration(
             color: ColorManager.primaryColor,
             borderRadius: BorderRadius.circular(RadiusManager.r10),

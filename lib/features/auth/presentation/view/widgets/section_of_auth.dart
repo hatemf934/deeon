@@ -14,8 +14,9 @@ class SectionOfAuth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
-      height: HeightManager.h700,
+      height: size.height * 0.75,
       width: double.infinity,
       decoration: BoxDecoration(
         color: ColorManager.secondryColor,

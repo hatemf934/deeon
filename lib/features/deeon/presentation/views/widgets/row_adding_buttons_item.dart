@@ -17,13 +17,14 @@ class RowAddingButtonsItems extends StatelessWidget {
   final TextEditingController nameItemController;
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         AddingItems(countItem: count, onChanged: onCountChanged),
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.060,
-          width: MediaQuery.of(context).size.width * 0.60,
+          height: size.height * 0.060,
+          width: size.width * 0.60,
           child: TextFeildCustomer(
             controller: nameItemController,
             validator: (value) {

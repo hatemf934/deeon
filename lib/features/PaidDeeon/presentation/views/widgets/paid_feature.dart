@@ -11,8 +11,9 @@ class PaidFeature extends StatelessWidget {
   final DeeonModel deeonModel;
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
-      height: MediaQuery.of(context).size.height * 0.23,
+      height: size.height * 0.23,
       padding: EdgeInsets.symmetric(horizontal: PaddingManager.p16),
       decoration: BoxDecoration(
         color: ColorManager.secondryColor,

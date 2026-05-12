@@ -17,6 +17,7 @@ class CalenderTextFeild extends StatefulWidget {
 
 class _CalenderTextFeildState extends State<CalenderTextFeild> {
   void openDatePicker(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     BottomPicker.date(
       headerBuilder: (context) {
         return Row(
@@ -30,7 +31,7 @@ class _CalenderTextFeildState extends State<CalenderTextFeild> {
           ],
         );
       },
-      height: MediaQuery.of(context).size.height * 0.30,
+      height: size.height * 0.30,
       pickerTextStyle: Styles.textStyle22.copyWith(
         color: ColorManager.primaryColor,
         letterSpacing: 2,

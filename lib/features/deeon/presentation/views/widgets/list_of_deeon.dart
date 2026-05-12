@@ -8,6 +8,7 @@ class ListOfDeeon extends StatelessWidget {
   final List<DeeonModel> deeonModel;
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: PaddingManager.p16),
       child: ListView.separated(
@@ -18,7 +19,7 @@ class ListOfDeeon extends StatelessWidget {
           );
         },
         separatorBuilder: (context, index) {
-          return SizedBox(height: MediaQuery.of(context).size.height * 0.020);
+          return SizedBox(height: size.height * 0.020);
         },
         itemCount: deeonModel.length,
       ),

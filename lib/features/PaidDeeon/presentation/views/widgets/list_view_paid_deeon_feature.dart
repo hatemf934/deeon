@@ -12,7 +12,8 @@ class ListViewPaidDeeonFeature extends StatelessWidget {
         return PaidFeature(deeonModel: deeonModel[index]);
       },
       separatorBuilder: (context, index) {
-        return SizedBox(height: MediaQuery.of(context).size.height * 0.020);
+        final size = MediaQuery.of(context).size;
+        return SizedBox(height: size.height * 0.020);
       },
       itemCount: deeonModel.length,
     );

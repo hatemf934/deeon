@@ -1,5 +1,6 @@
 import 'package:deeon/core/helpers/form_validate.dart';
 import 'package:deeon/core/utils/color_manager.dart';
+import 'package:deeon/core/utils/height_manager.dart';
 import 'package:deeon/core/utils/padding_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
 import 'package:deeon/core/utils/text_manger.dart';
@@ -43,7 +44,7 @@ class _BodyOfShowButtonSheetDeeonState
                 color: ColorManager.primaryColor,
               ),
             ),
-            Spacer(),
+            SizedBox(height: HeightManager.h20),
             RowAddingButtonsItems(
               nameItemController: nameItemController,
               onCountChanged: (value) => setState(() {
@@ -51,16 +52,16 @@ class _BodyOfShowButtonSheetDeeonState
               }),
               count: count,
             ),
-            Spacer(),
+            SizedBox(height: HeightManager.h20),
             TextFeildItem(
               onChanged: (value) => price = value,
               validator: (value) => FormValidate().validateEnterNumber(value),
               labelText: TextManger.itemPrice,
               hintText: TextManger.itemPrice,
             ),
-            Spacer(),
+            SizedBox(height: HeightManager.h20),
             CalenderTextFeild(dataController: dataController),
-            Spacer(),
+            SizedBox(height: HeightManager.h20),
             CustomElevatedButton(
               text: TextManger.addDeeon,
               onPressed: () {
@@ -78,7 +79,7 @@ class _BodyOfShowButtonSheetDeeonState
                 }
               },
             ),
-            Spacer(flex: 2),
+            SizedBox(height: HeightManager.h20),
           ],
         ),
       ),

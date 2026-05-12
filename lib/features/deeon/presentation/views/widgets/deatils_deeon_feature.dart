@@ -20,9 +20,10 @@ class DetailsDeeonFeature extends StatelessWidget {
   final int index;
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
-      height: MediaQuery.of(context).size.height * 0.25,
-      width: MediaQuery.of(context).size.width * 0.90,
+      height: size.height * 0.25,
+      width: size.width * 0.90,
       padding: EdgeInsets.symmetric(horizontal: PaddingManager.p8),
       decoration: BoxDecoration(
         color: ColorManager.fillColor,
@@ -48,7 +49,7 @@ class DetailsDeeonFeature extends StatelessWidget {
             onremove: () =>
                 BlocProvider.of<DeeonCubit>(context).deletedDeeonDate(index),
           ),
-          SizedBox(width: MediaQuery.of(context).size.width * 0.060),
+          SizedBox(width: size.width * 0.060),
           TextDeeonFeature(deeonModel: deeonModel),
         ],
       ),

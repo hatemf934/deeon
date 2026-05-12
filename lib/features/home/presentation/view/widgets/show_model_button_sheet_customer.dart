@@ -34,58 +34,68 @@ void showModelButtonSheetCustomer(
     builder: (BuildContext ctx) {
       return BlocProvider.value(
         value: ctx.read<CustomerCubit>(),
-        child: Form(
-          key: formkey,
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.5,
-            width: double.infinity,
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: PaddingManager.p16,
-                vertical: PaddingManager.p8,
-              ),
-              child: Column(
-                children: [
-                  SizedBox(height: HeightManager.h20),
-                  Text(
-                    customer == null
-                        ? TextManger.addNewCustomer
-                        : TextManger.updateCustomer,
-                    style: Styles.textStyle30.copyWith(
-                      color: ColorManager.primaryColor,
-                    ),
+        child: Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(ctx).viewInsets.bottom,
+          ),
+          child: Form(
+            key: formkey,
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height * 0.5,
+              width: double.infinity,
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: PaddingManager.p16,
+                  vertical: PaddingManager.p8,
+                ),
+                child: SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      SizedBox(height: HeightManager.h20),
+                      Text(
+                        customer == null
+                            ? TextManger.addNewCustomer
+                            : TextManger.updateCustomer,
+                        style: Styles.textStyle30.copyWith(
+                          color: ColorManager.primaryColor,
+                        ),
+                      ),
+                      SizedBox(height: HeightManager.h30),
+                      ListTextFeildCustomer(
+                        nameController: nameController,
+                        phoneController: phoneController,
+                        dateController: dateController,
+                      ),
+                      SizedBox(height: HeightManager.h20),
+                      CustomElevatedButton(
+                        text: customer == null
+                            ? TextManger.addCustomer
+                            : TextManger.editCustomer,
+                        onPressed: () {
+                          if (formkey.currentState!.validate()) {
+                            final newCustomer = CustomerModel(
+                              nameCustomer: nameController.text,
+                              phone: phoneController.text,
+                              date: dateController.text,
+                            );
+                            if (customer == null) {
+                              ctx.read<CustomerCubit>().addCustomer(
+                                newCustomer,
+                              );
+                            } else {
+                              ctx.read<CustomerCubit>().editCustomer(
+                                oldCustomer: customer,
+                                newCustomer: newCustomer,
+                              );
+                            }
+                          }
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ],
                   ),
-                  SizedBox(height: HeightManager.h60),
-                  ListTextFeildCustomer(
-                    nameController: nameController,
-                    phoneController: phoneController,
-                    dateController: dateController,
-                  ),
-                  SizedBox(height: HeightManager.h20),
-                  CustomElevatedButton(
-                    text: customer == null
-                        ? TextManger.addCustomer
-                        : TextManger.editCustomer,
-                    onPressed: () {
-                      if (formkey.currentState!.validate()) {
-                        final newCustomer = CustomerModel(
-                          nameCustomer: nameController.text,
-                          phone: phoneController.text,
-                          date: dateController.text,
-                        );
-                        if (customer == null) {
-                          ctx.read<CustomerCubit>().addCustomer(newCustomer);
-                        } else {
-                          ctx.read<CustomerCubit>().editCustomer(
-                            oldCustomer: customer,
-                            newCustomer: newCustomer,
-                          );
-                        }
-                      }
-                      Navigator.pop(context);
-                    },
-                  ),
-                ],
+                ),
               ),
             ),
           ),

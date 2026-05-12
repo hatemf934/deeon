@@ -9,11 +9,12 @@ class AddingDeeonButton extends StatelessWidget {
   const AddingDeeonButton({super.key});
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () => showModelButtonSheetDeeon(context),
       child: Container(
-        width: MediaQuery.of(context).size.width * 0.28,
-        height: MediaQuery.of(context).size.height * 0.050,
+        width: size.width * 0.28,
+        height: size.height * 0.050,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(RadiusManager.r10),
           color: ColorManager.secondryColor,

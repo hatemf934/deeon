@@ -1,5 +1,6 @@
 import 'package:deeon/constant.dart';
 import 'package:deeon/core/utils/color_manager.dart';
+import 'package:deeon/core/utils/padding_manager.dart';
 import 'package:deeon/core/utils/radius_manager.dart';
 import 'package:deeon/features/deeon/data/model/deeon_model.dart';
 import 'package:deeon/features/deeon/presentation/views/deeon_view.dart';
@@ -20,6 +21,7 @@ class CustomerFeature extends StatelessWidget {
   final int index;
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () async {
         if (!Hive.isBoxOpen("$deeonBox${customerModel.id}")) {
@@ -32,24 +34,27 @@ class CustomerFeature extends StatelessWidget {
       },
 
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.20,
-        width: MediaQuery.of(context).size.width * 0.90,
+        height: size.height * 0.20,
+        width: size.width * 0.90,
         decoration: BoxDecoration(
           color: ColorManager.secondryColor,
           borderRadius: BorderRadius.circular(RadiusManager.r20),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            ColumnCustomerIcons(
-              onPressedEdit: () => showModelButtonSheetCustomer(
-                context,
-                customer: customerModel,
+        child: Padding(
+          padding: EdgeInsets.only(right: PaddingManager.p8),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              ColumnCustomerIcons(
+                onPressedEdit: () => showModelButtonSheetCustomer(
+                  context,
+                  customer: customerModel,
+                ),
+                index: index,
               ),
-              index: index,
-            ),
-            ColumnCustomerDetails(customerModel: customerModel),
-          ],
+              ColumnCustomerDetails(customerModel: customerModel),
+            ],
+          ),
         ),
       ),
     );

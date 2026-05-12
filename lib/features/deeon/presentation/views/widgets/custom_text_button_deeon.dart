@@ -16,11 +16,12 @@ class CustomTextButtonDeeon extends StatelessWidget {
   final Color color;
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: MediaQuery.of(context).size.width * 0.30,
-        height: MediaQuery.of(context).size.width * 0.12,
+        width: size.width * 0.30,
+        height: size.width * 0.12,
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(RadiusManager.r10),

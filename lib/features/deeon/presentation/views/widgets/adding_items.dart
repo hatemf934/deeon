@@ -14,9 +14,10 @@ class AddingItems extends StatelessWidget {
   final Function(int) onChanged;
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
-      height: MediaQuery.of(context).size.height * 0.060,
-      width: MediaQuery.of(context).size.width * 0.30,
+      height: size.height * 0.060,
+      width: size.width * 0.30,
       decoration: BoxDecoration(
         color: ColorManager.fillColor,
         borderRadius: BorderRadius.circular(RadiusManager.r10),

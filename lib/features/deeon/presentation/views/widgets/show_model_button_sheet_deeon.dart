@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 void showModelButtonSheetDeeon(BuildContext context) async {
   showModalBottomSheet(
+    isScrollControlled: true,
     context: context,
     backgroundColor: ColorManager.secondryColor,
     shape: RoundedRectangleBorder(
@@ -13,10 +14,15 @@ void showModelButtonSheetDeeon(BuildContext context) async {
       ),
     ),
     builder: (BuildContext context) {
+      final size = MediaQuery.of(context).size;
+      final viewInsets = MediaQuery.of(context).viewInsets;
       return SizedBox(
-        height: MediaQuery.of(context).size.height * 0.45,
+        height: size.height * 0.48 + viewInsets.bottom,
         width: double.infinity,
-        child: BodyOfShowButtonSheetDeeon(),
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: BodyOfShowButtonSheetDeeon(),
+        ),
       );
     },
   );

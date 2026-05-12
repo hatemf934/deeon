@@ -10,10 +10,11 @@ class DetailsCustomer extends StatelessWidget {
   final CustomerModel customerModel;
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Center(
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.20,
-        width: MediaQuery.of(context).size.width * 0.90,
+        height: size.height * 0.20,
+        width: size.width * 0.90,
         decoration: BoxDecoration(
           color: ColorManager.secondryColor,
           borderRadius: BorderRadius.circular(RadiusManager.r20),

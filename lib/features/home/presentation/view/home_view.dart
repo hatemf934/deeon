@@ -34,6 +34,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return BlocProvider(
       create: (context) => SearchCubit(context.read<CustomerCubit>()),
       child: Stack(
@@ -42,7 +43,7 @@ class _HomeViewState extends State<HomeView> {
             backgroundColor: ColorManager.primaryColor,
             appBar: CustomAppBar(),
             drawer: Drawer(
-              width: MediaQuery.of(context).size.width * 0.75,
+              width: size.width * 0.75,
               child: Container(
                 color: ColorManager.primaryColor,
                 child: Column(

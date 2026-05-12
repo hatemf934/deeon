@@ -30,8 +30,9 @@ class SectionOfForgetPasswordState extends State<SectionOfForgetPassword> {
   @override
   Widget build(BuildContext context) {
     final RegExp emailRegExp = RegExp(TextValidateManager.emailRegExp);
+    final size = MediaQuery.of(context).size;
     return Container(
-      height: HeightManager.h700,
+      height: size.height * 0.75,
       width: double.infinity,
       decoration: BoxDecoration(
         color: ColorManager.secondryColor,

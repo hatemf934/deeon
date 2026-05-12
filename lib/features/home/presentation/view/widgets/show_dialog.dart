@@ -18,8 +18,9 @@ Future<void> showOptionsDialog(
       ),
     ),
     builder: (BuildContext context) {
+      final size = MediaQuery.of(context).size;
       return SizedBox(
-        height: MediaQuery.of(context).size.height * 0.25,
+        height: size.height * 0.25,
         child: Column(
           children: [
             Spacer(flex: 1),

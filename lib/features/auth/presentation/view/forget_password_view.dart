@@ -25,15 +25,14 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
       },
       child: Scaffold(
         backgroundColor: ColorManager.primaryColor,
-        body: Column(
-          children: [
-            Expanded(
-              child: TitleWidgetOfAuthViews(
-                textTitle: TextManger.forgetPassword,
-              ),
-            ),
-            SectionOfForgetPassword(key: frogetSectionKey),
-          ],
+        body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              TitleWidgetOfAuthViews(textTitle: TextManger.forgetPassword),
+              SectionOfForgetPassword(key: frogetSectionKey),
+            ],
+          ),
         ),
       ),
     );

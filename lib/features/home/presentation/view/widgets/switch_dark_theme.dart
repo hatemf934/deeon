@@ -18,9 +18,10 @@ class CustomSwitch extends StatelessWidget {
   final bool isDarkMode;
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.80,
-      height: MediaQuery.of(context).size.height * 0.09,
+      width: size.width * 0.80,
+      height: size.height * 0.09,
       child: Card(
         elevation: 15,
         shadowColor: ColorManager.blackColor,

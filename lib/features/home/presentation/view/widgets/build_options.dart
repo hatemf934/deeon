@@ -15,13 +15,14 @@ class BuildOptions extends StatelessWidget {
   final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Column(
       children: [
         GestureDetector(
           onTap: onPressed,
           child: Container(
-            width: MediaQuery.of(context).size.width * 0.17,
-            height: MediaQuery.of(context).size.height * 0.11,
+            width: size.width * 0.17,
+            height: size.height * 0.11,
             decoration: BoxDecoration(
               border: Border.all(
                 color: ColorManager.witheColor,

@@ -6,12 +6,10 @@ class TitleWidgetOfAuthViews extends StatelessWidget {
   final String textTitle;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Spacer(),
-        Text(textTitle, style: Styles.textStyle30),
-        Spacer(flex: 2),
-      ],
+    final size = MediaQuery.of(context).size;
+    return SizedBox(
+      height: size.height * 0.25,
+      child: Center(child: Text(textTitle, style: Styles.textStyle30)),
     );
   }
 }

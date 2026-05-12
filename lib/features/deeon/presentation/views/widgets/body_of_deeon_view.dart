@@ -22,6 +22,7 @@ class BodyOfDeeonView extends StatefulWidget {
 class _BodyOfDeeonViewState extends State<BodyOfDeeonView> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Column(
       children: [
         DetailsCustomer(customerModel: widget.customerModel),
@@ -36,7 +37,7 @@ class _BodyOfDeeonViewState extends State<BodyOfDeeonView> {
           TextManger.deeeons,
           style: Styles.textStyle30.copyWith(color: ColorManager.secondryColor),
         ),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.010),
+        SizedBox(height: size.height * 0.010),
         BlocBuilder<DeeonCubit, DeeonState>(
           builder: (context, state) {
             if (state is DeeonGettingSuccess) {
@@ -62,7 +63,7 @@ class _BodyOfDeeonViewState extends State<BodyOfDeeonView> {
             );
           },
         ),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.010),
+        SizedBox(height: HeightManager.h20),
       ],
     );
   }

@@ -68,15 +68,14 @@ class _LoginViewState extends State<LoginView> {
                 progressIndicator: CircularProgressIndicator(
                   color: ColorManager.primaryColor,
                 ),
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: TitleWidgetOfAuthViews(
-                        textTitle: TextManger.signInText,
-                      ),
-                    ),
-                    SectionOfLoginView(key: loginSectionKey),
-                  ],
+                child: SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      TitleWidgetOfAuthViews(textTitle: TextManger.signInText),
+                      SectionOfLoginView(key: loginSectionKey),
+                    ],
+                  ),
                 ),
               );
             },

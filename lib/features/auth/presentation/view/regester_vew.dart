@@ -68,19 +68,20 @@ class _RegesterVewState extends State<RegesterVew> {
                 progressIndicator: CircularProgressIndicator(
                   color: ColorManager.primaryColor,
                 ),
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: TitleWidgetOfAuthViews(
+                child: SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      TitleWidgetOfAuthViews(
                         textTitle: TextManger.createAccount,
                       ),
-                    ),
-                    SectiomOfRegesterView(
-                      emailController: emailController,
-                      nameController: nameController,
-                      key: regesterSectionKey,
-                    ),
-                  ],
+                      SectiomOfRegesterView(
+                        emailController: emailController,
+                        nameController: nameController,
+                        key: regesterSectionKey,
+                      ),
+                    ],
+                  ),
                 ),
               );
             },
