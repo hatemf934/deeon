@@ -14,7 +14,6 @@ class TextDeeonFeature extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.end,
-
         children: [
           Text(
             textDirection: TextDirection.rtl,
@@ -53,6 +52,17 @@ class TextDeeonFeature extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
+          deeonModel.isDiscount
+              ? Text(
+                  textDirection: TextDirection.rtl,
+                  overflow: TextOverflow.ellipsis,
+                  "${TextManger.totalDiscount} : ${deeonModel.discountPrice}",
+                  style: Styles.textStyle18.copyWith(
+                    color: ColorManager.rubyRedColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              : SizedBox.shrink(),
         ],
       ),
     );

@@ -8,16 +8,18 @@ class IconsDetailsDeeon extends StatelessWidget {
     super.key,
     required this.onTapPayment,
     required this.onremove,
+    required this.onDiscount,
   });
   final void Function() onTapPayment;
   final void Function() onremove;
+  final void Function() onDiscount;
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         CustomTextButtonDeeon(
-          onTap: () {},
+          onTap: onDiscount,
           title: TextManger.discount,
           iconData: Icons.discount,
           color: ColorManager.discount,

@@ -1,3 +1,4 @@
+import 'package:deeon/core/helpers/custom_awesome_dialog.dart';
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/padding_manager.dart';
 import 'package:deeon/core/utils/radius_manager.dart';
@@ -10,7 +11,7 @@ import 'package:deeon/features/deeon/presentation/views/widgets/text_deeon_featu
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class DetailsDeeonFeature extends StatelessWidget {
+class DetailsDeeonFeature extends StatefulWidget {
   const DetailsDeeonFeature({
     super.key,
     required this.deeonModel,
@@ -18,6 +19,13 @@ class DetailsDeeonFeature extends StatelessWidget {
   });
   final DeeonModel deeonModel;
   final int index;
+
+  @override
+  State<DetailsDeeonFeature> createState() => _DetailsDeeonFeatureState();
+}
+
+class _DetailsDeeonFeatureState extends State<DetailsDeeonFeature> {
+  final TextEditingController discountController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -34,23 +42,37 @@ class DetailsDeeonFeature extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           IconsDetailsDeeon(
+            onDiscount: () {
+              CustomAswesomeDialog().AwesomeDialogDiscount(
+                context: context,
+                btnOkOnPress: () async {
+                  widget.deeonModel.discountPrice =
+                      double.tryParse(discountController.text) ?? 0.0;
+                  widget.deeonModel.isDiscount = true;
+                  await widget.deeonModel.save();
+                  setState(() {});
+                },
+                discountController: discountController,
+              );
+            },
             onTapPayment: () async {
               final deeonCubit = BlocProvider.of<DeeonCubit>(context);
               final paidCubit = BlocProvider.of<PaidDeeonCubit>(context);
               paidCubit.customerId = deeonCubit.customerId;
-              await deeonCubit.deletedDeeonDate(index);
-              await paidCubit.payDeeon(deeon: deeonModel);
+              await deeonCubit.deletedDeeonDate(widget.index);
+              await paidCubit.payDeeon(deeon: widget.deeonModel);
               Navigator.pushNamed(
                 context,
                 PaidDeeonView.id,
                 arguments: deeonCubit.customerId,
               );
             },
-            onremove: () =>
-                BlocProvider.of<DeeonCubit>(context).deletedDeeonDate(index),
+            onremove: () => BlocProvider.of<DeeonCubit>(
+              context,
+            ).deletedDeeonDate(widget.index),
           ),
           SizedBox(width: size.width * 0.060),
-          TextDeeonFeature(deeonModel: deeonModel),
+          TextDeeonFeature(deeonModel: widget.deeonModel),
         ],
       ),
     );

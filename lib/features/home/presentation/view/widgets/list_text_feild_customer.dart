@@ -24,7 +24,7 @@ class ListTextFeildCustomer extends StatelessWidget {
         TextFeildCustomer(
           controller: nameController,
           validator: (value) => FormValidate().validateFullName(value),
-          labelText: TextManger.customerNameLabel,
+          labelText: TextManger.nameCustomer,
           hintText: TextManger.customerNameHint,
         ),
         SizedBox(height: HeightManager.h15),

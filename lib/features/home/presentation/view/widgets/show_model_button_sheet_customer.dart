@@ -71,7 +71,7 @@ void showModelButtonSheetCustomer(
                       CustomElevatedButton(
                         text: customer == null
                             ? TextManger.addCustomer
-                            : TextManger.editCustomer,
+                            : TextManger.edit,
                         onPressed: () {
                           if (formkey.currentState!.validate()) {
                             final newCustomer = CustomerModel(

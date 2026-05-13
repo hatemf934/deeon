@@ -20,7 +20,6 @@ class TextManger {
   static String homeScreen = "الصفحه الرئيسية";
   static String signOut = "تسجيل الخروج";
   static String darkMode = "تفعيل الوضع المظلم";
-  static String noFoundDeeon = "لا يوجد ديون حاليا";
   static String edit = "تعديل";
   static String delete = "ازالة";
   static String camera = "الكاميرا";
@@ -28,8 +27,6 @@ class TextManger {
   static String profileTag = "profile_tag";
   static String modifyText = "تحرير";
   static String addNewCustomer = "إضافة زبون جديد";
-  static String editCustomer = "تعديل";
-  static String customerNameLabel = "اسم الزبون";
   static String customerNameHint = "أدخل اسم الزبون الثلاثي";
   static String customerPhoneLabel = "رقم الزبون";
   static String customerPhoneHint = "01xxxxxxxxx";
@@ -48,9 +45,15 @@ class TextManger {
   static String itemPrice = "سعر القطعة";
   static String quantity = "الكمية";
   static String totalAmount = "المجموع الكلي";
+  static String totalDiscount = "اجمالي الخصم";
   static String discount = "خصم";
-  static String payment = "تسدسد";
+  static String error = "خطا";
+  static String ok = "حسنا";
+  static String cancel = "إلغاء";
+  static String payment = "تسديد";
   static String remove = "حذف";
+  static String discountHint = "اكتب قيمةالخصم";
+  static String confirm = "تأكيد";
   static String watchDeeon = "مشاهده الديون المدفوعه";
   static String addDeeon = "اضافه دين";
   static String addNewDeeon = "اضافه دين جديد";

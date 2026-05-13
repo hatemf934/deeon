@@ -21,13 +21,15 @@ class DeeonModelAdapter extends TypeAdapter<DeeonModel> {
       priceItem: fields[1] as double,
       countItem: fields[2] as int,
       dateDeeon: fields[3] as String,
+      discountPrice: (fields[4] as double?) ?? 0.0,
+      isDiscount: (fields[5] as bool?) ?? false,
     );
   }
 
   @override
   void write(BinaryWriter writer, DeeonModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.nameItem)
       ..writeByte(1)
@@ -35,7 +37,11 @@ class DeeonModelAdapter extends TypeAdapter<DeeonModel> {
       ..writeByte(2)
       ..write(obj.countItem)
       ..writeByte(3)
-      ..write(obj.dateDeeon);
+      ..write(obj.dateDeeon)
+      ..writeByte(4)
+      ..write(obj.discountPrice)
+      ..writeByte(5)
+      ..write(obj.isDiscount);
   }
 
   @override
