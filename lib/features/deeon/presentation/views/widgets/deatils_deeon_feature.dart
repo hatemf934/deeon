@@ -8,6 +8,7 @@ import 'package:deeon/features/deeon/data/model/deeon_model.dart';
 import 'package:deeon/features/deeon/presentation/bloc/deeon/deeon_cubit.dart';
 import 'package:deeon/features/deeon/presentation/views/widgets/icons_details_feature.dart';
 import 'package:deeon/features/deeon/presentation/views/widgets/text_deeon_feature.dart';
+import 'package:deeon/features/home/data/model/customer_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,8 +17,10 @@ class DetailsDeeonFeature extends StatefulWidget {
     super.key,
     required this.deeonModel,
     required this.index,
+    required this.customerModel,
   });
   final DeeonModel deeonModel;
+  final CustomerModel customerModel;
   final int index;
 
   @override
@@ -64,7 +67,10 @@ class _DetailsDeeonFeatureState extends State<DetailsDeeonFeature> {
               Navigator.pushNamed(
                 context,
                 PaidDeeonView.id,
-                arguments: deeonCubit.customerId,
+                arguments: {
+                  'customerId': deeonCubit.customerId,
+                  'customerModel': widget.customerModel,
+                },
               );
             },
             onremove: () => BlocProvider.of<DeeonCubit>(

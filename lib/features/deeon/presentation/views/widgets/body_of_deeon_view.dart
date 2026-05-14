@@ -41,7 +41,12 @@ class _BodyOfDeeonViewState extends State<BodyOfDeeonView> {
         BlocBuilder<DeeonCubit, DeeonState>(
           builder: (context, state) {
             if (state is DeeonGettingSuccess) {
-              return Expanded(child: ListOfDeeon(deeonModel: state.deeon));
+              return Expanded(
+                child: ListOfDeeon(
+                  deeonModel: state.deeon,
+                  customerModel: widget.customerModel,
+                ),
+              );
             }
             return Expanded(child: Container());
           },
