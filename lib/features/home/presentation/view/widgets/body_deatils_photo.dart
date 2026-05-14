@@ -7,6 +7,7 @@ import 'package:deeon/core/utils/height_manager.dart';
 import 'package:deeon/core/utils/padding_manager.dart';
 import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/features/home/presentation/view/widgets/show_dialog.dart';
+import 'package:deeon/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -67,11 +68,11 @@ class _BodyDetailsPhotoState extends State<BodyDetailsPhoto> {
             children: [
               buildActionButton(Icons.edit, () {
                 _onEditPressed();
-              }, TextManger.edit),
+              }, S.of(context).edit),
               buildActionButton(
                 Icons.delete_outline,
                 () {},
-                TextManger.delete,
+                S.of(context).delete,
                 color: ColorManager.rubyRedColor,
               ),
             ],

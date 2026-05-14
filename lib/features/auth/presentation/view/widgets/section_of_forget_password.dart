@@ -1,10 +1,10 @@
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/height_manager.dart';
 import 'package:deeon/core/utils/radius_manager.dart';
-import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/core/utils/text_validate_manager.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/button_section_reset_password.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/custom_text_feild.dart';
+import 'package:deeon/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class SectionOfForgetPassword extends StatefulWidget {
@@ -49,16 +49,14 @@ class SectionOfForgetPasswordState extends State<SectionOfForgetPassword> {
             CustomTextFeild(
               validator: (value) {
                 if (value!.isEmpty) {
-                  return isSubmitted
-                      ? TextValidateManager.fieldIsRequired
-                      : null;
+                  return isSubmitted ? S.of(context).fieldIsRequired : null;
                 } else if (!emailRegExp.hasMatch(value)) {
-                  return TextValidateManager.invalidEmailOrPassword;
+                  return S.of(context).invalidEmailOrPassword;
                 }
                 return null;
               },
-              labelText: TextManger.emailText,
-              hintText: TextManger.emailExText,
+              labelText: S.of(context).emailText,
+              hintText: S.of(context).emailExText,
               iconData: Icons.email,
             ),
             SizedBox(height: HeightManager.h20),

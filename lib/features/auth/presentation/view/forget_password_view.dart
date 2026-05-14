@@ -1,8 +1,8 @@
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/route_manager.dart';
-import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/section_of_forget_password.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/title_widget_of_auth_views.dart';
+import 'package:deeon/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class ForgetPasswordView extends StatefulWidget {
@@ -29,7 +29,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
           physics: BouncingScrollPhysics(),
           child: Column(
             children: [
-              TitleWidgetOfAuthViews(textTitle: TextManger.forgetPassword),
+              TitleWidgetOfAuthViews(textTitle: S.of(context).forgetPassword),
               SectionOfForgetPassword(key: frogetSectionKey),
             ],
           ),

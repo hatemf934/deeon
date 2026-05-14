@@ -1,3 +1,4 @@
+import 'package:deeon/core/helpers/is_arabic.dart';
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +19,15 @@ class CustomTextButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         textButton,
-        style: Styles.textStyle22.copyWith(
-          fontWeight: fontWeight,
-          color: ColorManager.primaryColor,
-        ),
+        style: isArabic()
+            ? Styles.textStyle22.copyWith(
+                fontWeight: fontWeight,
+                color: ColorManager.primaryColor,
+              )
+            : Styles.textStyle16.copyWith(
+                fontWeight: fontWeight,
+                color: ColorManager.primaryColor,
+              ),
       ),
     );
   }

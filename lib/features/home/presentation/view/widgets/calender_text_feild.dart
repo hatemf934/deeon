@@ -2,9 +2,8 @@ import 'package:bottom_picker/bottom_picker.dart';
 import 'package:bottom_picker/resources/arrays.dart';
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
-import 'package:deeon/core/utils/text_manger.dart';
-import 'package:deeon/core/utils/text_validate_manager.dart';
 import 'package:deeon/features/home/presentation/view/widgets/text_feild_customer.dart';
+import 'package:deeon/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +22,7 @@ class _CalenderTextFeildState extends State<CalenderTextFeild> {
         return Row(
           children: [
             Text(
-              TextManger.choseDataAdding,
+              S.of(context).chooseDateAdding,
               style: Styles.textStyle22.copyWith(
                 color: ColorManager.primaryColor,
               ),
@@ -62,15 +61,15 @@ class _CalenderTextFeildState extends State<CalenderTextFeild> {
       controller: widget.dataController,
       validator: (value) {
         if (value == null || value.trim().isEmpty) {
-          return TextValidateManager.fieldIsRequired;
+          return S.of(context).fieldIsRequired;
         }
         return null;
       },
       onTap: () {
         openDatePicker(context);
       },
-      labelText: TextManger.dateAddedLabel,
-      hintText: TextManger.dateAddedHint,
+      labelText: S.of(context).dateAddedLabel,
+      hintText: S.of(context).dateAddedHint,
       readOnly: true,
       suffixIcon: IconButton(
         onPressed: () {

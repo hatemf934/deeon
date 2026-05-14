@@ -2,12 +2,12 @@ import 'package:deeon/constant.dart';
 import 'package:deeon/core/helpers/custom_awesome_dialog.dart';
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/route_manager.dart';
-import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:deeon/features/auth/presentation/bloc/signin_cubit/signin_cubit.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/section_of_login_view.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/title_widget_of_auth_views.dart';
 import 'package:deeon/features/home/data/model/customer_model.dart';
+import 'package:deeon/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -72,7 +72,9 @@ class _LoginViewState extends State<LoginView> {
                   physics: BouncingScrollPhysics(),
                   child: Column(
                     children: [
-                      TitleWidgetOfAuthViews(textTitle: TextManger.signInText),
+                      TitleWidgetOfAuthViews(
+                        textTitle: S.of(context).signInText,
+                      ),
                       SectionOfLoginView(key: loginSectionKey),
                     ],
                   ),

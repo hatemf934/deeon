@@ -1,6 +1,6 @@
 import 'package:deeon/core/utils/color_manager.dart';
-import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/features/deeon/presentation/views/widgets/custom_text_button_deeon.dart';
+import 'package:deeon/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class IconsDetailsDeeon extends StatelessWidget {
@@ -20,19 +20,19 @@ class IconsDetailsDeeon extends StatelessWidget {
       children: [
         CustomTextButtonDeeon(
           onTap: onDiscount,
-          title: TextManger.discount,
+          title: S.of(context).discount,
           iconData: Icons.discount,
           color: ColorManager.discount,
         ),
         CustomTextButtonDeeon(
           onTap: onTapPayment,
-          title: TextManger.payment,
+          title: S.of(context).payment,
           iconData: Icons.payment,
           color: ColorManager.payment,
         ),
         CustomTextButtonDeeon(
           onTap: onremove,
-          title: TextManger.remove,
+          title: S.of(context).remove,
           iconData: Icons.delete,
           color: ColorManager.rubyRedColor,
         ),

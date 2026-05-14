@@ -1,5 +1,5 @@
-import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/features/home/presentation/view/widgets/build_options.dart';
+import 'package:deeon/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class ShowDialogImagePicker extends StatelessWidget {
@@ -18,12 +18,12 @@ class ShowDialogImagePicker extends StatelessWidget {
         BuildOptions(
           onPressed: onPressedCamera,
           icon: Icons.camera_alt_outlined,
-          label: TextManger.camera,
+          label: S.of(context).camera,
         ),
         BuildOptions(
           onPressed: onPressedGalery,
           icon: Icons.photo_outlined,
-          label: TextManger.galery,
+          label: S.of(context).gallery,
         ),
       ],
     );

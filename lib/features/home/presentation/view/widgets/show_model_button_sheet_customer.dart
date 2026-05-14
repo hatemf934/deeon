@@ -3,11 +3,11 @@ import 'package:deeon/core/utils/height_manager.dart';
 import 'package:deeon/core/utils/padding_manager.dart';
 import 'package:deeon/core/utils/radius_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
-import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/custom_elveted_button.dart';
 import 'package:deeon/features/home/data/model/customer_model.dart';
 import 'package:deeon/features/home/presentation/manager/customer_cubit/customer_cubit.dart';
 import 'package:deeon/features/home/presentation/view/widgets/list_text_feild_customer.dart';
+import 'package:deeon/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -55,8 +55,8 @@ void showModelButtonSheetCustomer(
                       SizedBox(height: HeightManager.h20),
                       Text(
                         customer == null
-                            ? TextManger.addNewCustomer
-                            : TextManger.updateCustomer,
+                            ? S.of(context).addNewCustomer
+                            : S.of(context).updateCustomer,
                         style: Styles.textStyle30.copyWith(
                           color: ColorManager.primaryColor,
                         ),
@@ -70,8 +70,8 @@ void showModelButtonSheetCustomer(
                       SizedBox(height: HeightManager.h20),
                       CustomElevatedButton(
                         text: customer == null
-                            ? TextManger.addCustomer
-                            : TextManger.edit,
+                            ? S.of(context).addCustomer
+                            : S.of(context).edit,
                         onPressed: () {
                           if (formkey.currentState!.validate()) {
                             final newCustomer = CustomerModel(

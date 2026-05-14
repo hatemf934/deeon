@@ -1,7 +1,7 @@
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/radius_manager.dart';
-import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/features/home/presentation/manager/search/search_cubit.dart';
+import 'package:deeon/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,7 +20,7 @@ class TextFeildAppBar extends StatelessWidget {
         fillColor: ColorManager.fillColor,
         filled: true,
         hint: Text(
-          TextManger.searchCustomer,
+          S.of(context).searchCustomer,
           style: TextStyle(color: ColorManager.black26),
         ),
         border: OutlineInputBorder(

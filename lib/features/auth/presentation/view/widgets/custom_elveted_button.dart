@@ -6,11 +6,13 @@ import 'package:flutter/material.dart';
 class CustomElevatedButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
+  final TextStyle style;
 
   const CustomElevatedButton({
     super.key,
     required this.text,
     required this.onPressed,
+    this.style = Styles.textStyle22,
   });
 
   @override
@@ -19,13 +21,13 @@ class CustomElevatedButton extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: ColorManager.primaryColor,
-        minimumSize: Size(screenWidth * 0.80, HeightManager.h60),
+        minimumSize: Size(screenWidth * 0.78, HeightManager.h60),
         elevation: 12,
         shadowColor: ColorManager.hintColor,
       ),
 
       onPressed: onPressed,
-      child: Text(text, style: Styles.textStyle22),
+      child: Text(text, style: style),
     );
   }
 }

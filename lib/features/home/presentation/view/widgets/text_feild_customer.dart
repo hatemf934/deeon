@@ -90,34 +90,42 @@ class TextFeildItem extends StatelessWidget {
   final Function(double) onChanged;
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      onChanged: (value) {
-        double val = double.tryParse(value) ?? 0;
-        onChanged(val);
-      },
-      style: TextStyle(color: ColorManager.blackColor),
-      cursorColor: ColorManager.primaryColor,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-      validator: validator,
-      keyboardType: TextInputType.number,
-      decoration: InputDecoration(
-        labelText: labelText,
-        hintText: hintText,
-        hintStyle: TextStyle(color: ColorManager.hintColor),
-        labelStyle: TextStyle(
-          color: ColorManager.primaryColor,
-          fontSize: FontManager.font22,
+    return Theme(
+      data: Theme.of(context).copyWith(
+        textSelectionTheme: TextSelectionThemeData(
+          selectionColor: ColorManager.primaryColor.withOpacity(0.4),
+          selectionHandleColor: ColorManager.primaryColor,
         ),
-        errorStyle: TextStyle(color: ColorManager.redColor),
-        enabledBorder: buildOutlineInputBorder(
-          color: ColorManager.transmentColor,
+      ),
+      child: TextFormField(
+        onChanged: (value) {
+          double val = double.tryParse(value) ?? 0;
+          onChanged(val);
+        },
+        style: TextStyle(color: ColorManager.blackColor),
+        cursorColor: ColorManager.primaryColor,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        validator: validator,
+        keyboardType: TextInputType.number,
+        decoration: InputDecoration(
+          labelText: labelText,
+          hintText: hintText,
+          hintStyle: TextStyle(color: ColorManager.hintColor),
+          labelStyle: TextStyle(
+            color: ColorManager.primaryColor,
+            fontSize: FontManager.font22,
+          ),
+          errorStyle: TextStyle(color: ColorManager.redColor),
+          enabledBorder: buildOutlineInputBorder(
+            color: ColorManager.transmentColor,
+          ),
+          focusedBorder: buildOutlineInputBorder(
+            color: ColorManager.primaryColor,
+          ),
+          errorBorder: buildOutlineInputBorder(color: ColorManager.redColor),
+          fillColor: ColorManager.fillColor,
+          filled: true,
         ),
-        focusedBorder: buildOutlineInputBorder(
-          color: ColorManager.primaryColor,
-        ),
-        errorBorder: buildOutlineInputBorder(color: ColorManager.redColor),
-        fillColor: ColorManager.fillColor,
-        filled: true,
       ),
     );
   }

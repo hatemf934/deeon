@@ -3,13 +3,13 @@ import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/height_manager.dart';
 import 'package:deeon/core/utils/padding_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
-import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/custom_elveted_button.dart';
 import 'package:deeon/features/deeon/data/model/deeon_model.dart';
 import 'package:deeon/features/deeon/presentation/bloc/deeon/deeon_cubit.dart';
 import 'package:deeon/features/deeon/presentation/views/widgets/row_adding_buttons_item.dart';
 import 'package:deeon/features/home/presentation/view/widgets/calender_text_feild.dart';
 import 'package:deeon/features/home/presentation/view/widgets/text_feild_customer.dart';
+import 'package:deeon/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -39,7 +39,7 @@ class _BodyOfShowButtonSheetDeeonState
         child: Column(
           children: [
             Text(
-              TextManger.addNewDeeon,
+              S.of(context).addNewDebt,
               style: Styles.textStyle30.copyWith(
                 color: ColorManager.primaryColor,
               ),
@@ -55,15 +55,16 @@ class _BodyOfShowButtonSheetDeeonState
             SizedBox(height: HeightManager.h20),
             TextFeildItem(
               onChanged: (value) => price = value,
-              validator: (value) => FormValidate().validateEnterNumber(value),
-              labelText: TextManger.itemPrice,
-              hintText: TextManger.itemPrice,
+              validator: (value) =>
+                  FormValidate().validateEnterNumber(value, context),
+              labelText: S.of(context).itemPrice,
+              hintText: S.of(context).itemPrice,
             ),
             SizedBox(height: HeightManager.h20),
             CalenderTextFeild(dataController: dataController),
             SizedBox(height: HeightManager.h20),
             CustomElevatedButton(
-              text: TextManger.addDeeon,
+              text: S.of(context).addDebt,
               onPressed: () {
                 if (formkey.currentState!.validate()) {
                   final deeon = DeeonModel(

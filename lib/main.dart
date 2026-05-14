@@ -8,10 +8,12 @@ import 'package:deeon/features/home/data/model/customer_model.dart';
 import 'package:deeon/features/home/presentation/manager/customer_cubit/customer_cubit.dart';
 import 'package:deeon/features/home/presentation/view/home_view.dart';
 import 'package:deeon/firebase_options.dart';
+import 'package:deeon/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
@@ -39,6 +41,14 @@ class Deeon extends StatelessWidget {
         BlocProvider(create: (context) => PaidDeeonCubit()),
       ],
       child: MaterialApp(
+        locale: Locale("en"),
+        localizationsDelegates: [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
         theme: ThemeData.dark(),
         debugShowCheckedModeBanner: false,
         initialRoute: FirebaseAuth.instance.currentUser == null

@@ -1,7 +1,8 @@
+import 'package:deeon/core/helpers/is_arabic.dart';
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
-import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/features/home/data/model/customer_model.dart';
+import 'package:deeon/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class ColumnCustomerDetails extends StatelessWidget {
@@ -9,30 +10,35 @@ class ColumnCustomerDetails extends StatelessWidget {
   final CustomerModel customerModel;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        Text(
-          textDirection: TextDirection.rtl,
-          overflow: TextOverflow.ellipsis,
-          "${TextManger.nameCustomer} : ${customerModel.nameCustomer}",
-          style: Styles.textStyle18.copyWith(color: ColorManager.blackColor),
-        ),
+    return SizedBox(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            overflow: TextOverflow.ellipsis,
+            "${S.of(context).nameCustomer} : ${customerModel.nameCustomer}",
+            style: isArabic()
+                ? Styles.textStyle18.copyWith(color: ColorManager.blackColor)
+                : Styles.textStyle14.copyWith(color: ColorManager.blackColor),
+          ),
 
-        Text(
-          textDirection: TextDirection.rtl,
-          overflow: TextOverflow.ellipsis,
-          "${TextManger.phoneNumber} : ${customerModel.phone}",
-          style: Styles.textStyle18.copyWith(color: ColorManager.blackColor),
-        ),
-        Text(
-          textDirection: TextDirection.rtl,
-          overflow: TextOverflow.ellipsis,
-          "${TextManger.dateAddedLabel} :  ${customerModel.date}",
-          style: Styles.textStyle18.copyWith(color: ColorManager.blackColor),
-        ),
-      ],
+          Text(
+            overflow: TextOverflow.ellipsis,
+            "${S.of(context).phoneNumber} : ${customerModel.phone}",
+            style: isArabic()
+                ? Styles.textStyle18.copyWith(color: ColorManager.blackColor)
+                : Styles.textStyle14.copyWith(color: ColorManager.blackColor),
+          ),
+          Text(
+            overflow: TextOverflow.ellipsis,
+            "${S.of(context).dateAddedLabel} :  ${customerModel.date}",
+            style: isArabic()
+                ? Styles.textStyle18.copyWith(color: ColorManager.blackColor)
+                : Styles.textStyle14.copyWith(color: ColorManager.blackColor),
+          ),
+        ],
+      ),
     );
   }
 }

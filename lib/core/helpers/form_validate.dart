@@ -1,4 +1,6 @@
 import 'package:deeon/core/utils/text_validate_manager.dart';
+import 'package:deeon/generated/l10n.dart';
+import 'package:flutter/material.dart';
 
 class FormValidate {
   final RegExp passwordLeastLowerCaseLetter = RegExp(
@@ -17,90 +19,94 @@ class FormValidate {
   );
   final RegExp phoneRegExp = RegExp(TextValidateManager.phoneFormat);
 
-  String? validateEmail(String? value) {
+  String? validateEmail(String? value, BuildContext context) {
     if (value == null || value.trim().isEmpty) {
-      return TextValidateManager.invalidEmailOrPassword;
+      return S.of(context).invalidEmailOrPassword;
     }
     if (!emailRegExp.hasMatch(value.trim())) {
-      return TextValidateManager.invalidEmailOrPassword;
+      return S.of(context).invalidEmailOrPassword;
     }
 
     return null;
   }
 
-  String? validateFullName(String? value) {
+  String? validateFullName(String? value, BuildContext context) {
     if (value == null || value.trim().isEmpty) {
-      return TextValidateManager.invalidFullName;
+      return S.of(context).invalidFullName;
     }
 
     if (!fullNameRegExp.hasMatch(value.trim())) {
-      return TextValidateManager.invalidFullName;
+      return S.of(context).invalidFullName;
     }
 
     return null;
   }
 
-  String? validatePassword(String? value) {
+  String? validatePassword(String? value, BuildContext context) {
     if (value == null || value.trim().isEmpty) {
-      return TextValidateManager.invalidEmailOrPassword;
+      return S.of(context).invalidEmailOrPassword;
     }
 
     if (!passwordLeastLowerCaseLetter.hasMatch(value)) {
-      return TextValidateManager.passwordFromAtoZ;
+      return S.of(context).passwordFromAtoZ;
     }
 
     if (!passwordLeastOneCharacter.hasMatch(value)) {
-      return TextValidateManager.passwordSpicailCharacter;
+      return S.of(context).passwordSpicailCharacter;
     }
 
     if (!passwordLeastDigit.hasMatch(value)) {
-      return TextValidateManager.passwordLeastNumber;
+      return S.of(context).passwordLeastNumber;
     }
 
     if (!passwordLeastEightNumber.hasMatch(value)) {
-      return TextValidateManager.passwordLeastAt8Number;
+      return S.of(context).passwordLeastAt8Number;
     }
 
     return null;
   }
 
-  String? validateConfirmPassword(String? value, String originalPassword) {
+  String? validateConfirmPassword(
+    String? value,
+    String originalPassword,
+    BuildContext context,
+  ) {
     if (value == null || value.trim().isEmpty) {
-      return TextValidateManager.invalidEmailOrPassword;
+      return S.of(context).invalidEmailOrPassword;
     }
 
     if (value != originalPassword) {
-      return TextValidateManager.passwordsNotMatch;
+      return S.of(context).passwordsNotMatch;
     }
 
     return null;
   }
 
-  String? validatePhone(String? value) {
+  String? validatePhone(String? value, BuildContext context) {
     if (value == null || value.trim().isEmpty) {
-      return TextValidateManager.requiredPhone;
+      return S.of(context).requiredPhone;
     }
 
     final trimmedValue = value.trim();
 
     if (!phoneRegExp.hasMatch(trimmedValue)) {
-      return TextValidateManager.invalidPhoneFormat;
+      return S.of(context).invalidPhoneFormat;
     }
 
     if (trimmedValue.length < 11) {
-      return TextValidateManager.phoneTooShort;
+      return S.of(context).phoneTooShort;
     }
 
     return null;
   }
 
-  String? validateEnterNumber(String? value) {
+  String? validateEnterNumber(String? value, BuildContext context) {
     {
       if (value == null || value.isEmpty) {
-        return TextValidateManager.fieldIsRequired;
+        return S.of(context).fieldIsRequired;
       }
       if (double.tryParse(value) == null) {
-        return TextValidateManager.pleaseEnterNumber;
+        return S.of(context).pleaseEnterNumber;
       }
       return null;
     }

@@ -13,8 +13,8 @@ class ButtonsDeeonView extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          WatchingDeoonButton(onTap: ontap),
           AddingDeeonButton(),
+          WatchingDeoonButton(onTap: ontap),
         ],
       ),
     );

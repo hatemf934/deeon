@@ -1,10 +1,10 @@
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
-import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/features/home/presentation/manager/search/search_cubit.dart';
 import 'package:deeon/features/home/presentation/view/widgets/body_home_view.dart';
 import 'package:deeon/features/home/presentation/view/widgets/list_view_customer_feature.dart';
 import 'package:deeon/features/home/presentation/view/widgets/search_app_customer.dart';
+import 'package:deeon/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,7 +21,7 @@ class HomeViewSearch extends StatelessWidget {
           if (state is SearchNoResult) {
             return Center(
               child: Text(
-                TextManger.noReuslt,
+                S.of(context).noResult,
                 style: Styles.textStyle25.copyWith(
                   color: ColorManager.white70Color,
                 ),

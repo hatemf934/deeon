@@ -1,7 +1,6 @@
-import 'package:deeon/core/utils/text_manger.dart';
-import 'package:deeon/core/utils/text_validate_manager.dart';
 import 'package:deeon/features/deeon/presentation/views/widgets/adding_items.dart';
 import 'package:deeon/features/home/presentation/view/widgets/text_feild_customer.dart';
+import 'package:deeon/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class RowAddingButtonsItems extends StatelessWidget {
@@ -29,12 +28,12 @@ class RowAddingButtonsItems extends StatelessWidget {
             controller: nameItemController,
             validator: (value) {
               if (value == null || value.trim().isEmpty) {
-                return TextValidateManager.fieldIsRequired;
+                return S.of(context).fieldIsRequired;
               }
               return null;
             },
-            labelText: TextManger.itemName,
-            hintText: TextManger.itemName,
+            labelText: S.of(context).itemName,
+            hintText: S.of(context).itemName,
           ),
         ),
       ],

@@ -3,8 +3,8 @@ import 'package:deeon/core/utils/font_manager.dart';
 import 'package:deeon/core/utils/height_manager.dart';
 import 'package:deeon/core/utils/radius_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
-import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/core/utils/width_manager.dart';
+import 'package:deeon/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class ShowDialogIcons extends StatelessWidget {
@@ -36,7 +36,7 @@ class ShowDialogIcons extends StatelessWidget {
               ),
             ),
             Text(
-              TextManger.modifyText,
+              S.of(context).modifyText,
               style: Styles.textStyle22.copyWith(fontWeight: FontWeight.bold),
             ),
             IconButton(

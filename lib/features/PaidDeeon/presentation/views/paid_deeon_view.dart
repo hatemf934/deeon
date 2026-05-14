@@ -1,12 +1,13 @@
+import 'package:deeon/core/helpers/is_arabic.dart';
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/padding_manager.dart';
 import 'package:deeon/core/utils/route_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
-import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/features/PaidDeeon/presentation/bloc/paidDeeon/paid_deeon_cubit.dart';
 import 'package:deeon/features/PaidDeeon/presentation/views/widgets/list_view_paid_deeon_feature.dart';
 import 'package:deeon/features/PaidDeeon/presentation/views/widgets/pdf_floating_action_button.dart';
 import 'package:deeon/features/home/data/model/customer_model.dart';
+import 'package:deeon/generated/l10n.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,7 +42,7 @@ class _PaidDeeonViewState extends State<PaidDeeonView> {
         backgroundColor: ColorManager.primaryColor,
         centerTitle: true,
         iconTheme: IconThemeData(color: ColorManager.appBarIconColor),
-        title: Text(TextManger.paidDeeon, style: Styles.textStyle25),
+        title: Text(S.of(context).paidDebt, style: Styles.textStyle25),
       ),
       body: Padding(
         padding: EdgeInsets.all(PaddingManager.p16),
@@ -71,6 +72,9 @@ class _PaidDeeonViewState extends State<PaidDeeonView> {
           return SizedBox.shrink();
         },
       ),
+      floatingActionButtonLocation: isArabic()
+          ? FloatingActionButtonLocation.startFloat
+          : FloatingActionButtonLocation.endFloat,
     );
   }
 }

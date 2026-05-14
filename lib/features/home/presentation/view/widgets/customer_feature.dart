@@ -45,6 +45,7 @@ class CustomerFeature extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+              ColumnCustomerDetails(customerModel: customerModel),
               ColumnCustomerIcons(
                 onPressedEdit: () => showModelButtonSheetCustomer(
                   context,
@@ -52,7 +53,6 @@ class CustomerFeature extends StatelessWidget {
                 ),
                 index: index,
               ),
-              ColumnCustomerDetails(customerModel: customerModel),
             ],
           ),
         ),

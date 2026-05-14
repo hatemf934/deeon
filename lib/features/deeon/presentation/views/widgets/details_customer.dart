@@ -20,7 +20,7 @@ class DetailsCustomer extends StatelessWidget {
           borderRadius: BorderRadius.circular(RadiusManager.r20),
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
               padding: EdgeInsets.symmetric(horizontal: PaddingManager.p8),

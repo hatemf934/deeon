@@ -1,8 +1,8 @@
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
-import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/features/PaidDeeon/presentation/views/widgets/text_details_deeon.dart';
 import 'package:deeon/features/deeon/data/model/deeon_model.dart';
+import 'package:deeon/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class RowOfPaidDetails extends StatelessWidget {
@@ -13,10 +13,25 @@ class RowOfPaidDetails extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        Flexible(
+          fit: FlexFit.loose,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextDetailsDeeon(titleText: deeonModel.nameItem),
+              TextDetailsDeeon(
+                titleText: "${S.of(context).price} : ${deeonModel.priceItem}",
+              ),
+              TextDetailsDeeon(
+                titleText: "${S.of(context).quantity} :${deeonModel.countItem}",
+              ),
+            ],
+          ),
+        ),
         Column(
           children: [
             Text(
-              TextManger.total,
+              S.of(context).total,
               style: Styles.textStyle25.copyWith(
                 color: ColorManager.primaryColor,
                 fontWeight: FontWeight.bold,
@@ -30,21 +45,6 @@ class RowOfPaidDetails extends StatelessWidget {
               ),
             ),
           ],
-        ),
-        Flexible(
-          fit: FlexFit.loose,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              TextDetailsDeeon(titleText: deeonModel.nameItem),
-              TextDetailsDeeon(
-                titleText: "${TextManger.price} : ${deeonModel.priceItem}",
-              ),
-              TextDetailsDeeon(
-                titleText: "${TextManger.quantity} :${deeonModel.countItem}",
-              ),
-            ],
-          ),
         ),
       ],
     );

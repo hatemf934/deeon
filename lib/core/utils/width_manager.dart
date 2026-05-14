@@ -3,6 +3,7 @@ class WidthManager {
   static double w1 = 1;
   static double w3 = 3;
   static double w10 = 10;
+  static double w24 = 24;
   static double w40 = 40;
   static double w100 = 100;
 }

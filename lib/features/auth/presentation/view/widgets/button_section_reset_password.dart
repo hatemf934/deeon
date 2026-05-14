@@ -1,7 +1,9 @@
+import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/height_manager.dart';
-import 'package:deeon/core/utils/text_manger.dart';
+import 'package:deeon/core/utils/styles.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/custom_elveted_button.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/custom_text_button.dart';
+import 'package:deeon/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class ButtonsSectionResetPassword extends StatelessWidget {
@@ -13,7 +15,8 @@ class ButtonsSectionResetPassword extends StatelessWidget {
       children: [
         CustomElevatedButton(
           onPressed: onPressed,
-          text: TextManger.sendResetLink,
+          text: S.of(context).sendResetLink,
+          style: Styles.textStyle18.copyWith(color: ColorManager.witheColor),
         ),
 
         SizedBox(height: HeightManager.h20),
@@ -21,7 +24,7 @@ class ButtonsSectionResetPassword extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          textButton: TextManger.backToLogin,
+          textButton: S.of(context).backToLogin,
         ),
       ],
     );

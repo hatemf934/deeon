@@ -3,8 +3,8 @@ import 'package:deeon/core/utils/font_manager.dart';
 import 'package:deeon/core/utils/height_manager.dart';
 import 'package:deeon/core/utils/padding_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
-import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/features/home/presentation/manager/search/search_cubit.dart';
+import 'package:deeon/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,7 +17,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: AppBar(
         iconTheme: IconThemeData(color: ColorManager.appBarIconColor),
         centerTitle: true,
-        title: Text(TextManger.homeScreen, style: Styles.textStyle25),
+        title: Text(S.of(context).homeScreen, style: Styles.textStyle25),
         backgroundColor: ColorManager.primaryColor,
         actions: [
           IconButton(

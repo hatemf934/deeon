@@ -2,6 +2,7 @@ import 'package:deeon/core/helpers/custom_awesome_dialog.dart';
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/padding_manager.dart';
 import 'package:deeon/core/utils/radius_manager.dart';
+import 'package:deeon/core/utils/width_manager.dart';
 import 'package:deeon/features/PaidDeeon/presentation/bloc/paidDeeon/paid_deeon_cubit.dart';
 import 'package:deeon/features/PaidDeeon/presentation/views/paid_deeon_view.dart';
 import 'package:deeon/features/deeon/data/model/deeon_model.dart';
@@ -44,6 +45,8 @@ class _DetailsDeeonFeatureState extends State<DetailsDeeonFeature> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          TextDeeonFeature(deeonModel: widget.deeonModel),
+          SizedBox(width: WidthManager.w24),
           IconsDetailsDeeon(
             onDiscount: () {
               CustomAswesomeDialog().AwesomeDialogDiscount(
@@ -77,8 +80,6 @@ class _DetailsDeeonFeatureState extends State<DetailsDeeonFeature> {
               context,
             ).deletedDeeonDate(widget.index),
           ),
-          SizedBox(width: size.width * 0.060),
-          TextDeeonFeature(deeonModel: widget.deeonModel),
         ],
       ),
     );

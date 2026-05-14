@@ -5,14 +5,8 @@ import 'package:deeon/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomSwitch extends StatelessWidget {
-  const CustomSwitch({
-    super.key,
-    required this.color,
-    required this.iconData,
-    required this.text,
-  });
+  const CustomSwitch({super.key, required this.color, required this.text});
   final Color color;
-  final IconData iconData;
   final String text;
   @override
   Widget build(BuildContext context) {
@@ -35,13 +29,13 @@ class CustomSwitch extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Icon(iconData, color: ColorManager.secondryColor),
               Text(
                 text,
                 style: Styles.textStyle18.copyWith(
                   color: ColorManager.secondryColor,
                 ),
               ),
+              Icon(Icons.logout, color: ColorManager.secondryColor),
             ],
           ),
         ),

@@ -1,11 +1,12 @@
 import 'package:deeon/core/helpers/custom_awesome_dialog.dart';
+import 'package:deeon/core/helpers/is_arabic.dart';
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/route_manager.dart';
 import 'package:deeon/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:deeon/features/home/presentation/manager/customer_cubit/customer_cubit.dart';
 import 'package:deeon/features/home/presentation/manager/search/search_cubit.dart';
 import 'package:deeon/features/home/presentation/view/widgets/body_home_view.dart';
-import 'package:deeon/features/home/presentation/view/widgets/content_draw_options.dart';
+import 'package:deeon/features/home/presentation/view/widgets/custom_sign_out_button.dart.dart';
 import 'package:deeon/features/home/presentation/view/widgets/custom_app_bar.dart';
 import 'package:deeon/features/home/presentation/view/widgets/custom_floating_action_button.dart';
 import 'package:deeon/features/home/presentation/view/widgets/home_view_search.dart';
@@ -66,6 +67,9 @@ class _HomeViewState extends State<HomeView> {
               },
               child: CustomFloatingActionButton(),
             ),
+            floatingActionButtonLocation: isArabic()
+                ? FloatingActionButtonLocation.startFloat
+                : FloatingActionButtonLocation.endFloat,
           ),
           BlocBuilder<SearchCubit, SearchState>(
             builder: (context, state) {

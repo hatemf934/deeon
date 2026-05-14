@@ -14,27 +14,30 @@ class ColumnCustomerIcons extends StatelessWidget {
   final VoidCallback onPressedEdit;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            CustomIconButtonCustomer(
-              onpressed: () =>
-                  BlocProvider.of<CustomerCubit>(context).deleteCustomer(index),
-              color: ColorManager.rubyRedColor,
-              iconData: Icons.delete,
-            ),
-            CustomIconButtonCustomer(
-              onpressed: onPressedEdit,
-              color: ColorManager.primaryColor,
-              iconData: Icons.edit,
-            ),
-          ],
-        ),
-      ],
+    return SizedBox(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              CustomIconButtonCustomer(
+                onpressed: () => BlocProvider.of<CustomerCubit>(
+                  context,
+                ).deleteCustomer(index),
+                color: ColorManager.rubyRedColor,
+                iconData: Icons.delete,
+              ),
+              CustomIconButtonCustomer(
+                onpressed: onPressedEdit,
+                color: ColorManager.primaryColor,
+                iconData: Icons.edit,
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

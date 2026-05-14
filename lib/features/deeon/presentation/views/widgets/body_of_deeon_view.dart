@@ -1,7 +1,6 @@
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/height_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
-import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/core/utils/width_manager.dart';
 import 'package:deeon/features/PaidDeeon/presentation/views/paid_deeon_view.dart';
 import 'package:deeon/features/deeon/presentation/bloc/deeon/deeon_cubit.dart';
@@ -9,6 +8,7 @@ import 'package:deeon/features/deeon/presentation/views/widgets/buttons_deeon_vi
 import 'package:deeon/features/deeon/presentation/views/widgets/details_customer.dart';
 import 'package:deeon/features/deeon/presentation/views/widgets/list_of_deeon.dart';
 import 'package:deeon/features/home/data/model/customer_model.dart';
+import 'package:deeon/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -34,7 +34,7 @@ class _BodyOfDeeonViewState extends State<BodyOfDeeonView> {
           color: ColorManager.secondryColor,
         ),
         Text(
-          TextManger.deeeons,
+          S.of(context).debts,
           style: Styles.textStyle30.copyWith(color: ColorManager.secondryColor),
         ),
         SizedBox(height: size.height * 0.010),

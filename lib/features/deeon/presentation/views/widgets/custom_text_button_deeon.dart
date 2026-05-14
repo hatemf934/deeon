@@ -1,3 +1,4 @@
+import 'package:deeon/core/helpers/is_arabic.dart';
 import 'package:deeon/core/utils/font_manager.dart';
 import 'package:deeon/core/utils/radius_manager.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +21,8 @@ class CustomTextButtonDeeon extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: size.width * 0.30,
         height: size.width * 0.12,
+        width: 120,
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(RadiusManager.r10),
@@ -30,7 +31,12 @@ class CustomTextButtonDeeon extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Icon(iconData, size: FontManager.font25),
-            Text(title, style: TextStyle(fontSize: FontManager.font22)),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: isArabic() ? FontManager.font22 : FontManager.font18,
+              ),
+            ),
           ],
         ),
       ),

@@ -1,5 +1,5 @@
-import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/custom_text_feild.dart';
+import 'package:deeon/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmPasswordTextFeild extends StatefulWidget {
@@ -32,7 +32,7 @@ class _ConfirmPasswordTextFeildState extends State<ConfirmPasswordTextFeild> {
         });
       },
       labelText: widget.labelText,
-      hintText: TextManger.passwordHint,
+      hintText: S.of(context).passwordHint,
       iconData: obscureText ? Icons.visibility_off : Icons.visibility,
     );
   }
