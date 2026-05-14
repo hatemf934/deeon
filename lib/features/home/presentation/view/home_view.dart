@@ -49,7 +49,7 @@ class _HomeViewState extends State<HomeView> {
                 child: Column(
                   children: [
                     UserAccountSection(email: email, name: name),
-                    ContentDrawOptions(),
+                    CustomSignOutButton(),
                   ],
                 ),
               ),

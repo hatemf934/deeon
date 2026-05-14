@@ -10,12 +10,10 @@ class CustomSwitch extends StatelessWidget {
     required this.color,
     required this.iconData,
     required this.text,
-    this.isDarkMode = false,
   });
   final Color color;
   final IconData iconData;
   final String text;
-  final bool isDarkMode;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -38,15 +36,6 @@ class CustomSwitch extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Icon(iconData, color: ColorManager.secondryColor),
-              isDarkMode
-                  ? Switch(
-                      value: true,
-                      onChanged: (value) {},
-                      activeThumbColor: ColorManager.primaryColor,
-                      activeTrackColor: ColorManager.activeColorSwitch,
-                    )
-                  : Container(),
-
               Text(
                 text,
                 style: Styles.textStyle18.copyWith(

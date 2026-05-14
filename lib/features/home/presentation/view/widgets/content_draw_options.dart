@@ -10,8 +10,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
-class ContentDrawOptions extends StatelessWidget {
-  const ContentDrawOptions({super.key});
+class CustomSignOutButton extends StatelessWidget {
+  const CustomSignOutButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +22,6 @@ class ContentDrawOptions extends StatelessWidget {
           horizontal: PaddingManager.p16,
         ),
         children: [
-          SizedBox(height: HeightManager.h20),
-          CustomSwitch(
-            isDarkMode: true,
-            text: TextManger.darkMode,
-            color: ColorManager.deepTeal,
-            iconData: Icons.nights_stay,
-          ),
           SizedBox(height: HeightManager.h20),
           GestureDetector(
             onTap: () async {
