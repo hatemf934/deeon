@@ -59,7 +59,10 @@ class _BodyOfDeeonViewState extends State<BodyOfDeeonView> {
             Navigator.pushNamed(
               context,
               PaidDeeonView.id,
-              arguments: customerId,
+              arguments: {
+                'customerId': customerId,
+                'customerModel': widget.customerModel,
+              },
             );
           },
         ),

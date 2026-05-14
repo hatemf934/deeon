@@ -6,14 +6,20 @@ import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/features/PaidDeeon/presentation/bloc/paidDeeon/paid_deeon_cubit.dart';
 import 'package:deeon/features/PaidDeeon/presentation/views/widgets/list_view_paid_deeon_feature.dart';
 import 'package:deeon/features/PaidDeeon/presentation/views/widgets/pdf_floating_action_button.dart';
+import 'package:deeon/features/home/data/model/customer_model.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PaidDeeonView extends StatefulWidget {
-  const PaidDeeonView({super.key, required this.customerId});
+  const PaidDeeonView({
+    super.key,
+    required this.customerId,
+    required this.customerModel,
+  });
   static String id = RouteManager.paidDeeonViewRoute;
   final String customerId;
+  final CustomerModel customerModel;
 
   @override
   State<PaidDeeonView> createState() => _PaidDeeonViewState();
@@ -54,7 +60,17 @@ class _PaidDeeonViewState extends State<PaidDeeonView> {
           ],
         ),
       ),
-      floatingActionButton: PDFfloatingActionButton(),
+      floatingActionButton: BlocBuilder<PaidDeeonCubit, PaidDeeonState>(
+        builder: (context, state) {
+          if (state is DeeonPaidSuccess) {
+            return PDFfloatingActionButton(
+              deeonModel: state.deeon,
+              customerModel: widget.customerModel,
+            );
+          }
+          return SizedBox.shrink();
+        },
+      ),
     );
   }
 }

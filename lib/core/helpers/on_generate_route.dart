@@ -26,9 +26,12 @@ Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
         builder: (context) => DeeonView(customerModel: customerModel),
       );
     case RouteManager.paidDeeonViewRoute:
-      final customerId = routeSettings.arguments as String;
+      final args = routeSettings.arguments as Map<String, dynamic>;
       return MaterialPageRoute(
-        builder: (context) => PaidDeeonView(customerId: customerId),
+        builder: (context) => PaidDeeonView(
+          customerId: args['customerId'] as String,
+          customerModel: args['customerModel'] as CustomerModel,
+        ),
       );
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
