@@ -3,6 +3,7 @@ import 'package:deeon/core/helpers/is_arabic.dart';
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/route_manager.dart';
 import 'package:deeon/features/auth/data/repos/auth_repo_impl.dart';
+import 'package:deeon/features/home/presentation/manager/account/account_cubit.dart';
 import 'package:deeon/features/home/presentation/manager/customer_cubit/customer_cubit.dart';
 import 'package:deeon/features/home/presentation/manager/search/search_cubit.dart';
 import 'package:deeon/features/home/presentation/view/widgets/body_home_view.dart';
@@ -36,8 +37,13 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return BlocProvider(
-      create: (context) => SearchCubit(context.read<CustomerCubit>()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => SearchCubit(context.read<CustomerCubit>()),
+        ),
+        BlocProvider(create: (context) => AccountCubit()),
+      ],
       child: Stack(
         children: [
           Scaffold(

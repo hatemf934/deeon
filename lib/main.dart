@@ -4,6 +4,7 @@ import 'package:deeon/features/PaidDeeon/presentation/bloc/paidDeeon/paid_deeon_
 import 'package:deeon/features/auth/presentation/view/login_view.dart';
 import 'package:deeon/features/deeon/data/model/deeon_model.dart';
 import 'package:deeon/features/deeon/presentation/bloc/deeon/deeon_cubit.dart';
+import 'package:deeon/features/home/data/model/account_model.dart';
 import 'package:deeon/features/home/data/model/customer_model.dart';
 import 'package:deeon/features/home/presentation/manager/customer_cubit/customer_cubit.dart';
 import 'package:deeon/features/home/presentation/view/home_view.dart';
@@ -22,9 +23,11 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(CustomerModelAdapter());
   Hive.registerAdapter(DeeonModelAdapter());
+  Hive.registerAdapter(AccountModelAdapter());
   final user = FirebaseAuth.instance.currentUser;
   if (user != null) {
     await Hive.openBox<CustomerModel>("$customerBox${user.uid}");
+    await Hive.openBox<AccountModel>("$pictureBox${user.uid}");
   }
   runApp(const Deeon());
 }
@@ -41,7 +44,7 @@ class Deeon extends StatelessWidget {
         BlocProvider(create: (context) => PaidDeeonCubit()),
       ],
       child: MaterialApp(
-        locale: Locale("en"),
+        locale: Locale("ar"),
         localizationsDelegates: [
           S.delegate,
           GlobalMaterialLocalizations.delegate,

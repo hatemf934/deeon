@@ -23,4 +23,19 @@ class HiveServices extends LocalDatabaseServices {
     await box.deleteAt(index);
     return box.values.toList();
   }
+
+  @override
+  T getSingleData<T>({required String boxName}) {
+    final box = Hive.box<T>(boxName);
+    return box.get('single_data')!;
+  }
+
+  @override
+  Future<void> addSingleData<T>({
+    required String boxName,
+    required T data,
+  }) async {
+    var box = Hive.box<T>(boxName);
+    await box.put('single_data', data);
+  }
 }

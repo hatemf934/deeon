@@ -21,8 +21,8 @@ class DeeonModelAdapter extends TypeAdapter<DeeonModel> {
       priceItem: fields[1] as double,
       countItem: fields[2] as int,
       dateDeeon: fields[3] as String,
-      discountPrice: (fields[4] as double?) ?? 0.0,
-      isDiscount: (fields[5] as bool?) ?? false,
+      discountPrice: fields[4] as double,
+      isDiscount: fields[5] as bool,
     );
   }
 
