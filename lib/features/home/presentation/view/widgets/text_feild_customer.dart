@@ -15,6 +15,7 @@ class TextFeildCustomer extends StatelessWidget {
     this.readOnly = false,
     this.controller,
     this.onTap,
+    this.onChanged,
   });
   final String labelText;
   final String hintText;
@@ -24,6 +25,7 @@ class TextFeildCustomer extends StatelessWidget {
   final bool readOnly;
   final TextEditingController? controller;
   final Function()? onTap;
+  final Function(double)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,10 @@ class TextFeildCustomer extends StatelessWidget {
         ),
       ),
       child: TextFormField(
+        onChanged: (value) {
+          double val = double.tryParse(value) ?? 0;
+          onChanged?.call(val);
+        },
         onTap: onTap,
         controller: controller,
         readOnly: readOnly,
@@ -63,68 +69,6 @@ class TextFeildCustomer extends StatelessWidget {
           filled: true,
 
           suffixIcon: suffixIcon,
-        ),
-      ),
-    );
-  }
-
-  OutlineInputBorder buildOutlineInputBorder({required Color color}) {
-    return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(RadiusManager.r10),
-      borderSide: BorderSide(color: color, width: WidthManager.w1),
-    );
-  }
-}
-
-class TextFeildItem extends StatelessWidget {
-  const TextFeildItem({
-    super.key,
-    required this.labelText,
-    required this.hintText,
-    required this.validator,
-    required this.onChanged,
-  });
-  final String labelText;
-  final String hintText;
-  final String? Function(String?) validator;
-  final Function(double) onChanged;
-  @override
-  Widget build(BuildContext context) {
-    return Theme(
-      data: Theme.of(context).copyWith(
-        textSelectionTheme: TextSelectionThemeData(
-          selectionColor: ColorManager.primaryColor.withOpacity(0.4),
-          selectionHandleColor: ColorManager.primaryColor,
-        ),
-      ),
-      child: TextFormField(
-        onChanged: (value) {
-          double val = double.tryParse(value) ?? 0;
-          onChanged(val);
-        },
-        style: TextStyle(color: ColorManager.blackColor),
-        cursorColor: ColorManager.primaryColor,
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        validator: validator,
-        keyboardType: TextInputType.number,
-        decoration: InputDecoration(
-          labelText: labelText,
-          hintText: hintText,
-          hintStyle: TextStyle(color: ColorManager.hintColor),
-          labelStyle: TextStyle(
-            color: ColorManager.primaryColor,
-            fontSize: FontManager.font22,
-          ),
-          errorStyle: TextStyle(color: ColorManager.redColor),
-          enabledBorder: buildOutlineInputBorder(
-            color: ColorManager.transmentColor,
-          ),
-          focusedBorder: buildOutlineInputBorder(
-            color: ColorManager.primaryColor,
-          ),
-          errorBorder: buildOutlineInputBorder(color: ColorManager.redColor),
-          fillColor: ColorManager.fillColor,
-          filled: true,
         ),
       ),
     );

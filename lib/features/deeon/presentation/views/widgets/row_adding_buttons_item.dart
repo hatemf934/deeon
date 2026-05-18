@@ -22,7 +22,6 @@ class RowAddingButtonsItems extends StatelessWidget {
       children: [
         AddingItems(countItem: count, onChanged: onCountChanged),
         SizedBox(
-          height: size.height * 0.060,
           width: size.width * 0.60,
           child: TextFeildCustomer(
             controller: nameItemController,

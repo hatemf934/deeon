@@ -53,12 +53,12 @@ class _BodyOfShowButtonSheetDeeonState
               count: count,
             ),
             SizedBox(height: HeightManager.h20),
-            TextFeildItem(
-              onChanged: (value) => price = value,
-              validator: (value) =>
-                  FormValidate().validateEnterNumber(value, context),
+            TextFeildCustomer(
               labelText: S.of(context).itemPrice,
               hintText: S.of(context).itemPrice,
+              validator: (value) =>
+                  FormValidate().validateEnterNumber(value, context),
+              onChanged: (value) => price = value,
             ),
             SizedBox(height: HeightManager.h20),
             CalenderTextFeild(dataController: dataController),
