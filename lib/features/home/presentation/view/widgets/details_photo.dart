@@ -9,9 +9,11 @@ class DetailsPhoto extends StatelessWidget {
     super.key,
     this.initialImage,
     required this.onImageChanged,
+    required this.onDeletePressed,
   });
   final XFile? initialImage;
   final Function(XFile?) onImageChanged;
+  final VoidCallback onDeletePressed;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +33,7 @@ class DetailsPhoto extends StatelessWidget {
         body: BodyDetailsPhoto(
           initialImage: initialImage,
           onImageChanged: onImageChanged,
+          onDeletePressed: onDeletePressed,
         ),
       ),
     );

@@ -6,4 +6,6 @@ abstract class AccountRepo {
     required String userId,
     required AccountModel account,
   });
+
+  Future<void> deleteAccount({required String userId});
 }

@@ -25,6 +25,12 @@ class HiveServices extends LocalDatabaseServices {
   }
 
   @override
+  T deleteSingleData<T>({required String boxName}) {
+    var box = Hive.box<T>(boxName);
+    return box.delete("single_data") as T;
+  }
+
+  @override
   T getSingleData<T>({required String boxName}) {
     final box = Hive.box<T>(boxName);
     return box.get('single_data')!;

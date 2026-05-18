@@ -30,6 +30,7 @@ class GesturedetectorPhoto extends StatelessWidget {
                     cubit.addAccount(value);
                   }
                 },
+                onDeletePressed: () => cubit.deleteAccount(),
               ),
             );
           },

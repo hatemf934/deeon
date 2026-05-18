@@ -16,9 +16,11 @@ class BodyDetailsPhoto extends StatefulWidget {
     super.key,
     this.initialImage,
     required this.onImageChanged,
+    required this.onDeletePressed,
   });
   final XFile? initialImage;
   final Function(XFile?) onImageChanged;
+  final VoidCallback onDeletePressed;
 
   @override
   State<BodyDetailsPhoto> createState() => _BodyDetailsPhotoState();
@@ -71,7 +73,7 @@ class _BodyDetailsPhotoState extends State<BodyDetailsPhoto> {
               }, S.of(context).edit),
               buildActionButton(
                 Icons.delete_outline,
-                () {},
+                () => widget.onDeletePressed(),
                 S.of(context).delete,
                 color: ColorManager.rubyRedColor,
               ),

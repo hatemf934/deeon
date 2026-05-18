@@ -26,10 +26,6 @@ class AccountCubit extends Cubit<AccountState> {
 
   void displayAccount() {
     try {
-      // if (!Hive.isBoxOpen("$pictureBox$userId")) {
-      //   emit(AccountEmpty());
-      //   return;
-      // }
       accounts = AccountRepoImpl(
         hiveServices: HiveServices(),
       ).getSingleAccount(userId: userId);
@@ -49,5 +45,12 @@ class AccountCubit extends Cubit<AccountState> {
       hiveServices: HiveServices(),
     ).addAccount(userId: userId, account: account);
     emit(AccountGettingPicture(accountModel: account));
+  }
+
+  Future<void> deleteAccount() async {
+    await AccountRepoImpl(
+      hiveServices: HiveServices(),
+    ).deleteAccount(userId: userId);
+    emit(AccountEmpty());
   }
 }

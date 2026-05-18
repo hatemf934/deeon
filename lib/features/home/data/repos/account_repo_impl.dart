@@ -25,4 +25,9 @@ class AccountRepoImpl extends AccountRepo {
       );
     }
   }
+
+  @override
+  Future<void> deleteAccount({required String userId}) async {
+    await hiveServices.deleteSingleData(boxName: "$pictureBox$userId");
+  }
 }
