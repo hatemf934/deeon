@@ -126,9 +126,7 @@ UI (Presentation) → BLoC/Cubit → Use Cases (Domain) → Repository → Data 
 
 <div align="center">
   
-<a href="https://drive.google.com/uc?export=download&id=1pg7QUxEZLysQSo2jHqhTS1tT_p_c-3fF">
-  <h3>⬇️ Download APK</h3>
-</a>
+### [⬇️ Download APK](https://drive.google.com/uc?export=download&id=1pg7QUxEZLysQSo2jHqhTS1tT_p_c-3fF)
 
 <br/>
 Scan to download:
