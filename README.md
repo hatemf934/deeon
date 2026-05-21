@@ -19,16 +19,17 @@ A complete Flutter application for managing customer debts with ease — from lo
 
 ## 📖 Table of Contents
 
-- [About](#-about)
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Architecture](#-architecture)
-- [Screenshots](#-screenshots)
-- [Download APK](#-download-apk)
-- [Getting Started](#-getting-started)
-- [Localization](#-localization)
-- [Contributing](#-contributing)
-- [License](#-license)
+- [About](#about)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Architecture](#architecture)
+- [Screenshots](#screenshots)
+- [Download APK](#download-apk)
+- [Getting Started](#getting-started)
+- [Localization](#localization)
+- [Contributing](#contributing)
+- [Connect](#connect)
+- [License](#license)
 
 ---
 
@@ -203,7 +204,7 @@ Contributions are welcome! For major changes, please open an issue first to disc
 | | |
 |---|---|
 | GitHub | [github.com/hatemfathy](https://github.com/hatemf934) |
-| LinkedIn | [linkedin.com/in/hatemfathy16](www.linkedin.com/in/hatemfathy16) |
+| LinkedIn | [linkedin.com/in/hatemfathy16](https://www.linkedin.com/in/hatemfathy16/) |
 | Gmail | [hatemf934@gmail.com](mailto:hatemf934@gmail.com) |
 
 ## License
