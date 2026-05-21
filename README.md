@@ -125,8 +125,8 @@ UI (Presentation) → BLoC/Cubit → Use Cases (Domain) → Repository → Data 
 ## Download APK
 
 <div align="center">
-
-<a href="https://drive.google.com/file/d/1pg7QUxEZLysQSo2jHqhTS1tT_p_c-3fF/view?usp=sharing">
+  
+<a href="https://drive.google.com/uc?export=download&id=1pg7QUxEZLysQSo2jHqhTS1tT_p_c-3fF">
   <h3>⬇️ Download APK</h3>
 </a>
 
