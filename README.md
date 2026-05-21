@@ -109,32 +109,31 @@ UI (Presentation) → BLoC/Cubit → Use Cases (Domain) → Repository → Data 
 
 ## Screenshots
 
+<div align="center">
+
 | Login | Home | Add Customer |
 |:---:|:---:|:---:|
-| ![Login](screenshots/login.png) | ![Home](screenshots/home.png) | ![Add Customer](screenshots/add_customer.png) |
+| <img src="screenshots/login.png" width="200"/> | <img src="screenshots/home-left.png" width="200"/> | <img src="screenshots/add-left.png" width="200"/> |
 
 | Debt List | Paid Debts | PDF Report |
 |:---:|:---:|:---:|
-| ![Debts](screenshots/debts.png) | ![Paid](screenshots/settle.png) | ![PDF](screenshots/pdf.png) |
+| <img src="screenshots/debts_list.png" width="200"/> | <img src="screenshots/debts_paid.png" width="200"/> | <img src="screenshots/pdf-left.png" width="200"/> |
 
----
+</div>
 
 ## Download APK
 
 <div align="center">
 
-> **[Download APK](https://drive.google.com/file/d/1pg7QUxEZLysQSo2jHqhTS1tT_p_c-3fF/view?usp=sharing)**
+<a href="https://drive.google.com/file/d/1pg7QUxEZLysQSo2jHqhTS1tT_p_c-3fF/view?usp=sharing">
+  <h3>⬇️ Download APK</h3>
+</a>
 
 <br/>
-
 Scan to download:
-
-![QR Code](<img width="3000" height="3817" alt="qr_code" src="https://github.com/user-attachments/assets/7c82040b-3dd7-4e96-b254-8a514d3867b8" />
-)
-
+<br/><br/>
+<img src="screenshots/qr_code.png" width="200"/>
 </div>
-
----
 
 ## Getting Started
 
@@ -203,9 +202,9 @@ Contributions are welcome! For major changes, please open an issue first to disc
 
 | | |
 |---|---|
-| GitHub | [github.com/YourUsername](https://github.com/YourUsername) |
-| LinkedIn | [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile) |
-| Gmail | [your@email.com](mailto:your@email.com) |
+| GitHub | [github.com/hatemfathy](https://github.com/hatemf934) |
+| LinkedIn | [linkedin.com/in/hatemfathy16](www.linkedin.com/in/hatemfathy16) |
+| Gmail | [hatemf934@gmail.com](mailto:hatemf934@gmail.com) |
 
 ## License
 
