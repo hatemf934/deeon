@@ -1,0 +1,43 @@
+import 'package:deeon/core/utils/color_manager.dart';
+import 'package:deeon/features/customers/presentation/manager/customer_cubit/customer_cubit.dart';
+import 'package:deeon/features/customers/presentation/view/widgets/custom_icon_button_customer.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+class ColumnCustomerIcons extends StatelessWidget {
+  const ColumnCustomerIcons({
+    super.key,
+    required this.index,
+    required this.onPressedEdit,
+  });
+  final int index;
+  final VoidCallback onPressedEdit;
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              CustomIconButtonCustomer(
+                onpressed: () => BlocProvider.of<CustomerCubit>(
+                  context,
+                ).deleteCustomer(index),
+                color: ColorManager.rubyRedColor,
+                iconData: Icons.delete,
+              ),
+              CustomIconButtonCustomer(
+                onpressed: onPressedEdit,
+                color: ColorManager.primaryColor,
+                iconData: Icons.edit,
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}

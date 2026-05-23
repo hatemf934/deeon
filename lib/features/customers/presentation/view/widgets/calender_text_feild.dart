@@ -1,0 +1,85 @@
+import 'package:bottom_picker/bottom_picker.dart';
+import 'package:bottom_picker/resources/arrays.dart';
+import 'package:deeon/core/utils/color_manager.dart';
+import 'package:deeon/core/utils/styles.dart';
+import 'package:deeon/features/customers/presentation/view/widgets/text_feild_customer.dart';
+import 'package:deeon/generated/l10n.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+class CalenderTextFeild extends StatefulWidget {
+  const CalenderTextFeild({super.key, this.dataController});
+  final TextEditingController? dataController;
+  @override
+  State<CalenderTextFeild> createState() => _CalenderTextFeildState();
+}
+
+class _CalenderTextFeildState extends State<CalenderTextFeild> {
+  void openDatePicker(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    BottomPicker.date(
+      headerBuilder: (context) {
+        return Row(
+          children: [
+            Text(
+              S.of(context).chooseDateAdding,
+              style: Styles.textStyle22.copyWith(
+                color: ColorManager.primaryColor,
+              ),
+            ),
+          ],
+        );
+      },
+      height: size.height * 0.30,
+      pickerTextStyle: Styles.textStyle22.copyWith(
+        color: ColorManager.primaryColor,
+        letterSpacing: 2,
+      ),
+      dateOrder: DatePickerDateOrder.dmy,
+      initialDateTime: DateTime.now(),
+      maxDateTime: DateTime(2030),
+      minDateTime: DateTime(2020),
+      onSubmit: (index) {
+        final DateTime selectedDate = index as DateTime;
+        final formattedDate =
+            "${selectedDate.day}/${selectedDate.month}/${selectedDate.year}";
+
+        setState(() {
+          widget.dataController!.text = formattedDate;
+        });
+      },
+
+      bottomPickerTheme: BottomPickerTheme.temptingAzure,
+      buttonSingleColor: ColorManager.primaryColor,
+      displaySubmitButton: true,
+    ).show(context);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFeildCustomer(
+      controller: widget.dataController,
+      validator: (value) {
+        if (value == null || value.trim().isEmpty) {
+          return S.of(context).fieldIsRequired;
+        }
+        return null;
+      },
+      onTap: () {
+        openDatePicker(context);
+      },
+      labelText: S.of(context).dateAddedLabel,
+      hintText: S.of(context).dateAddedHint,
+      readOnly: true,
+      suffixIcon: IconButton(
+        onPressed: () {
+          openDatePicker(context);
+        },
+        icon: Icon(
+          Icons.calendar_month_rounded,
+          color: ColorManager.primaryColor,
+        ),
+      ),
+    );
+  }
+}

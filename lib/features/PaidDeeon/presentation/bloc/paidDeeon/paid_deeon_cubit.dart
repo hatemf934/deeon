@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:deeon/constant.dart';
 import 'package:deeon/core/services/hive_services.dart';
 import 'package:deeon/features/PaidDeeon/data/repos/paid_deeon_repo_impl.dart';
-import 'package:deeon/features/deeon/data/model/deeon_model.dart';
+import 'package:deeon/features/debts/data/model/deeon_model.dart';
 import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
 

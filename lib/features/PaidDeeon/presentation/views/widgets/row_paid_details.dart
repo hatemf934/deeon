@@ -1,7 +1,7 @@
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
 import 'package:deeon/features/PaidDeeon/presentation/views/widgets/text_details_deeon.dart';
-import 'package:deeon/features/deeon/data/model/deeon_model.dart';
+import 'package:deeon/features/debts/data/model/deeon_model.dart';
 import 'package:deeon/generated/l10n.dart';
 import 'package:flutter/material.dart';
 

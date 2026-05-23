@@ -9,8 +9,8 @@ import 'package:deeon/features/PaidDeeon/presentation/views/widgets/total_pdf_se
 import 'package:deeon/features/PaidDeeon/presentation/views/widgets/customer_info_pdf_section.dart';
 import 'package:deeon/features/PaidDeeon/presentation/views/widgets/header_pdf_section.dart';
 import 'package:deeon/features/PaidDeeon/presentation/views/widgets/table_pdf_section.dart';
-import 'package:deeon/features/deeon/data/model/deeon_model.dart';
-import 'package:deeon/features/home/data/model/customer_model.dart';
+import 'package:deeon/features/debts/data/model/deeon_model.dart';
+import 'package:deeon/features/customers/data/model/customer_model.dart';
 import 'package:flutter/services.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;

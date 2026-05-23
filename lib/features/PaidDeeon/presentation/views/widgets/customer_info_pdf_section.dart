@@ -4,7 +4,7 @@ import 'package:deeon/core/utils/padding_manager.dart';
 import 'package:deeon/core/utils/radius_manager.dart';
 import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/core/utils/width_manager.dart';
-import 'package:deeon/features/home/data/model/customer_model.dart';
+import 'package:deeon/features/customers/data/model/customer_model.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 

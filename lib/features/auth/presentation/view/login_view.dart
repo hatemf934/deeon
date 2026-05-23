@@ -6,7 +6,7 @@ import 'package:deeon/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:deeon/features/auth/presentation/bloc/signin_cubit/signin_cubit.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/section_of_login_view.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/title_widget_of_auth_views.dart';
-import 'package:deeon/features/home/data/model/customer_model.dart';
+import 'package:deeon/features/customers/data/model/customer_model.dart';
 import 'package:deeon/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

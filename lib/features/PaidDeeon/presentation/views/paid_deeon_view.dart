@@ -6,7 +6,7 @@ import 'package:deeon/core/utils/styles.dart';
 import 'package:deeon/features/PaidDeeon/presentation/bloc/paidDeeon/paid_deeon_cubit.dart';
 import 'package:deeon/features/PaidDeeon/presentation/views/widgets/list_view_paid_deeon_feature.dart';
 import 'package:deeon/features/PaidDeeon/presentation/views/widgets/pdf_floating_action_button.dart';
-import 'package:deeon/features/home/data/model/customer_model.dart';
+import 'package:deeon/features/customers/data/model/customer_model.dart';
 import 'package:deeon/generated/l10n.dart';
 
 import 'package:flutter/material.dart';

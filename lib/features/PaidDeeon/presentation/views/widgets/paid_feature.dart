@@ -3,7 +3,7 @@ import 'package:deeon/core/utils/padding_manager.dart';
 import 'package:deeon/core/utils/radius_manager.dart';
 import 'package:deeon/features/PaidDeeon/presentation/views/widgets/row_of_done_item_paid.dart';
 import 'package:deeon/features/PaidDeeon/presentation/views/widgets/row_paid_details.dart';
-import 'package:deeon/features/deeon/data/model/deeon_model.dart';
+import 'package:deeon/features/debts/data/model/deeon_model.dart';
 import 'package:flutter/material.dart';
 
 class PaidFeature extends StatelessWidget {

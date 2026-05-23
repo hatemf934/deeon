@@ -2,7 +2,7 @@ import 'package:deeon/core/utils/font_manager.dart';
 import 'package:deeon/core/utils/padding_manager.dart';
 import 'package:deeon/core/utils/text_manger.dart';
 import 'package:deeon/core/utils/width_manager.dart';
-import 'package:deeon/features/deeon/data/model/deeon_model.dart';
+import 'package:deeon/features/debts/data/model/deeon_model.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 

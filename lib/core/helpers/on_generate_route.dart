@@ -3,9 +3,9 @@ import 'package:deeon/features/PaidDeeon/presentation/views/paid_deeon_view.dart
 import 'package:deeon/features/auth/presentation/view/forget_password_view.dart';
 import 'package:deeon/features/auth/presentation/view/login_view.dart';
 import 'package:deeon/features/auth/presentation/view/regester_vew.dart';
-import 'package:deeon/features/deeon/presentation/views/deeon_view.dart';
-import 'package:deeon/features/home/data/model/customer_model.dart';
-import 'package:deeon/features/home/presentation/view/home_view.dart';
+import 'package:deeon/features/debts/presentation/views/deeon_view.dart';
+import 'package:deeon/features/customers/data/model/customer_model.dart';
+import 'package:deeon/features/customers/presentation/view/home_view.dart';
 import 'package:flutter/material.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {

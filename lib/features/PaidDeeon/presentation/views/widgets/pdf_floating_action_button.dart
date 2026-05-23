@@ -2,8 +2,8 @@ import 'package:deeon/core/helpers/generate_pdf.dart';
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/font_manager.dart';
 import 'package:deeon/core/utils/padding_manager.dart';
-import 'package:deeon/features/deeon/data/model/deeon_model.dart';
-import 'package:deeon/features/home/data/model/customer_model.dart';
+import 'package:deeon/features/debts/data/model/deeon_model.dart';
+import 'package:deeon/features/customers/data/model/customer_model.dart';
 import 'package:flutter/material.dart';
 
 class PDFfloatingActionButton extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:deeon/features/PaidDeeon/presentation/views/widgets/paid_feature.dart';
-import 'package:deeon/features/deeon/data/model/deeon_model.dart';
+import 'package:deeon/features/debts/data/model/deeon_model.dart';
 import 'package:flutter/material.dart';
 
 class ListViewPaidDeeonFeature extends StatelessWidget {
