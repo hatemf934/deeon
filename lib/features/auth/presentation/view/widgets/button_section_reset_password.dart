@@ -15,7 +15,7 @@ class ButtonsSectionResetPassword extends StatelessWidget {
       children: [
         CustomElevatedButton(
           onPressed: onPressed,
-          text: S.of(context).sendResetLink,
+          text: "تعيين كلمه مرور جديده",
           style: Styles.textStyle18.copyWith(color: ColorManager.witheColor),
         ),
 

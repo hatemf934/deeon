@@ -12,7 +12,6 @@ abstract class AuthRepo {
     required String email,
     required String password,
   });
-
   Future<void> addUserData({required UserEntity user});
   Future<UserEntity> getUserData({required String documentId});
 }

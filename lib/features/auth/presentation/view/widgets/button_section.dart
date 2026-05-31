@@ -2,7 +2,6 @@ import 'package:deeon/core/helpers/is_arabic.dart';
 import 'package:deeon/core/utils/color_manager.dart';
 import 'package:deeon/core/utils/height_manager.dart';
 import 'package:deeon/core/utils/styles.dart';
-import 'package:deeon/features/auth/presentation/view/forget_password_view.dart';
 import 'package:deeon/features/auth/presentation/view/regester_vew.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/custom_elveted_button.dart';
 import 'package:deeon/features/auth/presentation/view/widgets/custom_text_button.dart';
@@ -21,12 +20,6 @@ class ButtonsSection extends StatelessWidget {
           text: S.of(context).signInText,
         ),
         SizedBox(height: HeightManager.h20),
-        CustomTextButton(
-          onPressed: () {
-            Navigator.pushNamed(context, ForgetPasswordView.id);
-          },
-          textButton: S.of(context).youForgetPassword,
-        ),
         SizedBox(height: HeightManager.h20),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
